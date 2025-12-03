@@ -7,13 +7,13 @@ import Image from "next/image";
 export function ProjectsSection() {
   const projectsData = [
     {
-      title: "Project Alpha",
-      description: "A high-performance RESTful API built with .NET 7 to manage customer data, optimizing queries by 50%.",
-      tags: [".NET 7", "Azure Functions", "SQL Server"],
+      title: "Angular Micro-Portfolio",
+      description: "A personal project built with Angular focused on learning and applying best practices. Features responsive design, dark mode, and dynamic content from JSON.",
+      tags: ["Angular", "TypeScript", "JSON"],
       imageUrl: "https://picsum.photos/seed/project1/600/400",
       imageHint: "abstract technology",
-      liveUrl: "#",
-      githubUrl: "https://github.com/vicentegabrielgomezmedina",
+      liveUrl: "https://vicentegm2.github.io/angular-micro-portfolio/",
+      githubUrl: "https://github.com/vicentegm2/angular-micro-portfolio",
     },
     {
       title: "Project Beta",
