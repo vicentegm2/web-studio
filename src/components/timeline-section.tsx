@@ -38,33 +38,30 @@ export function TimelineSection() {
         degree: "F.P. Desarrollo de Aplicaciones Web",
         institution: "UCAM Universidad Católica San Antonio de Murcia",
         period: "2020 - 2022",
-        status: "Completed"
+        status: "Completed",
+        skills: ["Administración de sistemas", "Programación orientada a objetos (POO)", "Bootstrap", "Desarrollo de software", "Microsoft SQL Server"],
       },
       {
         degree: "Grado en Ingeniería Informática",
         institution: "Universidad Nacional de Educación a Distancia - U.N.E.D.",
         period: "Previsto Sep 2025",
-        status: "In progress"
+        status: "In progress",
+        skills: [],
       },
       {
         degree: "Grado en Ciencias Políticas y Gobierno",
         institution: "Universidad Nacional de Educación a Distancia - U.N.E.D.",
         period: "En pausa",
-        status: "On hold"
+        status: "On hold",
+        skills: ["Administración pública"],
       }
     ];
   const volunteeringData = [
     {
-      role: "Community Mentor",
-      organization: "Code for All",
-      period: "2022 - Present",
-      description: "Guiding future developers through mentoring, sharing best practices and career advice."
-    },
-    {
-      role: "Event Volunteer",
-      organization: "Tech Conference 2023",
-      period: "Oct 2023",
-      description: "Collaborated on logistics to ensure a smooth experience for over 500 attendees."
+      role: "Voluntario",
+      organization: "Protección Civil",
+      period: "Sep 2023 - Present",
+      description: "Voluntario en Protección Civil de Las Torres de Cotillas."
     }
   ];
     const eventsData = [
