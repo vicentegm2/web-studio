@@ -3,6 +3,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Briefcase, GraduationCap, HeartHandshake, CalendarCheck2, ExternalLink } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 
 export function TimelineSection() {
 
@@ -35,25 +37,22 @@ export function TimelineSection() {
     ];
   const educationData = [
       {
-        degree: "F.P. Desarrollo de Aplicaciones Web",
-        institution: "UCAM Universidad Católica San Antonio de Murcia",
-        period: "2020 - 2022",
-        status: "Completed",
-        skills: ["Administración de sistemas", "Programación orientada a objetos (POO)", "Bootstrap", "Desarrollo de software", "Microsoft SQL Server"],
-      },
-      {
         degree: "Grado en Ingeniería Informática",
         institution: "Universidad Nacional de Educación a Distancia - U.N.E.D.",
         period: "Previsto Sep 2025",
         status: "In progress",
-        skills: [],
+      },
+      {
+        degree: "F.P. Desarrollo de Aplicaciones Web",
+        institution: "UCAM Universidad Católica San Antonio de Murcia",
+        period: "2020 - 2022",
+        status: "Completed",
       },
       {
         degree: "Grado en Ciencias Políticas y Gobierno",
         institution: "Universidad Nacional de Educación a Distancia - U.N.E.D.",
         period: "En pausa",
         status: "On hold",
-        skills: ["Administración pública"],
       }
     ];
   const volunteeringData = [
@@ -61,7 +60,14 @@ export function TimelineSection() {
       role: "Voluntario",
       organization: "Protección Civil",
       period: "Sep 2023 - Present",
-      description: "Voluntario en Protección Civil de Las Torres de Cotillas."
+      description: "Voluntario en Protección Civil de Las Torres de Cotillas.",
+      images: [
+        {
+          src: "https://storage.googleapis.com/aifirebase/project-1-1718224535319/photo-1721759089069.jpeg",
+          alt: "Voluntario de Protección Civil en un evento",
+          hint: "civil protection volunteer"
+        }
+      ]
     }
   ];
     const eventsData = [
@@ -149,21 +155,50 @@ export function TimelineSection() {
 
         <TabsContent value="volunteering" className="mt-12 max-w-3xl mx-auto">
             <div className="space-y-8">
-                {volunteeringData.map((item, index) => (
-                <div key={index} className="flex items-start gap-4 group">
-                    <div className="bg-primary/10 p-3 rounded-full mt-1 transition-colors group-hover:bg-primary">
-                        <HeartHandshake className="w-6 h-6 text-primary transition-colors group-hover:text-white" />
+              {volunteeringData.map((item, index) => (
+                <Card key={index} className="overflow-hidden transition-shadow duration-300 hover:shadow-xl dark:hover:shadow-primary/20">
+                  <CardHeader className="flex flex-row items-start gap-4">
+                     <div className="bg-primary/10 p-3 rounded-full mt-1 transition-colors">
+                        <HeartHandshake className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-grow">
-                        <h3 className="font-headline text-lg font-semibold">{item.role}</h3>
+                        <CardTitle className="font-headline text-xl">{item.role}</CardTitle>
                         <div className="text-sm text-muted-foreground mt-1">
-                        <p className="font-medium text-accent">{item.organization}</p>
-                        <p>{item.period}</p>
+                            <p className="font-medium text-accent">{item.organization}</p>
+                            <p>{item.period}</p>
                         </div>
-                        <p className="text-sm text-foreground/80 mt-2">{item.description}</p>
                     </div>
-                </div>
-                ))}
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-2 gap-6 items-center">
+                        <div>
+                             <p className="text-sm text-foreground/80">{item.description}</p>
+                        </div>
+                        {item.images && item.images.length > 0 && (
+                            <Carousel className="w-full max-w-xs mx-auto">
+                                <CarouselContent>
+                                    {item.images.map((image, imgIndex) => (
+                                        <CarouselItem key={imgIndex}>
+                                            <div className="relative h-64 w-full">
+                                                <Image
+                                                    src={image.src}
+                                                    alt={image.alt}
+                                                    fill
+                                                    className="rounded-lg object-cover"
+                                                    data-ai-hint={image.hint}
+                                                />
+                                            </div>
+                                        </CarouselItem>
+                                    ))}
+                                </CarouselContent>
+                                <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
+                                <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
+                            </Carousel>
+                        )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
         </TabsContent>
 
