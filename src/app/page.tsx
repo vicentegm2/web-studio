@@ -5,6 +5,7 @@ import { TechStackSection } from '@/components/tech-stack-section';
 import { TimelineSection } from '@/components/timeline-section';
 import { Footer } from '@/components/footer';
 import { Separator } from '@/components/ui/separator';
+import { ContactSection } from '@/components/contact-section';
 
 export default function Home() {
   return (
@@ -19,6 +20,8 @@ export default function Home() {
             <TimelineSection />
             <Separator />
             <ProjectsSection />
+            <Separator />
+            <ContactSection />
           </div>
         </div>
       </main>
