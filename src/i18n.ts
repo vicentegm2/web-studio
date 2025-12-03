@@ -1,8 +1,8 @@
-import {notFound} from 'next/navigation';
 import {getRequestConfig} from 'next-intl/server';
- 
-export const locales = ['en', 'es'] as const;
-export const localePrefix = 'always'; // Default
+import {notFound} from 'next/navigation';
+
+// Can be imported from a shared config
+const locales = ['en', 'es'];
  
 export default getRequestConfig(async ({locale}) => {
   // Validate that the incoming `locale` parameter is valid
