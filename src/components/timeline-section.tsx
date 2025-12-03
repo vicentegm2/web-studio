@@ -18,8 +18,8 @@ export function TimelineSection() {
         company: "Amedida TI",
         period: "Nov 2023 - Ago 2025",
         achievements: [
+          "Diseño de bases de datos, .NET Framework y otras habilidades.",
           "Desarrollo de soluciones backend utilizando el ecosistema .NET.",
-          "Diseño e implementación de bases de datos relacionales.",
           "Mantenimiento y optimización de aplicaciones existentes para mejorar el rendimiento y la escalabilidad."
         ]
       },
@@ -28,29 +28,28 @@ export function TimelineSection() {
         company: "NTT DATA",
         period: "Mar 2022 - Jun 2022",
         achievements: [
-          "Colaboración en proyectos de desarrollo de software, adquiriendo experiencia práctica.",
-          "Trabajo con bases de datos SQL, incluyendo Microsoft SQL Server para la gestión y consulta de datos.",
+          "Colaboración en proyectos de desarrollo de software, adquiriendo experiencia práctica con Microsoft SQL Server y SQL.",
           "Apoyo al equipo en diversas tareas de programación y análisis."
         ]
       }
     ];
   const educationData = [
       {
-        degree: "Higher Degree in Web Application Development",
-        institution: "IES El Rincón",
-        period: "2017 - 2019",
+        degree: "F.P. Desarrollo de Aplicaciones Web",
+        institution: "UCAM Universidad Católica San Antonio de Murcia",
+        period: "2020 - 2022",
         status: "Completed"
       },
       {
-        degree: "Advanced English Course C1",
-        institution: "Official School of Languages",
-        period: "2022 - Present",
+        degree: "Grado en Ingeniería Informática",
+        institution: "Universidad Nacional de Educación a Distancia - U.N.E.D.",
+        period: "Previsto Sep 2025",
         status: "In progress"
       },
       {
-        degree: "Degree in Computer Engineering",
-        institution: "University of Las Palmas de Gran Canaria",
-        period: "2019 - 2021",
+        degree: "Grado en Ciencias Políticas y Gobierno",
+        institution: "Universidad Nacional de Educación a Distancia - U.N.E.D.",
+        period: "En pausa",
         status: "On hold"
       }
     ];
@@ -70,17 +69,17 @@ export function TimelineSection() {
   ];
     const eventsData = [
       {
-        name: "Annual Developers Conference",
-        organization: "Global Tech",
-        date: "June 2023",
-        description: "Attended as a participant, joining talks on the latest trends in software development, serverless, and microservices architecture."
+        name: "V Curso de Experto en Seguridad y Defensa",
+        organization: "Universidad Nacional de Educación a Distancia (UNED)",
+        date: "Oct 2024 - Dic 2024",
+        description: "Conocimientos teóricos sobre cultura de defensa, geopolítica y relaciones internacionales, enfocándose en conflictos contemporáneos, amenazas híbridas y ciberamenazas."
       },
       {
-        name: "Social Innovation Hackathon",
-        organization: "Code for Good",
-        date: "March 2022",
-        description: "Part of a team that developed an application prototype to connect volunteers with local NGOs, winning second place."
-      }
+        name: "Seminario de Relaciones Internacionales y Asuntos Exteriores",
+        organization: "UCAM Universidad Católica San Antonio de Murcia",
+        date: "Oct 2023",
+        description: "Análisis sobre geopolítica, ciberseguridad, y el impacto de la inteligencia artificial en la seguridad nacional."
+      },
     ];
 
   return (
