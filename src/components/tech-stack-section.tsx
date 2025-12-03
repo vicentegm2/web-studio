@@ -2,48 +2,45 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { IconDotNet, IconReact, IconJavaScript, IconTypeScript, IconTailwind } from "@/components/icons/tech-icons";
 import { Database } from "lucide-react";
-import { useTranslations } from "next-intl";
 
 export function TechStackSection() {
-  const t = useTranslations('TechStack');
-  
   const techStack = [
     {
-      name: t('csharp.title'),
+      name: "C# & .NET",
       icon: IconDotNet,
-      description: t('csharp.description'),
+      description: "Building robust and scalable backend services and APIs with the .NET ecosystem.",
     },
     {
-      name: t('javascript.title'),
+      name: "JavaScript",
       icon: IconJavaScript,
-      description: t('javascript.description'),
+      description: "Versatile language for dynamic and interactive web frontends.",
     },
     {
-      name: t('react.title'),
+      name: "React",
       icon: IconReact,
-      description: t('react.description'),
+      description: "Creating modern, fast, and scalable user interfaces with this powerful library.",
     },
     {
-      name: t('typescript.title'),
+      name: "TypeScript",
       icon: IconTypeScript,
-      description: t('typescript.description'),
+      description: "Enhancing JavaScript with static types for more reliable and maintainable code.",
     },
     {
-      name: t('tailwind.title'),
+      name: "Tailwind CSS",
       icon: IconTailwind,
-      description: t('tailwind.description'),
+      description: "A utility-first CSS framework for rapidly building custom user interfaces.",
     },
     {
-      name: t('sql.title'),
+      name: "SQL & Databases",
       icon: Database,
-      description: t('sql.description'),
+      description: "Designing and managing relational databases, primarily with SQL Server.",
     },
   ];
 
   return (
     <section id="tech-stack" aria-labelledby="tech-stack-heading">
       <h2 id="tech-stack-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
-        {t('title')}
+        Technologies I work with
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {techStack.map((tech) => (

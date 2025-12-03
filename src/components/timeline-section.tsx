@@ -3,42 +3,97 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Briefcase, GraduationCap, HeartHandshake, CalendarCheck2 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useTranslations } from "next-intl";
-
-type StatusKey = "Completed" | "InProgress" | "OnHold";
 
 export function TimelineSection() {
-  const t = useTranslations('Timeline');
-  const tStatus = useTranslations('Status');
-
-  const statusMap: Record<StatusKey, string> = {
-    "Completed": tStatus('Completed'),
-    "InProgress": tStatus('InProgress'),
-    "OnHold": tStatus('OnHold'),
-  };
 
   const statusColors: Record<string, string> = {
-    [tStatus('Completed')]: "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/50 dark:text-green-300 dark:border-green-700",
-    [tStatus('InProgress')]: "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/50 dark:text-blue-300 dark:border-blue-700",
-    [tStatus('OnHold')]: "bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-300 dark:border-yellow-700",
+    "Completed": "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/50 dark:text-green-300 dark:border-green-700",
+    "In progress": "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/50 dark:text-blue-300 dark:border-blue-700",
+    "On hold": "bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-300 dark:border-yellow-700",
   };
 
-  const experienceData = t.get('experienceData') as any[];
-  const educationData = t.get('educationData') as any[];
-  const volunteeringData = t.get('volunteeringData') as any[];
-  const eventsData = t.get('eventsData') as any[];
+  const experienceData = [
+      {
+        role: ".NET Backend Developer",
+        company: "Tech Solutions Inc.",
+        period: "Jan 2021 - Present",
+        achievements: [
+          "Led the migration of a monolith to a microservices architecture, improving scalability and reducing deployment time by 40%.",
+          "Designed and implemented a caching system with Redis that decreased API latency by 60% for the most frequent queries.",
+          "Automated the CI/CD pipeline with Azure DevOps, enabling faster and more reliable software deliveries."
+        ]
+      },
+      {
+        role: "Junior Software Developer",
+        company: "Innovatech Ltd.",
+        period: "Jun 2019 - Dec 2020",
+        achievements": [
+          "Participated in the development of a web application with ASP.NET MVC, contributing to a 15% increase in customer satisfaction.",
+          "Optimized complex SQL queries, resulting in a 30% reduction in critical report loading times.",
+          "Implemented unit and integration tests, increasing code coverage from 20% to 75% in key modules."
+        ]
+      }
+    ];
+  const educationData = [
+      {
+        degree: "Higher Degree in Web Application Development",
+        institution: "IES El Rincón",
+        period: "2017 - 2019",
+        status: "Completed"
+      },
+      {
+        degree: "Advanced English Course C1",
+        institution: "Official School of Languages",
+        period: "2022 - Present",
+        status: "In progress"
+      },
+      {
+        degree: "Degree in Computer Engineering",
+        institution: "University of Las Palmas de Gran Canaria",
+        period: "2019 - 2021",
+        status: "On hold"
+      }
+    ];
+  const volunteeringData = [
+    {
+      role: "Community Mentor",
+      organization: "Code for All",
+      period: "2022 - Present",
+      description: "Guiding future developers through mentoring, sharing best practices and career advice."
+    },
+    {
+      role: "Event Volunteer",
+      organization: "Tech Conference 2023",
+      period: "Oct 2023",
+      description: "Collaborated on logistics to ensure a smooth experience for over 500 attendees."
+    }
+  ];
+    const eventsData = [
+      {
+        name: "Annual Developers Conference",
+        organization: "Global Tech",
+        date: "June 2023",
+        description: "Attended as a participant, joining talks on the latest trends in software development, serverless, and microservices architecture."
+      },
+      {
+        name: "Social Innovation Hackathon",
+        organization: "Code for Good",
+        date: "March 2022",
+        description: "Part of a team that developed an application prototype to connect volunteers with local NGOs, winning second place."
+      }
+    ];
 
   return (
     <section id="experience" aria-labelledby="experience-heading">
       <h2 id="experience-heading" className="text-3xl font-headline font-bold text-center mb-16 text-primary">
-        {t('title')}
+        My Professional Journey
       </h2>
       <Tabs defaultValue="experience" className="w-full">
         <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-2 md:grid-cols-4 h-auto">
-          <TabsTrigger value="experience"><Briefcase className="mr-2"/>{t('experience')}</TabsTrigger>
-          <TabsTrigger value="education"><GraduationCap className="mr-2"/>{t('education')}</TabsTrigger>
-          <TabsTrigger value="volunteering"><HeartHandshake className="mr-2"/>{t('volunteering')}</TabsTrigger>
-          <TabsTrigger value="events"><CalendarCheck2 className="mr-2"/>{t('events')}</TabsTrigger>
+          <TabsTrigger value="experience"><Briefcase className="mr-2"/>Experience</TabsTrigger>
+          <TabsTrigger value="education"><GraduationCap className="mr-2"/>Education</TabsTrigger>
+          <TabsTrigger value="volunteering"><HeartHandshake className="mr-2"/>Volunteering</TabsTrigger>
+          <TabsTrigger value="events"><CalendarCheck2 className="mr-2"/>Events</TabsTrigger>
         </TabsList>
         
         <TabsContent value="experience" className="mt-12">
@@ -57,7 +112,7 @@ export function TimelineSection() {
                         <CardTitle className="font-headline text-xl text-primary">{item.role}</CardTitle>
                         <div className="text-sm text-muted-foreground">
                             <p className="font-semibold text-accent">{item.company}</p>
-                            <p>{item.period.replace('Actualidad', t('current'))}</p>
+                            <p>{item.period}</p>
                         </div>
                         </CardHeader>
                         <CardContent>
@@ -83,11 +138,11 @@ export function TimelineSection() {
                     <div className="flex-grow">
                         <div className="flex justify-between items-center">
                             <h3 className="font-headline text-lg font-semibold">{item.degree}</h3>
-                            <Badge className={`${statusColors[statusMap[item.status as StatusKey]]}`}>{statusMap[item.status as StatusKey]}</Badge>
+                            <Badge className={`${statusColors[item.status]}`}>{item.status}</Badge>
                         </div>
                         <div className="text-sm text-muted-foreground mt-1">
                             <p className="font-medium text-accent">{item.institution}</p>
-                            <p>{item.period.replace('Presente', t('current'))}</p>
+                            <p>{item.period}</p>
                         </div>
                     </div>
                 </div>
@@ -106,7 +161,7 @@ export function TimelineSection() {
                         <h3 className="font-headline text-lg font-semibold">{item.role}</h3>
                         <div className="text-sm text-muted-foreground mt-1">
                         <p className="font-medium text-accent">{item.organization}</p>
-                        <p>{item.period.replace('Presente', t('current'))}</p>
+                        <p>{item.period}</p>
                         </div>
                         <p className="text-sm text-foreground/80 mt-2">{item.description}</p>
                     </div>

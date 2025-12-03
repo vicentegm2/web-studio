@@ -4,16 +4,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Download, Github, Linkedin, Mail } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { useTranslations } from "next-intl";
 
 export function ProfileSection() {
   const profileImage = PlaceHolderImages.find(p => p.id === 'profile-picture');
-  const t = useTranslations('Profile');
-
+  
   const socialLinks = [
-    { name: 'GitHub', icon: Github, url: 'https://github.com/vicentegabrielgomezmedina', ariaLabel: t('githubAlt') },
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina', ariaLabel: t('linkedinAlt') },
-    { name: 'Email', icon: Mail, url: 'mailto:vicentegabrielgomezmedina@gmail.com', ariaLabel: t('emailAlt') },
+    { name: 'GitHub', icon: Github, url: 'https://github.com/vicentegabrielgomezmedina', ariaLabel: "Visit my GitHub" },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina', ariaLabel: "Visit my LinkedIn" },
+    { name: 'Email', icon: Mail, url: 'mailto:vicentegabrielgomezmedina@gmail.com', ariaLabel: "Send me an email" },
   ];
 
   return (
@@ -25,7 +23,7 @@ export function ProfileSection() {
               <AvatarImage asChild src={profileImage.imageUrl}>
                   <Image
                       src={profileImage.imageUrl}
-                      alt={t('greeting')}
+                      alt="Vicente Gabriel Gómez Medina"
                       width={192}
                       height={192}
                       data-ai-hint={profileImage.imageHint}
@@ -37,18 +35,18 @@ export function ProfileSection() {
             <AvatarFallback className="text-4xl font-headline">VG</AvatarFallback>
           </Avatar>
           <div className="text-center sm:text-left flex-1">
-            <h2 className="text-lg font-medium text-accent font-headline tracking-wider">{t('greeting')}</h2>
+            <h2 className="text-lg font-medium text-accent font-headline tracking-wider">Hello, I'm Vicente Gabriel Gómez Medina</h2>
             <h1 id="profile-heading" className="text-4xl sm:text-5xl lg:text-6xl font-bold font-headline text-primary leading-tight mt-2">
-              {t('title')}
+              .NET Backend Developer
             </h1>
             <p className="mt-6 max-w-2xl text-foreground/80 leading-relaxed">
-              {t('description')}
+              Passionate about transforming ideas into robust and scalable software solutions. My focus is on clean architecture, performance, and creating APIs that power exceptional user experiences.
             </p>
             <div className="mt-8 flex flex-wrap gap-4 justify-center sm:justify-start">
               <Button size="lg" asChild>
                  <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
                    <Download className="mr-2 h-5 w-5" />
-                   {t('downloadCV')}
+                   Download CV
                  </a>
               </Button>
                <div className="flex items-center space-x-2">
