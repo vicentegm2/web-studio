@@ -4,20 +4,21 @@ import { Toaster } from '@/components/ui/toaster';
 
 const professionalProfile = {
   name: "John Doe",
-  jobTitle: "Software Developer / Backend .NET Developer",
+  jobTitle: "Backend .NET Developer",
+  pkp: "Desarrollador Backend .NET", // Primary Keyword
   url: "https://your-domain.com", // Replace with your actual domain
   email: "john.doe@example.com", // Replace with your email
   linkedIn: "https://www.linkedin.com/in/johndoe", // Replace with your LinkedIn
   github: "https://github.com/johndoe", // Replace with your GitHub
-  summary: "A passionate and experienced software developer specializing in backend development with .NET technologies. Proven ability to design, develop, and deploy robust and scalable applications."
+  summary: "Desarrollador Backend .NET con experiencia en la creación de aplicaciones robustas y escalables. Apasionado por la arquitectura de software y la optimización del rendimiento para ofrecer soluciones eficientes y de alta calidad."
 };
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | John Doe - Software Developer',
-    default: 'John Doe - Software Developer',
+    template: `%s | ${professionalProfile.name} - ${professionalProfile.pkp}`,
+    default: `${professionalProfile.name} | ${professionalProfile.pkp} & Software Architect`,
   },
-  description: professionalProfile.summary,
+  description: `Portafolio de ${professionalProfile.name}, ${professionalProfile.pkp}. Experto en C#, .NET Core, Azure y arquitecturas de microservicios. Contáctame para tu próximo proyecto.`,
   openGraph: {
     title: `${professionalProfile.name} - ${professionalProfile.jobTitle}`,
     description: professionalProfile.summary,
@@ -25,20 +26,21 @@ export const metadata: Metadata = {
     siteName: `${professionalProfile.name}'s Portfolio`,
     images: [
       {
-        url: `${professionalProfile.url}/og-image.png`, // Replace with your OG image path
+        url: `https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=630&fit=crop`,
         width: 1200,
         height: 630,
+        alt: 'Professional portfolio image for John Doe, Backend Developer'
       },
     ],
-    locale: 'en_US',
+    locale: 'es_ES',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${professionalProfile.name} - ${professionalProfile.jobTitle}`,
-    description: professionalProfile.summary,
+    title: `${professionalProfile.name} - ${professionalProfile.pkp}`,
+    description: `Portafolio de un ${professionalProfile.pkp} especializado en soluciones de alto rendimiento.`,
     creator: '@yourtwitterhandle', // Replace with your Twitter handle
-    images: [`${professionalProfile.url}/twitter-image.png`], // Replace with your Twitter image path
+    images: [`https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop`], // Replace with your Twitter image path
   },
   robots: {
     index: true,
@@ -52,7 +54,7 @@ export const metadata: Metadata = {
     },
   },
   applicationName: "Skill Showcase",
-  keywords: ["Software Developer", ".NET", "Backend", "React", "Portfolio", "John Doe"],
+  keywords: ["Desarrollador Backend .NET", ".NET", "C#", "Azure", "Microservicios", "SQL", "API REST", "Portfolio", "John Doe"],
   authors: [{ name: professionalProfile.name, url: professionalProfile.url }],
 };
 
@@ -66,6 +68,7 @@ export default function RootLayout({
     '@type': 'Person',
     name: professionalProfile.name,
     url: professionalProfile.url,
+    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop',
     sameAs: [
       professionalProfile.linkedIn,
       professionalProfile.github,
@@ -73,10 +76,11 @@ export default function RootLayout({
     jobTitle: professionalProfile.jobTitle,
     email: professionalProfile.email,
     description: professionalProfile.summary,
+    knowsAbout: ["Backend Development", ".NET", "C#", "Azure", "Software Architecture"]
   };
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="es" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -86,7 +90,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-body antialiased bg-background text-foreground">
         {children}
         <Toaster />
       </body>

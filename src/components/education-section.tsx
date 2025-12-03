@@ -26,38 +26,34 @@ const educationData = [
 ];
 
 const statusColors: Record<Status, string> = {
-  "Finalizado": "bg-green-100 text-green-800",
-  "En curso": "bg-blue-100 text-blue-800",
-  "En pausa": "bg-yellow-100 text-yellow-800",
+  "Finalizado": "bg-green-100 text-green-800 border-green-200",
+  "En curso": "bg-blue-100 text-blue-800 border-blue-200",
+  "En pausa": "bg-yellow-100 text-yellow-800 border-yellow-200",
 };
 
 export function EducationSection() {
   return (
     <section id="education" aria-labelledby="education-heading">
       <h2 id="education-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
-        Formación Académica
+        Formación
       </h2>
       <div className="space-y-8">
         {educationData.map((item, index) => (
-          <Card key={index} className="transition-shadow duration-300 hover:shadow-lg">
-            <CardHeader>
-                <div className="flex justify-between items-start">
-                    <div className="flex items-start gap-4">
-                        <div className="bg-primary/10 p-3 rounded-full">
-                            <GraduationCap className="w-6 h-6 text-primary" />
-                        </div>
-                        <div>
-                            <CardTitle className="font-headline text-xl">{item.degree}</CardTitle>
-                            <div className="text-sm text-muted-foreground mt-1">
-                                <p className="font-semibold text-accent">{item.institution}</p>
-                                <p>{item.period}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <Badge className={`${statusColors[item.status]} border-transparent`}>{item.status}</Badge>
+          <div key={index} className="flex items-start gap-4 group">
+            <div className="bg-primary/10 p-3 rounded-full mt-1 transition-colors group-hover:bg-primary">
+                <GraduationCap className="w-6 h-6 text-primary transition-colors group-hover:text-white" />
+            </div>
+            <div className="flex-grow">
+                <div className="flex justify-between items-center">
+                    <h3 className="font-headline text-lg font-semibold">{item.degree}</h3>
+                    <Badge className={`${statusColors[item.status]}`}>{item.status}</Badge>
                 </div>
-            </CardHeader>
-          </Card>
+                <div className="text-sm text-muted-foreground mt-1">
+                    <p className="font-medium text-accent">{item.institution}</p>
+                    <p>{item.period}</p>
+                </div>
+            </div>
+          </div>
         ))}
       </div>
     </section>
