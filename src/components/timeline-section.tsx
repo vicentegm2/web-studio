@@ -3,7 +3,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Briefcase, GraduationCap, HeartHandshake, CalendarCheck2 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useTranslations } from "next-intl";
 
 type Status = "Finalizado" | "En curso" | "En pausa";
 const statusColors: Record<Status, string> = {
@@ -11,90 +10,79 @@ const statusColors: Record<Status, string> = {
   "En curso": "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/50 dark:text-blue-300 dark:border-blue-700",
   "En pausa": "bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-300 dark:border-yellow-700",
 };
-type StatusKey = 'finished' | 'inProgress' | 'onHold';
-
 
 export function TimelineSection() {
-  const t = useTranslations('Timeline');
-  const et = useTranslations('Timeline.experience');
-  const ed_t = useTranslations('Timeline.education');
-  const vt = useTranslations('Timeline.volunteering');
-  const evt = useTranslations('Timeline.events');
-
   const experienceData = [
     {
-      role: et('exp1.role'),
-      company: et('exp1.company'),
-      period: et('exp1.period'),
+      role: 'Backend .NET Developer',
+      company: 'Tech Solutions Inc.',
+      period: 'Ene 2021 - Actualidad',
       achievements: [
-          et('exp1.achievements.0'),
-          et('exp1.achievements.1'),
-          et('exp1.achievements.2'),
+          'Lideré la migración de un monolito a una arquitectura de microservicios, mejorando la escalabilidad y reduciendo el tiempo de despliegue en un 40%.',
+          'Diseñé e implementé un sistema de caché con Redis que disminuyó la latencia de la API en un 60% para las consultas más frecuentes.',
+          'Automaticé el pipeline CI/CD con Azure DevOps, permitiendo entregas de software más rápidas y fiables.'
       ]
     },
     {
-      role: et('exp2.role'),
-      company: et('exp2.company'),
-      period: et('exp2.period'),
+      role: 'Junior Software Developer',
+      company: 'Innovatech Ltd.',
+      period: 'Jun 2019 - Dic 2020',
       achievements: [
-        et('exp2.achievements.0'),
-        et('exp2.achievements.1'),
-        et('exp2.achievements.2'),
+        'Participé en el desarrollo de una aplicación web con ASP.NET MVC, contribuyendo a un aumento del 15% en la satisfacción del cliente.',
+        'Optimicé consultas SQL complejas, lo que resultó en una reducción del 30% en los tiempos de carga de los informes críticos.',
+        'Implementé tests unitarios y de integración, aumentando la cobertura de código del 20% al 75% en módulos clave.'
       ]
     },
   ];
 
   const educationData = [
     {
-      degree: ed_t('edu1.degree'),
-      institution: ed_t('edu1.institution'),
-      period: ed_t('edu1.period'),
-      status: ed_t('statuses.finished') as Status,
-      statusKey: 'finished' as StatusKey
+      degree: 'Grado Superior en Desarrollo de Aplicaciones Web',
+      institution: 'IES El Rincón',
+      period: '2017 - 2019',
+      status: 'Finalizado' as Status,
     },
     {
-      degree: ed_t('edu2.degree'),
-      institution: ed_t('edu2.institution'),
-      period: ed_t('edu2.period'),
-      status: ed_t('statuses.inProgress') as Status,
-      statusKey: 'inProgress' as StatusKey
+      degree: 'Curso de Inglés Avanzado C1',
+      institution: 'Escuela Oficial de Idiomas',
+      period: '2022 - Presente',
+      status: 'En curso' as Status,
     },
     {
-      degree: ed_t('edu3.degree'),
-      institution: ed_t('edu3.institution'),
-      period: ed_t('edu3.period'),
-      status: ed_t('statuses.onHold') as Status,
-      statusKey: 'onHold' as StatusKey
+      degree: 'Grado en Ingeniería Informática',
+      institution: 'Universidad de Las Palmas de Gran Canaria',
+      period: '2019 - 2021',
+      status: 'En pausa' as Status,
     },
   ];
 
   const volunteeringData = [
     {
-      role: vt('vol1.role'),
-      organization: vt('vol1.organization'),
-      period: vt('vol1.period'),
-      description: vt('vol1.description'),
+      role: 'Community Mentor',
+      organization: 'Code for All',
+      period: '2022 - Presente',
+      description: 'Guiando a futuros desarrolladores a través de mentorías, compartiendo buenas prácticas y consejos de carrera.',
     },
     {
-      role: vt('vol2.role'),
-      organization: vt('vol2.organization'),
-      period: vt('vol2.period'),
-      description: vt('vol2.description'),
+      role: 'Event Volunteer',
+      organization: 'Tech Conference 2023',
+      period: 'Oct 2023',
+      description: 'Colaboré en la logística para asegurar una experiencia fluida para más de 500 asistentes.',
     },
   ];
 
   const eventsData = [
     {
-      name: evt('event1.name'),
-      organization: evt('event1.organization'),
-      date: evt('event1.date'),
-      description: evt('event1.description'),
+      name: 'Conferencia Anual de Desarrolladores',
+      organization: 'Global Tech',
+      date: 'Junio 2023',
+      description: 'Participé como asistente, atendiendo a charlas sobre las últimas tendencias en desarrollo de software, serverless y arquitectura de microservicios.',
     },
     {
-      name: evt('event2.name'),
-      organization: evt('event2.organization'),
-      date: evt('event2.date'),
-      description: evt('event2.description'),
+      name: 'Hackathon de Innovación Social',
+      organization: 'Code for Good',
+      date: 'Marzo 2022',
+      description: 'Formé parte de un equipo que desarrolló un prototipo de aplicación para conectar a voluntarios con ONGs locales, obteniendo el segundo lugar.',
     },
   ];
 
@@ -102,14 +90,14 @@ export function TimelineSection() {
   return (
     <section id="experience" aria-labelledby="experience-heading">
       <h2 id="experience-heading" className="text-3xl font-headline font-bold text-center mb-16 text-primary">
-        {t('title')}
+        Mi Trayectoria Profesional
       </h2>
       <Tabs defaultValue="experience" className="w-full">
         <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-2 md:grid-cols-4 h-auto">
-          <TabsTrigger value="experience"><Briefcase className="mr-2"/>{t('experience.title')}</TabsTrigger>
-          <TabsTrigger value="education"><GraduationCap className="mr-2"/>{t('education.title')}</TabsTrigger>
-          <TabsTrigger value="volunteering"><HeartHandshake className="mr-2"/>{t('volunteering.title')}</TabsTrigger>
-          <TabsTrigger value="events"><CalendarCheck2 className="mr-2"/>{t('events.title')}</TabsTrigger>
+          <TabsTrigger value="experience"><Briefcase className="mr-2"/>Experiencia</TabsTrigger>
+          <TabsTrigger value="education"><GraduationCap className="mr-2"/>Formación</TabsTrigger>
+          <TabsTrigger value="volunteering"><HeartHandshake className="mr-2"/>Voluntariado</TabsTrigger>
+          <TabsTrigger value="events"><CalendarCheck2 className="mr-2"/>Eventos</TabsTrigger>
         </TabsList>
         
         <TabsContent value="experience" className="mt-12">
@@ -154,7 +142,7 @@ export function TimelineSection() {
                     <div className="flex-grow">
                         <div className="flex justify-between items-center">
                             <h3 className="font-headline text-lg font-semibold">{item.degree}</h3>
-                            <Badge className={`${statusColors[item.status]}`}>{ed_t(`statuses.${item.statusKey}`)}</Badge>
+                            <Badge className={`${statusColors[item.status]}`}>{item.status}</Badge>
                         </div>
                         <div className="text-sm text-muted-foreground mt-1">
                             <p className="font-medium text-accent">{item.institution}</p>

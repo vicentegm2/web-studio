@@ -2,9 +2,6 @@
 import { Code, Download, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import { LanguageSwitcher } from './language-switcher';
-import { ThemeSwitcher } from './theme-switcher';
 import {
   Sheet,
   SheetContent,
@@ -13,13 +10,12 @@ import {
 import { useState } from 'react';
 
 export function Header() {
-  const t = useTranslations('Header');
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: t('tech'), href: '#tech-stack' },
-    { name: t('experience'), href: '#experience' },
-    { name: t('projects'), href: '#projects' },
+    { name: 'Tecnologías', href: '#tech-stack' },
+    { name: 'Experiencia', href: '#experience' },
+    { name: 'Proyectos', href: '#projects' },
   ];
 
   return (
@@ -39,11 +35,9 @@ export function Header() {
             <Button asChild>
               <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
                 <Download className="mr-2 h-4 w-4" />
-                {t('downloadCV')}
+                Descargar CV
               </a>
             </Button>
-            <LanguageSwitcher />
-            <ThemeSwitcher />
           </div>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
@@ -69,13 +63,9 @@ export function Header() {
                  <Button asChild>
                     <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
                       <Download className="mr-2 h-4 w-4" />
-                      {t('downloadCV')}
+                      Descargar CV
                     </a>
                   </Button>
-                  <div className="flex justify-center gap-2">
-                    <LanguageSwitcher />
-                    <ThemeSwitcher />
-                  </div>
               </div>
             </SheetContent>
           </Sheet>

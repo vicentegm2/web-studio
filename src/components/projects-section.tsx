@@ -3,15 +3,12 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 
 export function ProjectsSection() {
-  const t = useTranslations('Projects');
-
   const projectsData = [
     {
-      title: t('project1.title'),
-      description: t('project1.description'),
+      title: "Proyecto Alfa",
+      description: "Una API RESTful de alto rendimiento construida con .NET 7 para gestionar datos de clientes, optimizando las consultas en un 50%.",
       imageUrl: "https://picsum.photos/seed/project1/600/400",
       imageHint: "abstract technology",
       tags: [".NET 7", "Azure Functions", "SQL Server"],
@@ -19,8 +16,8 @@ export function ProjectsSection() {
       githubUrl: "https://github.com/vicentegabrielgomezmedina",
     },
     {
-      title: t('project2.title'),
-      description: t('project2.description'),
+      title: "Proyecto Beta",
+      description: "Migración de una aplicación monolítica a una arquitectura de microservicios, mejorando la escalabilidad y el mantenimiento.",
       imageUrl: "https://picsum.photos/seed/project2/600/400",
       imageHint: "cloud architecture",
       tags: ["C#", "Docker", "Kubernetes"],
@@ -28,8 +25,8 @@ export function ProjectsSection() {
       githubUrl: "https://github.com/vicentegabrielgomezmedina",
     },
     {
-      title: t('project3.title'),
-      description: t('project3.description'),
+      title: "Proyecto Gamma",
+      description: "Desarrollo de un sistema de procesamiento de datos en tiempo real utilizando SignalR y colas de mensajes para notificaciones instantáneas.",
       imageUrl: "https://picsum.photos/seed/project3/600/400",
       imageHint: "data stream",
       tags: ["SignalR", "RabbitMQ", ".NET Core"],
@@ -41,7 +38,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" aria-labelledby="projects-heading">
       <h2 id="projects-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
-        {t('title')}
+        Proyectos Destacados
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projectsData.map((project, index) => (
@@ -49,7 +46,7 @@ export function ProjectsSection() {
             <div className="relative h-48 w-full">
               <Image
                 src={project.imageUrl}
-                alt={`${t('projectImageAlt')} ${project.title}`}
+                alt={`Imagen del proyecto ${project.title}`}
                 fill
                 className="object-cover"
                 data-ai-hint={project.imageHint}
@@ -68,15 +65,15 @@ export function ProjectsSection() {
             </CardContent>
             <CardFooter className="flex justify-end gap-2">
                 <Button variant="ghost" size="sm" asChild>
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t('viewCode')} ${project.title}`}>
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`Ver código de ${project.title}`}>
                         <Github className="mr-2" />
-                        {t('code')}
+                        Código
                     </a>
                 </Button>
                 <Button variant="outline" size="sm" asChild>
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t('liveDemo')} ${project.title}`}>
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Ver demo en vivo de ${project.title}`}>
                         <ExternalLink className="mr-2" />
-                        {t('demo')}
+                        Demo
                     </a>
                 </Button>
             </CardFooter>
