@@ -9,7 +9,7 @@ export function ProfileSection() {
   const profileImage = PlaceHolderImages.find(p => p.id === 'profile-picture');
   
   const socialLinks = [
-    { name: 'GitHub', icon: Github, url: 'https://github.com/vicentegabrielgomezmedina', ariaLabel: "Visit my GitHub" },
+    { name: 'GitHub', icon: Github, url: 'https://github.com/vicentegm2', ariaLabel: "Visit my GitHub" },
     { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina', ariaLabel: "Visit my LinkedIn" },
     { name: 'Email', icon: Mail, url: 'mailto:vicentegabrielgomezmedina@gmail.com', ariaLabel: "Send me an email" },
   ];
