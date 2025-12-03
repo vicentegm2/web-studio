@@ -40,7 +40,7 @@ export function ProfileSection() {
               .NET Backend Developer
             </h1>
             <p className="mt-6 max-w-2xl text-foreground/80 leading-relaxed">
-              Passionate about transforming ideas into robust and scalable software solutions. My focus is on clean architecture, performance, and creating APIs that power exceptional user experiences.
+              Backend developer specialized in .NET, C#, and SQL, focused on building clean, scalable, and maintainable APIs. I’m interested in software architecture, automation, and the best practices that drive robust and efficient projects.
             </p>
             <div className="mt-8 flex flex-wrap gap-4 justify-center sm:justify-start">
               <Button size="lg" asChild>
