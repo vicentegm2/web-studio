@@ -3,12 +3,12 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 const professionalProfile = {
-  name: "John Doe",
+  name: "Vicente Gabriel Gómez Medina",
   jobTitle: "Backend .NET Developer",
   pkp: "Desarrollador Backend .NET", // Primary Keyword
   url: "https://your-domain.com", // Replace with your actual domain
   email: "john.doe@example.com", // Replace with your email
-  linkedIn: "https://www.linkedin.com/in/johndoe", // Replace with your LinkedIn
+  linkedIn: "https://www.linkedin.com/in/vicentegabrielgomezmedina", // Your LinkedIn
   github: "https://github.com/johndoe", // Replace with your GitHub
   summary: "Desarrollador Backend .NET con experiencia en la creación de aplicaciones robustas y escalables. Apasionado por la arquitectura de software y la optimización del rendimiento para ofrecer soluciones eficientes y de alta calidad."
 };
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         url: `https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=630&fit=crop`,
         width: 1200,
         height: 630,
-        alt: 'Professional portfolio image for John Doe, Backend Developer'
+        alt: 'Professional portfolio image for Vicente Gabriel Gómez Medina, Backend Developer'
       },
     ],
     locale: 'es_ES',
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     },
   },
   applicationName: "Skill Showcase",
-  keywords: ["Desarrollador Backend .NET", ".NET", "C#", "Azure", "Microservicios", "SQL", "API REST", "Portfolio", "John Doe"],
+  keywords: ["Desarrollador Backend .NET", ".NET", "C#", "Azure", "Microservicios", "SQL", "API REST", "Portfolio", "Vicente Gabriel Gómez Medina"],
   authors: [{ name: professionalProfile.name, url: professionalProfile.url }],
 };
 

@@ -1,5 +1,6 @@
 import { Header } from '@/components/header';
 import { ProfileSection } from '@/components/profile-section';
+import { ProjectsSection } from '@/components/projects-section';
 import { TechStackSection } from '@/components/tech-stack-section';
 import { ExperienceTimeline } from '@/components/experience-timeline';
 import { EducationSection } from '@/components/education-section';
@@ -16,6 +17,8 @@ export default function Home() {
         <ProfileSection />
         <div className="container mx-auto px-6 py-12 md:py-20">
           <div className="max-w-5xl mx-auto space-y-20 md:space-y-28">
+            <ProjectsSection />
+            <Separator />
             <TechStackSection />
             <Separator />
             <ExperienceTimeline />

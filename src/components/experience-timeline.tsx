@@ -28,16 +28,15 @@ export function ExperienceTimeline() {
   return (
     <section id="experience" aria-labelledby="experience-heading">
       <h2 id="experience-heading" className="text-3xl font-headline font-bold text-center mb-16 text-primary">
-        Experiencia y Logros
+        Experiencia Profesional
       </h2>
       <div className="relative max-w-3xl mx-auto">
         <div className="absolute left-4 sm:left-1/2 -ml-0.5 w-1 h-full bg-border" aria-hidden="true"></div>
         {experienceData.map((item, index) => (
-          <div key={index} className="relative mb-12 pl-12 sm:pl-0">
-            <div className="sm:flex items-center sm:gap-8">
-              <div className="hidden sm:flex w-1/2">
-                {index % 2 === 0 && <div className="flex-1"></div>}
-              </div>
+          <div key={index} className="relative mb-12 pl-12 sm:pl-0 sm:flex sm:items-center sm:gap-8 even:flex-row-reverse">
+             <div className="sm:w-1/2">
+                {/* Contenedor vacío para empujar la tarjeta a un lado en desktop */}
+             </div>
                <div className="absolute left-0 sm:left-1/2 -translate-x-1/2 transform">
                  <div className="w-8 h-8 bg-background border-2 border-primary rounded-full flex items-center justify-center">
                     <Briefcase className="w-4 h-4 text-primary" />
@@ -59,7 +58,6 @@ export function ExperienceTimeline() {
                   </ul>
                 </CardContent>
               </Card>
-            </div>
           </div>
         ))}
       </div>

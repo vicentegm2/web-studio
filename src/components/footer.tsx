@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 export function Footer() {
   const socialLinks = [
     { name: 'GitHub', icon: Github, url: 'https://github.com/johndoe' },
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/johndoe' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/vicentegabrielgomezmedina' },
     { name: 'Email', icon: Mail, url: 'mailto:john.doe@example.com' },
   ];
 
@@ -13,7 +13,7 @@ export function Footer() {
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col items-center justify-between sm:flex-row">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} John Doe. All rights reserved.
+            &copy; {new Date().getFullYear()} Vicente Gabriel Gómez Medina. All rights reserved.
           </p>
           <div className="flex items-center space-x-2 mt-4 sm:mt-0">
             {socialLinks.map((link) => (

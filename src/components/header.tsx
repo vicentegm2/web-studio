@@ -6,7 +6,7 @@ import Link from 'next/link';
 export function Header() {
   const socialLinks = [
     { name: 'GitHub', icon: Github, url: 'https://github.com/johndoe' },
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/johndoe' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/vicentegabrielgomezmedina' },
     { name: 'Email', icon: Mail, url: 'mailto:john.doe@example.com' },
   ];
 
@@ -15,14 +15,15 @@ export function Header() {
       <div className="container flex h-16 items-center">
         <Link href="/" className="mr-auto flex items-center gap-2">
           <Code className="h-6 w-6 text-primary" />
-          <span className="font-bold font-headline">John Doe</span>
+          <span className="font-bold font-headline">Vicente Gabriel Gómez Medina</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          <Link href="#experience" className="transition-colors hover:text-primary">Experience</Link>
-          <Link href="#education" className="transition-colors hover:text-primary">Education</Link>
-          <Link href="#events" className="transition-colors hover:text-primary">Events</Link>
-          <Link href="#tech-stack" className="transition-colors hover:text-primary">Tech Stack</Link>
-          <Link href="#volunteering" className="transition-colors hover:text-primary">Volunteering</Link>
+          <Link href="#projects" className="transition-colors hover:text-primary">Proyectos</Link>
+          <Link href="#experience" className="transition-colors hover:text-primary">Experiencia</Link>
+          <Link href="#education" className="transition-colors hover:text-primary">Formación</Link>
+          <Link href="#events" className="transition-colors hover:text-primary">Eventos</Link>
+          <Link href="#tech-stack" className="transition-colors hover:text-primary">Tecnologías</Link>
+          <Link href="#volunteering" className="transition-colors hover:text-primary">Voluntariado</Link>
         </nav>
         <div className="flex flex-1 items-center justify-end gap-2">
             {socialLinks.map((link) => (
@@ -40,9 +41,9 @@ export function Header() {
               </Button>
             ))}
              <Button asChild>
-                <a href="/cv.pdf" download="JohnDoe-CV.pdf">
+                <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
                   <Download className="mr-2 h-4 w-4" />
-                  Download CV
+                  Descargar CV
                 </a>
               </Button>
         </div>

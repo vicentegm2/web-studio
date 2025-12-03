@@ -17,7 +17,7 @@ export function ProfileSection() {
               <AvatarImage asChild src={profileImage.imageUrl}>
                   <Image
                       src={profileImage.imageUrl}
-                      alt="Fotografía profesional de John Doe, Desarrollador Backend .NET."
+                      alt="Fotografía profesional de Vicente Gabriel Gómez Medina, Desarrollador Backend .NET."
                       width={192}
                       height={192}
                       data-ai-hint={profileImage.imageHint}
@@ -26,7 +26,7 @@ export function ProfileSection() {
                   />
               </AvatarImage>
             )}
-            <AvatarFallback className="text-4xl font-headline">JD</AvatarFallback>
+            <AvatarFallback className="text-4xl font-headline">VG</AvatarFallback>
           </Avatar>
           <div className="text-center sm:text-left flex-1">
             <h1 id="profile-heading" className="text-4xl sm:text-5xl lg:text-6xl font-bold font-headline text-primary leading-tight">
@@ -40,10 +40,10 @@ export function ProfileSection() {
             </p>
             <div className="mt-8 flex gap-4 justify-center sm:justify-start">
               <Button size="lg" asChild>
-                 <a href="#experience">Ver Proyectos</a>
+                 <a href="#projects">Ver Proyectos</a>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                 <a href="/cv.pdf" download="JohnDoe-CV.pdf">
+                 <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
                    <Download className="mr-2 h-5 w-5" />
                    Descargar CV
                  </a>
