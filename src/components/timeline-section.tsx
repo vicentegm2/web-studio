@@ -27,7 +27,7 @@ export function TimelineSection() {
         role: "Junior Software Developer",
         company: "Innovatech Ltd.",
         period: "Jun 2019 - Dec 2020",
-        achievements": [
+        achievements: [
           "Participated in the development of a web application with ASP.NET MVC, contributing to a 15% increase in customer satisfaction.",
           "Optimized complex SQL queries, resulting in a 30% reduction in critical report loading times.",
           "Implemented unit and integration tests, increasing code coverage from 20% to 75% in key modules."
