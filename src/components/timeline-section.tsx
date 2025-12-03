@@ -14,23 +14,23 @@ export function TimelineSection() {
 
   const experienceData = [
       {
-        role: ".NET Backend Developer",
-        company: "Tech Solutions Inc.",
-        period: "Jan 2021 - Present",
+        role: "Programador informático",
+        company: "Amedida TI",
+        period: "Nov 2023 - Ago 2025",
         achievements: [
-          "Led the migration of a monolith to a microservices architecture, improving scalability and reducing deployment time by 40%.",
-          "Designed and implemented a caching system with Redis that decreased API latency by 60% for the most frequent queries.",
-          "Automated the CI/CD pipeline with Azure DevOps, enabling faster and more reliable software deliveries."
+          "Desarrollo de soluciones backend utilizando el ecosistema .NET.",
+          "Diseño e implementación de bases de datos relacionales.",
+          "Mantenimiento y optimización de aplicaciones existentes para mejorar el rendimiento y la escalabilidad."
         ]
       },
       {
-        role: "Junior Software Developer",
-        company: "Innovatech Ltd.",
-        period: "Jun 2019 - Dec 2020",
+        role: "Becario",
+        company: "NTT DATA",
+        period: "Mar 2022 - Jun 2022",
         achievements: [
-          "Participated in the development of a web application with ASP.NET MVC, contributing to a 15% increase in customer satisfaction.",
-          "Optimized complex SQL queries, resulting in a 30% reduction in critical report loading times.",
-          "Implemented unit and integration tests, increasing code coverage from 20% to 75% in key modules."
+          "Colaboración en proyectos de desarrollo de software, adquiriendo experiencia práctica.",
+          "Trabajo con bases de datos SQL, incluyendo Microsoft SQL Server para la gestión y consulta de datos.",
+          "Apoyo al equipo en diversas tareas de programación y análisis."
         ]
       }
     ];
