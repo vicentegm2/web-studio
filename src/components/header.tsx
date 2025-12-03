@@ -8,6 +8,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { useState } from 'react';
+import { ThemeSwitcher } from './theme-switcher';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +39,7 @@ export function Header() {
                 Descargar CV
               </a>
             </Button>
+            <ThemeSwitcher />
           </div>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
@@ -47,6 +49,9 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
+              <div className='flex justify-end'>
+                <ThemeSwitcher />
+              </div>
               <nav className="flex flex-col gap-6 text-lg font-medium mt-10">
                 {navLinks.map((link) => (
                    <Link 
