@@ -17,6 +17,7 @@ export function Header() {
     { name: 'Technologies', href: '#tech-stack' },
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Certifications', href: '#certifications' },
     { name: 'Contact', href: '#contact' },
   ];
 

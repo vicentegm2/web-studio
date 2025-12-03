@@ -6,6 +6,7 @@ import { TimelineSection } from '@/components/timeline-section';
 import { Footer } from '@/components/footer';
 import { Separator } from '@/components/ui/separator';
 import { ContactSection } from '@/components/contact-section';
+import { CertificationsSection } from '@/components/certifications-section';
 
 export default function Home() {
   return (
@@ -20,6 +21,8 @@ export default function Home() {
             <TimelineSection />
             <Separator />
             <ProjectsSection />
+            <Separator />
+            <CertificationsSection />
             <Separator />
             <ContactSection />
           </div>
