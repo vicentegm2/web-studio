@@ -20,6 +20,7 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           <Link href="#experience" className="transition-colors hover:text-primary">Experience</Link>
           <Link href="#tech-stack" className="transition-colors hover:text-primary">Tech Stack</Link>
+          <Link href="#volunteering" className="transition-colors hover:text-primary">Volunteering</Link>
         </nav>
         <div className="flex flex-1 items-center justify-end gap-2">
             {socialLinks.map((link) => (
