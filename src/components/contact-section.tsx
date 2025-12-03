@@ -16,6 +16,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Send } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { useState } from 'react';
 
 const formSchema = z.object({
   subject: z.string().min(1, 'El asunto es requerido.'),
@@ -23,6 +25,9 @@ const formSchema = z.object({
 });
 
 export function ContactSection() {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -31,11 +36,35 @@ export function ContactSection() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    const recipient = 'vicente280228@gmail.com';
-    const subject = encodeURIComponent(values.subject);
-    const body = encodeURIComponent(values.message);
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        toast({
+          title: '¡Mensaje Enviado!',
+          description: 'Gracias por contactarme, te responderé lo antes posible.',
+        });
+        form.reset();
+      } else {
+        throw new Error('Algo salió mal al enviar el mensaje.');
+      }
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        title: 'Error al enviar',
+        description: 'Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -47,7 +76,7 @@ export function ContactSection() {
         <CardHeader>
           <CardTitle>Envíame un mensaje</CardTitle>
           <CardDescription>
-            Completa el formulario y se abrirá tu cliente de correo para enviarme un mensaje directamente.
+            Completa el formulario para enviarme un mensaje directamente desde la web.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -85,9 +114,9 @@ export function ContactSection() {
                 )}
               />
               <div className="flex justify-end">
-                <Button type="submit">
+                <Button type="submit" disabled={isSubmitting}>
                   <Send className="mr-2" />
-                  Enviar Mensaje
+                  {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
                 </Button>
               </div>
             </form>
