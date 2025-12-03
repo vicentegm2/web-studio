@@ -1,7 +1,7 @@
 'use client';
 import { Code, Download, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import {
   Sheet,
   SheetContent,
@@ -9,15 +9,18 @@ import {
 } from "@/components/ui/sheet"
 import { useState } from 'react';
 import { ThemeSwitcher } from './theme-switcher';
+import { LanguageSwitcher } from './language-switcher';
+import { useTranslations } from 'next-intl';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations('Header');
 
   const navLinks = [
-    { name: 'Tecnologías', href: '#tech-stack' },
-    { name: 'Experiencia', href: '#experience' },
-    { name: 'Proyectos', href: '#projects' },
-    { name: 'Contacto', href: '#contact' },
+    { name: t('tech'), href: '#tech-stack' },
+    { name: t('experience'), href: '#experience' },
+    { name: t('projects'), href: '#projects' },
+    { name: t('contact'), href: '#contact' },
   ];
 
   return (
@@ -37,21 +40,23 @@ export function Header() {
             <Button asChild>
               <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
                 <Download className="mr-2 h-4 w-4" />
-                Descargar CV
+                {t('downloadCV')}
               </a>
             </Button>
             <ThemeSwitcher />
+            <LanguageSwitcher />
           </div>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="outline" size="icon">
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">{t('openMenu')}</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
-              <div className='flex justify-end'>
+              <div className='flex justify-end gap-2'>
                 <ThemeSwitcher />
+                <LanguageSwitcher />
               </div>
               <nav className="flex flex-col gap-6 text-lg font-medium mt-10">
                 {navLinks.map((link) => (
@@ -69,7 +74,7 @@ export function Header() {
                  <Button asChild>
                     <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
                       <Download className="mr-2 h-4 w-4" />
-                      Descargar CV
+                      {t('downloadCV')}
                     </a>
                   </Button>
               </div>

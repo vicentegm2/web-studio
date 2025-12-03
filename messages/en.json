@@ -1,0 +1,176 @@
+{
+  "Metadata": {
+    "title": "Vicente Gabriel Gómez Medina | .NET Backend Developer",
+    "description": "Portfolio of Vicente Gabriel Gómez Medina, a .NET Backend Developer specializing in robust and scalable solutions."
+  },
+  "Header": {
+    "tech": "Technologies",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact",
+    "downloadCV": "Download CV",
+    "openMenu": "Open menu"
+  },
+  "Profile": {
+    "greeting": "Hello, I'm Vicente Gabriel Gómez Medina",
+    "title": ".NET Backend Developer",
+    "description": "Passionate about transforming ideas into robust and scalable software solutions. My focus is on clean architecture, performance, and creating APIs that power exceptional user experiences.",
+    "downloadCV": "Download CV",
+    "githubAlt": "Visit my GitHub",
+    "linkedinAlt": "Visit my LinkedIn",
+    "emailAlt": "Send me an email"
+  },
+  "TechStack": {
+    "title": "Technologies I work with",
+    "csharp": {
+      "title": "C# & .NET",
+      "description": "Building robust and scalable backend services and APIs with the .NET ecosystem."
+    },
+    "javascript": {
+      "title": "JavaScript",
+      "description": "Versatile language for dynamic and interactive web frontends."
+    },
+    "react": {
+      "title": "React",
+      "description": "Creating modern, fast, and scalable user interfaces with this powerful library."
+    },
+    "typescript": {
+      "title": "TypeScript",
+      "description": "Enhancing JavaScript with static types for more reliable and maintainable code."
+    },
+    "tailwind": {
+      "title": "Tailwind CSS",
+      "description": "A utility-first CSS framework for rapidly building custom user interfaces."
+    },
+    "sql": {
+      "title": "SQL & Databases",
+      "description": "Designing and managing relational databases, primarily with SQL Server."
+    }
+  },
+  "Timeline": {
+    "title": "My Professional Journey",
+    "experience": "Experience",
+    "education": "Education",
+    "volunteering": "Volunteering",
+    "events": "Events",
+    "current": "Present",
+    "experienceData": [
+      {
+        "role": ".NET Backend Developer",
+        "company": "Tech Solutions Inc.",
+        "period": "Jan 2021 - Present",
+        "achievements": [
+          "Led the migration of a monolith to a microservices architecture, improving scalability and reducing deployment time by 40%.",
+          "Designed and implemented a caching system with Redis that decreased API latency by 60% for the most frequent queries.",
+          "Automated the CI/CD pipeline with Azure DevOps, enabling faster and more reliable software deliveries."
+        ]
+      },
+      {
+        "role": "Junior Software Developer",
+        "company": "Innovatech Ltd.",
+        "period": "Jun 2019 - Dec 2020",
+        "achievements": [
+          "Participated in the development of a web application with ASP.NET MVC, contributing to a 15% increase in customer satisfaction.",
+          "Optimized complex SQL queries, resulting in a 30% reduction in critical report loading times.",
+          "Implemented unit and integration tests, increasing code coverage from 20% to 75% in key modules."
+        ]
+      }
+    ],
+    "educationData": [
+      {
+        "degree": "Higher Degree in Web Application Development",
+        "institution": "IES El Rincón",
+        "period": "2017 - 2019",
+        "status": "Completed"
+      },
+      {
+        "degree": "Advanced English Course C1",
+        "institution": "Official School of Languages",
+        "period": "2022 - Present",
+        "status": "In progress"
+      },
+      {
+        "degree": "Degree in Computer Engineering",
+        "institution": "University of Las Palmas de Gran Canaria",
+        "period": "2019 - 2021",
+        "status": "On hold"
+      }
+    ],
+    "volunteeringData": [
+      {
+        "role": "Community Mentor",
+        "organization": "Code for All",
+        "period": "2022 - Present",
+        "description": "Guiding future developers through mentoring, sharing best practices and career advice."
+      },
+      {
+        "role": "Event Volunteer",
+        "organization": "Tech Conference 2023",
+        "period": "Oct 2023",
+        "description": "Collaborated on logistics to ensure a smooth experience for over 500 attendees."
+      }
+    ],
+    "eventsData": [
+      {
+        "name": "Annual Developers Conference",
+        "organization": "Global Tech",
+        "date": "June 2023",
+        "description": "Attended as a participant, joining talks on the latest trends in software development, serverless, and microservices architecture."
+      },
+      {
+        "name": "Social Innovation Hackathon",
+        "organization": "Code for Good",
+        "date": "March 2022",
+        "description": "Part of a team that developed an application prototype to connect volunteers with local NGOs, winning second place."
+      }
+    ]
+  },
+  "Projects": {
+    "title": "Featured Projects",
+    "project1": {
+      "title": "Project Alpha",
+      "description": "A high-performance RESTful API built with .NET 7 to manage customer data, optimizing queries by 50%.",
+      "tags": [".NET 7", "Azure Functions", "SQL Server"]
+    },
+    "project2": {
+      "title": "Project Beta",
+      "description": "Migration of a monolithic application to a microservices architecture, improving scalability and maintainability.",
+      "tags": ["C#", "Docker", "Kubernetes"]
+    },
+    "project3": {
+      "title": "Project Gamma",
+      "description": "Development of a real-time data processing system using SignalR and message queues for instant notifications.",
+      "tags": ["SignalR", "RabbitMQ", ".NET Core"]
+    },
+    "code": "Code",
+    "demo": "Demo",
+    "codeAria": "View code for {title}",
+    "demoAria": "View live demo for {title}"
+  },
+  "Contact": {
+    "title": "Contact",
+    "cardTitle": "Send me a message",
+    "cardDescription": "Complete the form to send me a message directly from the web.",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "e.g., Collaboration Proposal",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Write your message here...",
+    "sendButton": "Send Message",
+    "sendingButton": "Sending...",
+    "successTitle": "Message Sent!",
+    "successDescription": "Thank you for contacting me, I will get back to you as soon as possible.",
+    "errorTitle": "Error Sending",
+    "errorDescription": "There was a problem sending your message. Please try again."
+  },
+  "Footer": {
+    "copyright": "© {year} Vicente Gabriel Gómez Medina. All rights reserved.",
+    "githubAlt": "Visit my GitHub",
+    "linkedinAlt": "Visit my LinkedIn",
+    "emailAlt": "Send me an email"
+  },
+  "Status": {
+    "Completed": "Completed",
+    "InProgress": "In progress",
+    "OnHold": "On hold"
+  }
+}

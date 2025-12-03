@@ -18,15 +18,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
-
-const formSchema = z.object({
-  subject: z.string().min(1, 'El asunto es requerido.'),
-  message: z.string().min(1, 'El mensaje es requerido.'),
-});
+import { useTranslations } from 'next-intl';
 
 export function ContactSection() {
+  const t = useTranslations('Contact');
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const formSchema = z.object({
+    subject: z.string().min(1, t('subjectPlaceholder')),
+    message: z.string().min(1, t('messagePlaceholder')),
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -49,18 +51,18 @@ export function ContactSection() {
 
       if (response.ok) {
         toast({
-          title: '¡Mensaje Enviado!',
-          description: 'Gracias por contactarme, te responderé lo antes posible.',
+          title: t('successTitle'),
+          description: t('successDescription'),
         });
         form.reset();
       } else {
-        throw new Error('Algo salió mal al enviar el mensaje.');
+        throw new Error('Something went wrong sending the message.');
       }
     } catch (error) {
       toast({
         variant: 'destructive',
-        title: 'Error al enviar',
-        description: 'Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.',
+        title: t('errorTitle'),
+        description: t('errorDescription'),
       });
     } finally {
       setIsSubmitting(false);
@@ -70,13 +72,13 @@ export function ContactSection() {
   return (
     <section id="contact" aria-labelledby="contact-heading">
       <h2 id="contact-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
-        Contacto
+        {t('title')}
       </h2>
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
-          <CardTitle>Envíame un mensaje</CardTitle>
+          <CardTitle>{t('cardTitle')}</CardTitle>
           <CardDescription>
-            Completa el formulario para enviarme un mensaje directamente desde la web.
+            {t('cardDescription')}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -87,9 +89,9 @@ export function ContactSection() {
                 name="subject"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Asunto</FormLabel>
+                    <FormLabel>{t('subjectLabel')}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Ej: Propuesta de colaboración" {...field} />
+                      <Input placeholder={t('subjectPlaceholder')} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -100,10 +102,10 @@ export function ContactSection() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Mensaje</FormLabel>
+                    <FormLabel>{t('messageLabel')}</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Escribe tu mensaje aquí..."
+                        placeholder={t('messagePlaceholder')}
                         className="resize-none"
                         rows={6}
                         {...field}
@@ -116,7 +118,7 @@ export function ContactSection() {
               <div className="flex justify-end">
                 <Button type="submit" disabled={isSubmitting}>
                   <Send className="mr-2" />
-                  {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                  {isSubmitting ? t('sendingButton') : t('sendButton')}
                 </Button>
               </div>
             </form>
