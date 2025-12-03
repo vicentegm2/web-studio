@@ -1,13 +1,20 @@
 'use client';
-import { Code, Download, Github, Linkedin, Mail } from 'lucide-react';
+import { Code, Download, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
 
 export function Header() {
   const socialLinks = [
-    { name: 'GitHub', icon: Github, url: 'https://github.com/johndoe' },
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/vicentegabrielgomezmedina' },
-    { name: 'Email', icon: Mail, url: 'mailto:john.doe@example.com' },
+    { name: 'GitHub', icon: Github, url: 'https://github.com/vicentegabrielgomezmedina' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina' },
+    { name: 'Email', icon: Mail, url: 'mailto:vicentegabrielgomezmedina@gmail.com' },
   ];
 
   return (
@@ -15,15 +22,33 @@ export function Header() {
       <div className="container flex h-16 items-center">
         <Link href="/" className="mr-auto flex items-center gap-2">
           <Code className="h-6 w-6 text-primary" />
-          <span className="font-bold font-headline">Vicente Gabriel Gómez Medina</span>
+          <span className="font-bold font-headline">VGGM | Backend .NET Developer</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           <Link href="#projects" className="transition-colors hover:text-primary">Proyectos</Link>
           <Link href="#experience" className="transition-colors hover:text-primary">Experiencia</Link>
-          <Link href="#education" className="transition-colors hover:text-primary">Formación</Link>
-          <Link href="#events" className="transition-colors hover:text-primary">Eventos</Link>
           <Link href="#tech-stack" className="transition-colors hover:text-primary">Tecnologías</Link>
-          <Link href="#volunteering" className="transition-colors hover:text-primary">Voluntariado</Link>
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="flex items-center gap-1">
+                Más
+                <ChevronDown className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem asChild>
+                <Link href="#education">Formación</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="#events">Eventos</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="#volunteering">Voluntariado</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
         </nav>
         <div className="flex flex-1 items-center justify-end gap-2">
             {socialLinks.map((link) => (

@@ -7,9 +7,9 @@ const professionalProfile = {
   jobTitle: "Backend .NET Developer",
   pkp: "Desarrollador Backend .NET", // Primary Keyword
   url: "https://your-domain.com", // Replace with your actual domain
-  email: "john.doe@example.com", // Replace with your email
+  email: "vicentegabrielgomezmedina@gmail.com", // Replace with your email
   linkedIn: "https://www.linkedin.com/in/vicentegabrielgomezmedina", // Your LinkedIn
-  github: "https://github.com/johndoe", // Replace with your GitHub
+  github: "https://github.com/vicentegabrielgomezmedina", // Replace with your GitHub
   summary: "Desarrollador Backend .NET con experiencia en la creación de aplicaciones robustas y escalables. Apasionado por la arquitectura de software y la optimización del rendimiento para ofrecer soluciones eficientes y de alta calidad."
 };
 

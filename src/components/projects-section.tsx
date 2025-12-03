@@ -11,7 +11,7 @@ const projectsData = [
     imageHint: "abstract technology",
     tags: [".NET 7", "Azure Functions", "SQL Server"],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/vicentegabrielgomezmedina",
   },
   {
     title: "Project Beta",
@@ -20,7 +20,7 @@ const projectsData = [
     imageHint: "cloud architecture",
     tags: ["C#", "Docker", "Kubernetes"],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/vicentegabrielgomezmedina",
   },
    {
     title: "Project Gamma",
@@ -29,7 +29,7 @@ const projectsData = [
     imageHint: "data stream",
     tags: ["SignalR", "RabbitMQ", ".NET Core"],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/vicentegabrielgomezmedina",
   },
 ];
 

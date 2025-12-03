@@ -3,9 +3,9 @@ import { Button } from '@/components/ui/button';
 
 export function Footer() {
   const socialLinks = [
-    { name: 'GitHub', icon: Github, url: 'https://github.com/johndoe' },
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/vicentegabrielgomezmedina' },
-    { name: 'Email', icon: Mail, url: 'mailto:john.doe@example.com' },
+    { name: 'GitHub', icon: Github, url: 'https://github.com/vicentegabrielgomezmedina' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina' },
+    { name: 'Email', icon: Mail, url: 'mailto:vicentegabrielgomezmedina@gmail.com' },
   ];
 
   return (
