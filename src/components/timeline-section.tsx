@@ -15,26 +15,26 @@ export function TimelineSection() {
   };
 
   const experienceData = [
-      {
-        role: "Programador informático",
-        company: "Amedida TI",
-        period: "Nov 2023 - Ago 2025",
-        achievements: [
-          "Diseño de bases de datos, .NET Framework y otras habilidades.",
-          "Desarrollo de soluciones backend utilizando el ecosistema .NET.",
-          "Mantenimiento y optimización de aplicaciones existentes para mejorar el rendimiento y la escalabilidad."
-        ]
-      },
-      {
-        role: "Becario",
-        company: "NTT DATA",
-        period: "Mar 2022 - Jun 2022",
-        achievements: [
-          "Colaboración en proyectos de desarrollo de software, adquiriendo experiencia práctica con Microsoft SQL Server y SQL.",
-          "Apoyo al equipo en diversas tareas de programación y análisis."
-        ]
-      }
-    ];
+    {
+      role: "Informatic Programmer",
+      company: "Amedida TI",
+      period: "Nov 2023 - Aug 2025",
+      achievements: [
+        "Database design, .NET Framework, and other skills.",
+        "Development of backend solutions using the .NET ecosystem.",
+        "Maintenance and optimization of existing applications to improve performance and scalability."
+      ]
+    },
+    {
+      role: "Intern",
+      company: "NTT DATA",
+      period: "Mar 2022 - Jun 2022",
+      achievements: [
+        "Collaborated on software development projects, gaining practical experience with Microsoft SQL Server and SQL.",
+        "Supported the team in various programming and analysis tasks."
+      ]
+    }
+  ];
   const educationData = [
       {
         degree: "Grado en Ingeniería Informática",
@@ -66,6 +66,11 @@ export function TimelineSection() {
           src: "https://storage.googleapis.com/aifirebase/project-1-1718224535319/photo-1721759089069.jpeg",
           alt: "Voluntario de Protección Civil en un evento",
           hint: "civil protection volunteer"
+        },
+        {
+          src: "https://storage.googleapis.com/aifirebase/project-1-1718224535319/photo-1721832049018.jpeg",
+          alt: "Grupo de voluntarios de Protección Civil",
+          hint: "civil protection group"
         }
       ]
     }
