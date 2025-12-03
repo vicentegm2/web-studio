@@ -2,6 +2,8 @@ import { Header } from '@/components/header';
 import { ProfileSection } from '@/components/profile-section';
 import { TechStackSection } from '@/components/tech-stack-section';
 import { ExperienceTimeline } from '@/components/experience-timeline';
+import { EducationSection } from '@/components/education-section';
+import { EventsSection } from '@/components/events-section';
 import { VolunteeringSection } from '@/components/volunteering-section';
 import { Footer } from '@/components/footer';
 
@@ -14,6 +16,8 @@ export default function Home() {
           <ProfileSection />
           <TechStackSection />
           <ExperienceTimeline />
+          <EducationSection />
+          <EventsSection />
           <VolunteeringSection />
         </div>
       </main>
