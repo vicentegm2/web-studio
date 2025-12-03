@@ -8,30 +8,12 @@ export function ProjectsSection() {
   const projectsData = [
     {
       title: "Angular Micro-Portfolio",
-      description: "A personal project built with Angular focused on learning and applying best practices. Features responsive design, dark mode, and dynamic content from JSON.",
-      tags: ["Angular", "TypeScript", "JSON"],
+      description: "Angular Micro-Portfolio is a personal project built with Angular 22 focused on learning and applying best practices. Key Features: Responsive design, Dark Mode, and dynamic content loaded via JSON.",
+      tags: ["Angular", "TypeScript", "MySQL", "JSON", "CI/CD", "GitHub Actions"],
       imageUrl: "https://picsum.photos/seed/project1/600/400",
       imageHint: "abstract technology",
       liveUrl: "https://vicentegm2.github.io/angular-micro-portfolio/",
       githubUrl: "https://github.com/vicentegm2/angular-micro-portfolio",
-    },
-    {
-      title: "Project Beta",
-      description: "Migration of a monolithic application to a microservices architecture, improving scalability and maintainability.",
-      tags: ["C#", "Docker", "Kubernetes"],
-      imageUrl: "https://picsum.photos/seed/project2/600/400",
-      imageHint: "cloud architecture",
-      liveUrl: "#",
-      githubUrl: "https://github.com/vicentegabrielgomezmedina",
-    },
-    {
-      title: "Project Gamma",
-      description: "Development of a real-time data processing system using SignalR and message queues for instant notifications.",
-      tags: ["SignalR", "RabbitMQ", ".NET Core"],
-      imageUrl: "https://picsum.photos/seed/project3/600/400",
-      imageHint: "data stream",
-      liveUrl: "#",
-      githubUrl: "https://github.com/vicentegabrielgomezmedina",
     },
   ];
 
