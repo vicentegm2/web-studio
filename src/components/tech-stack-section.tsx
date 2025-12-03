@@ -1,29 +1,29 @@
 'use client';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { IconDotNet, IconReact, IconJavaScript, IconTypeScript, IconTailwind, IconAzure, IconDocker, IconGit } from "@/components/icons/tech-icons";
-import { Database } from "lucide-react";
+import { IconCSharp, IconDotNet, IconReact, IconGit } from "@/components/icons/tech-icons";
+import { Database, Share2 } from "lucide-react";
 
 export function TechStackSection() {
   const techStack = [
     {
-      name: "C# & .NET",
+      name: "C#",
+      icon: IconCSharp,
+      description: "Extensive experience in object-oriented programming for building robust applications.",
+    },
+    {
+      name: ".NET",
       icon: IconDotNet,
       description: "Building robust and scalable backend services and APIs with the .NET ecosystem.",
     },
     {
-      name: "SQL & Databases",
+      name: "SQL Server",
       icon: Database,
       description: "Designing and managing relational databases, primarily with SQL Server.",
     },
     {
-      name: "Azure",
-      icon: IconAzure,
-      description: "Leveraging cloud services for hosting scalable applications and serverless functions.",
-    },
-    {
-      name: "Docker",
-      icon: IconDocker,
-      description: "Using containers to build, ship, and run distributed applications.",
+      name: "Microservices & APIs",
+      icon: Share2,
+      description: "Experience in microservices architecture and consuming RESTful APIs.",
     },
     {
       name: "Git & GitHub",
@@ -31,9 +31,9 @@ export function TechStackSection() {
       description: "Applying version control best practices for collaborative and efficient development.",
     },
     {
-      name: "TypeScript",
-      icon: IconTypeScript,
-      description: "Enhancing JavaScript with static types for more reliable and maintainable code.",
+      name: "React",
+      icon: IconReact,
+      description: "Building modern user interfaces with this JavaScript library for web applications.",
     },
   ];
 

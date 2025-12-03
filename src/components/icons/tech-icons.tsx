@@ -1,5 +1,5 @@
 import type { SVGProps } from "react";
-import { Database, GitBranch, Cloudy, ToyBrick } from "lucide-react";
+import { Database, GitBranch, Cloudy, ToyBrick, Share2 } from "lucide-react";
 
 export const IconCSharp = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -115,4 +115,8 @@ export const IconDocker = (props: SVGProps<SVGSVGElement>) => (
 
 export const IconGit = (props: SVGProps<SVGSVGElement>) => (
   <GitBranch {...props} />
+);
+
+export const IconApi = (props: SVGProps<SVGSVGElement>) => (
+    <Share2 {...props} />
 );
