@@ -1,6 +1,6 @@
 'use client';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Briefcase, GraduationCap, HeartHandshake, CalendarCheck2 } from "lucide-react";
+import { Briefcase, GraduationCap, HeartHandshake, CalendarCheck2, ExternalLink } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -72,7 +72,8 @@ export function TimelineSection() {
         name: "V Curso de Experto en Seguridad y Defensa",
         organization: "Universidad Nacional de Educación a Distancia (UNED)",
         date: "Oct 2024 - Dic 2024",
-        description: "Conocimientos teóricos sobre cultura de defensa, geopolítica y relaciones internacionales, enfocándose en conflictos contemporáneos, amenazas híbridas y ciberamenazas."
+        description: "Conocimientos teóricos sobre cultura de defensa, geopolítica y relaciones internacionales, enfocándose en conflictos contemporáneos, amenazas híbridas y ciberamenazas.",
+        url: "https://extension.uned.es/actividad/idactividad/38109"
       },
       {
         name: "Seminario de Relaciones Internacionales y Asuntos Exteriores",
@@ -171,25 +172,38 @@ export function TimelineSection() {
 
         <TabsContent value="events" className="mt-12 max-w-3xl mx-auto">
              <div className="space-y-8">
-                {eventsData.map((item, index) => (
-                <Card key={index} className="transition-shadow duration-300 hover:shadow-lg dark:hover:shadow-primary/20">
-                    <CardHeader className="flex flex-row items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-full">
-                        <CalendarCheck2 className="w-6 h-6 text-primary" />
-                    </div>
-                    <div className="flex-grow">
-                        <CardTitle className="font-headline text-xl">{item.name}</CardTitle>
-                        <div className="text-sm text-muted-foreground mt-1">
-                        <p className="font-semibold text-accent">{item.organization}</p>
-                        <p>{item.date}</p>
+                {eventsData.map((item, index) => {
+                  const EventCard = (
+                     <Card className="transition-shadow duration-300 hover:shadow-lg dark:hover:shadow-primary/20 h-full">
+                      <CardHeader className="flex flex-row items-start gap-4">
+                        <div className="bg-primary/10 p-3 rounded-full">
+                          <CalendarCheck2 className="w-6 h-6 text-primary" />
                         </div>
-                    </div>
-                    </CardHeader>
-                    <CardContent>
-                    <p className="text-sm text-foreground/80 ml-[68px] -mt-2">{item.description}</p>
-                    </CardContent>
-                </Card>
-                ))}
+                        <div className="flex-grow">
+                          <CardTitle className="font-headline text-xl">{item.name}</CardTitle>
+                          <div className="text-sm text-muted-foreground mt-1">
+                            <p className="font-semibold text-accent">{item.organization}</p>
+                            <p>{item.date}</p>
+                          </div>
+                        </div>
+                         {item.url && <ExternalLink className="w-4 h-4 text-muted-foreground shrink-0" />}
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-foreground/80 ml-[68px] -mt-2">{item.description}</p>
+                      </CardContent>
+                    </Card>
+                  );
+
+                  if (item.url) {
+                    return (
+                      <a href={item.url} key={index} target="_blank" rel="noopener noreferrer" className="block group">
+                        {EventCard}
+                      </a>
+                    )
+                  }
+                  
+                  return <div key={index}>{EventCard}</div>;
+                })}
             </div>
         </TabsContent>
 
