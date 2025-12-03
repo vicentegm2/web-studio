@@ -1,6 +1,6 @@
 'use client';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { IconDotNet, IconReact, IconJavaScript, IconTypeScript, IconTailwind } from "@/components/icons/tech-icons";
+import { IconDotNet, IconReact, IconJavaScript, IconTypeScript, IconTailwind, IconAzure, IconDocker, IconGit } from "@/components/icons/tech-icons";
 import { Database } from "lucide-react";
 
 export function TechStackSection() {
@@ -11,29 +11,29 @@ export function TechStackSection() {
       description: "Building robust and scalable backend services and APIs with the .NET ecosystem.",
     },
     {
-      name: "JavaScript",
-      icon: IconJavaScript,
-      description: "Versatile language for dynamic and interactive web frontends.",
+      name: "SQL & Databases",
+      icon: Database,
+      description: "Designing and managing relational databases, primarily with SQL Server.",
     },
     {
-      name: "React",
-      icon: IconReact,
-      description: "Creating modern, fast, and scalable user interfaces with this powerful library.",
+      name: "Azure",
+      icon: IconAzure,
+      description: "Leveraging cloud services for hosting scalable applications and serverless functions.",
+    },
+    {
+      name: "Docker",
+      icon: IconDocker,
+      description: "Using containers to build, ship, and run distributed applications.",
+    },
+    {
+      name: "Git & GitHub",
+      icon: IconGit,
+      description: "Applying version control best practices for collaborative and efficient development.",
     },
     {
       name: "TypeScript",
       icon: IconTypeScript,
       description: "Enhancing JavaScript with static types for more reliable and maintainable code.",
-    },
-    {
-      name: "Tailwind CSS",
-      icon: IconTailwind,
-      description: "A utility-first CSS framework for rapidly building custom user interfaces.",
-    },
-    {
-      name: "SQL & Databases",
-      icon: Database,
-      description: "Designing and managing relational databases, primarily with SQL Server.",
     },
   ];
 

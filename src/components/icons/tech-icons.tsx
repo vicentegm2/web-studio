@@ -1,5 +1,5 @@
 import type { SVGProps } from "react";
-import { Database } from "lucide-react";
+import { Database, GitBranch, Cloudy, ToyBrick } from "lucide-react";
 
 export const IconCSharp = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -94,4 +94,25 @@ export const IconTailwind = (props: SVGProps<SVGSVGElement>) => (
       d="M12 12c-3.314 0-6 2.686-6 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6Zm-6.5 2.5c0-3.314 2.686-6 6-6s6 2.686 6 6-2.686 6-6 6-6-2.686-6-6Z"
     />
   </svg>
+);
+
+export const IconAzure = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    role="img"
+    aria-labelledby="azure-title"
+    {...props}
+  >
+    <title id="azure-title">Azure Icon</title>
+    <path fill="#0078D4" d="M16.5 5.57L10.43 16.6L7.5 12.02l6.08-11.02h9.16L16.5 5.57zM1.25 16.59l6.05-11L13.5 16.6H1.25z"/>
+  </svg>
+);
+
+export const IconDocker = (props: SVGProps<SVGSVGElement>) => (
+  <ToyBrick {...props} />
+);
+
+export const IconGit = (props: SVGProps<SVGSVGElement>) => (
+  <GitBranch {...props} />
 );
