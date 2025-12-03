@@ -63,31 +63,48 @@ export function TimelineSection() {
       description: "Voluntario en Protección Civil de Las Torres de Cotillas.",
       images: [
         {
-          src: "https://storage.googleapis.com/aifirebase/project-1-1718224535319/photo-1721759089069.jpeg",
-          alt: "Voluntario de Protección Civil en un evento",
-          hint: "civil protection volunteer"
-        },
-        {
           src: "https://storage.googleapis.com/aifirebase/project-1-1718224535319/photo-1721832049018.jpeg",
           alt: "Grupo de voluntarios de Protección Civil",
           hint: "civil protection group"
+        },
+        {
+          src: "https://storage.googleapis.com/aifirebase/project-1-1718224535319/photo-1721759089069.jpeg",
+          alt: "Voluntario de Protección Civil en un evento",
+          hint: "civil protection volunteer"
         }
       ]
     }
   ];
     const eventsData = [
+       {
+        name: "Nerdearla España",
+        organization: "La Nave, Madrid",
+        date: "Abr 2024",
+        description: "Tuve el gran privilegio de asistir a la edición debut de Nerdearla en España, el encuentro de informática más grande de habla hispana. ¡Simplemente espectacular!",
+        url: null,
+        images: [
+          {
+            src: "https://storage.googleapis.com/aifirebase/project-1-1718224535319/photo-1721915951833.jpeg",
+            alt: "Acreditación de Nerdearla en forma de disquete",
+            hint: "conference badge"
+          }
+        ]
+      },
       {
         name: "V Curso de Experto en Seguridad y Defensa",
         organization: "Universidad Nacional de Educación a Distancia (UNED)",
         date: "Oct 2024 - Dic 2024",
         description: "Conocimientos teóricos sobre cultura de defensa, geopolítica y relaciones internacionales, enfocándose en conflictos contemporáneos, amenazas híbridas y ciberamenazas.",
-        url: "https://extension.uned.es/actividad/idactividad/38109"
+        url: "https://extension.uned.es/actividad/idactividad/38109",
+        images: []
       },
       {
         name: "Seminario de Relaciones Internacionales y Asuntos Exteriores",
         organization: "UCAM Universidad Católica San Antonio de Murcia",
         date: "Oct 2023",
-        description: "Análisis sobre geopolítica, ciberseguridad, y el impacto de la inteligencia artificial en la seguridad nacional."
+        description: "Análisis sobre geopolítica, ciberseguridad, y el impacto de la inteligencia artificial en la seguridad nacional.",
+        url: null,
+        images: []
       },
     ];
 
@@ -211,9 +228,9 @@ export function TimelineSection() {
              <div className="space-y-8">
                 {eventsData.map((item, index) => {
                   const EventCard = (
-                     <Card className="transition-shadow duration-300 hover:shadow-lg dark:hover:shadow-primary/20 h-full">
+                    <Card key={index} className="overflow-hidden transition-shadow duration-300 hover:shadow-xl dark:hover:shadow-primary/20 h-full flex flex-col">
                       <CardHeader className="flex flex-row items-start gap-4">
-                        <div className="bg-primary/10 p-3 rounded-full">
+                        <div className="bg-primary/10 p-3 rounded-full mt-1">
                           <CalendarCheck2 className="w-6 h-6 text-primary" />
                         </div>
                         <div className="flex-grow">
@@ -225,8 +242,35 @@ export function TimelineSection() {
                         </div>
                          {item.url && <ExternalLink className="w-4 h-4 text-muted-foreground shrink-0" />}
                       </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-foreground/80 ml-[68px] -mt-2">{item.description}</p>
+                      <CardContent className="flex-grow">
+                        <div className={`grid ${item.images && item.images.length > 0 ? 'md:grid-cols-2' : 'grid-cols-1'} gap-6 items-center`}>
+                          <p className="text-sm text-foreground/80">{item.description}</p>
+                           {item.images && item.images.length > 0 && (
+                            <Carousel className="w-full max-w-xs mx-auto">
+                                <CarouselContent>
+                                    {item.images.map((image, imgIndex) => (
+                                        <CarouselItem key={imgIndex}>
+                                            <div className="relative h-56 w-full">
+                                                <Image
+                                                    src={image.src}
+                                                    alt={image.alt}
+                                                    fill
+                                                    className="rounded-lg object-cover"
+                                                    data-ai-hint={image.hint}
+                                                />
+                                            </div>
+                                        </CarouselItem>
+                                    ))}
+                                </CarouselContent>
+                                {item.images.length > 1 && (
+                                  <>
+                                    <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
+                                    <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
+                                  </>
+                                )}
+                            </Carousel>
+                        )}
+                        </div>
                       </CardContent>
                     </Card>
                   );
