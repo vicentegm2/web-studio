@@ -1,6 +1,6 @@
 'use client';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Briefcase, GraduationCap, HeartHandshake, CalendarCheck2, ExternalLink } from "lucide-react";
+import { Briefcase, GraduationCap, HeartHandshake, CalendarCheck2, ExternalLink, Languages } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
@@ -55,6 +55,12 @@ export function TimelineSection() {
         status: "On hold",
       }
     ];
+  const languagesData = [
+    {
+      language: "Inglés",
+      level: "Actualmente cursando para obtener el B2",
+    }
+  ];
   const volunteeringData = [
     {
       role: "Voluntario",
@@ -63,12 +69,12 @@ export function TimelineSection() {
       description: "Voluntario en Protección Civil de Las Torres de Cotillas.",
       images: [
         {
-          src: "https://storage.googleapis.com/aifirebase/project-1-1718224535319/photo-1721832049018.jpeg",
+          src: "https://picsum.photos/seed/vol1/600/400",
           alt: "Grupo de voluntarios de Protección Civil",
           hint: "civil protection group"
         },
         {
-          src: "https://storage.googleapis.com/aifirebase/project-1-1718224535319/photo-1721759089069.jpeg",
+          src: "https://picsum.photos/seed/vol2/600/400",
           alt: "Voluntario de Protección Civil en un evento",
           hint: "civil protection volunteer"
         }
@@ -84,7 +90,7 @@ export function TimelineSection() {
         url: null,
         images: [
           {
-            src: "https://storage.googleapis.com/aifirebase/project-1-1718224535319/photo-1721915951833.jpeg",
+            src: "https://picsum.photos/seed/nerd1/600/400",
             alt: "Acreditación de Nerdearla en forma de disquete",
             hint: "conference badge"
           }
@@ -114,9 +120,10 @@ export function TimelineSection() {
         My Professional Journey
       </h2>
       <Tabs defaultValue="experience" className="w-full">
-        <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-2 md:grid-cols-4 h-auto">
+        <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-2 md:grid-cols-5 h-auto">
           <TabsTrigger value="experience"><Briefcase className="mr-2"/>Experience</TabsTrigger>
           <TabsTrigger value="education"><GraduationCap className="mr-2"/>Education</TabsTrigger>
+          <TabsTrigger value="languages"><Languages className="mr-2"/>Languages</TabsTrigger>
           <TabsTrigger value="volunteering"><HeartHandshake className="mr-2"/>Volunteering</TabsTrigger>
           <TabsTrigger value="events"><CalendarCheck2 className="mr-2"/>Events</TabsTrigger>
         </TabsList>
@@ -175,6 +182,22 @@ export function TimelineSection() {
             </div>
         </TabsContent>
 
+        <TabsContent value="languages" className="mt-12 max-w-3xl mx-auto">
+            <div className="space-y-8">
+                {languagesData.map((item, index) => (
+                <div key={index} className="flex items-start gap-4 group">
+                    <div className="bg-primary/10 p-3 rounded-full mt-1 transition-colors group-hover:bg-primary">
+                        <Languages className="w-6 h-6 text-primary transition-colors group-hover:text-white" />
+                    </div>
+                    <div className="flex-grow">
+                        <h3 className="font-headline text-lg font-semibold">{item.language}</h3>
+                        <p className="text-sm text-muted-foreground mt-1">{item.level}</p>
+                    </div>
+                </div>
+                ))}
+            </div>
+        </TabsContent>
+
         <TabsContent value="volunteering" className="mt-12 max-w-3xl mx-auto">
             <div className="space-y-8">
               {volunteeringData.map((item, index) => (
@@ -205,8 +228,9 @@ export function TimelineSection() {
                                                 <Image
                                                     src={image.src}
                                                     alt={image.alt}
-                                                    fill
-                                                    className="rounded-lg object-cover"
+                                                    width={600}
+                                                    height={400}
+                                                    className="rounded-lg object-cover w-full h-full"
                                                     data-ai-hint={image.hint}
                                                 />
                                             </div>
@@ -254,8 +278,9 @@ export function TimelineSection() {
                                                 <Image
                                                     src={image.src}
                                                     alt={image.alt}
-                                                    fill
-                                                    className="rounded-lg object-cover"
+                                                    width={600}
+                                                    height={400}
+                                                    className="rounded-lg object-cover w-full h-full"
                                                     data-ai-hint={image.hint}
                                                 />
                                             </div>

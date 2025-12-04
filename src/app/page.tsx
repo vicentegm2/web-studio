@@ -2,6 +2,7 @@ import { Header } from '@/components/header';
 import { ProfileSection } from '@/components/profile-section';
 import { ProjectsSection } from '@/components/projects-section';
 import { TechStackSection } from '@/components/tech-stack-section';
+import { SoftSkillsSection } from '@/components/soft-skills-section';
 import { TimelineSection } from '@/components/timeline-section';
 import { Footer } from '@/components/footer';
 import { Separator } from '@/components/ui/separator';
@@ -17,6 +18,8 @@ export default function Home() {
         <div className="container mx-auto px-6 py-12 md:py-20">
           <div className="max-w-5xl mx-auto space-y-20 md:space-y-28">
             <TechStackSection />
+            <Separator />
+            <SoftSkillsSection />
             <Separator />
             <TimelineSection />
             <Separator />

@@ -15,6 +15,7 @@ export function Header() {
 
   const navLinks = [
     { name: 'Technologies', href: '#tech-stack' },
+    { name: 'Skills', href: '#soft-skills' },
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
     { name: 'Certifications', href: '#certifications' },
