@@ -45,6 +45,9 @@ export function ProfileSection() {
             <p className="mt-6 max-w-2xl text-foreground/80 leading-relaxed">
               Backend developer specialized in .NET, C#, and SQL, focused on building clean, scalable, and maintainable APIs. I’m interested in software architecture, automation, and the best practices that drive robust and efficient projects.
             </p>
+            <p className="mt-4 max-w-2xl text-foreground/80 leading-relaxed">
+              Beyond my passion for technology, I am an avid learner, always exploring new technologies with a special focus on the evolution of AI. In my free time, I enjoy reading, traveling, and sports, activities that help me bring a fresh and creative perspective to my work.
+            </p>
 
             <div className="mt-6 flex flex-wrap gap-2 justify-center sm:justify-start">
               {softSkills.map((skill) => (
