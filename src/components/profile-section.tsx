@@ -4,6 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Download, Github, Linkedin, Mail } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Badge } from "./ui/badge";
 
 export function ProfileSection() {
   const profileImage = PlaceHolderImages.find(p => p.id === 'profile-picture');
@@ -13,6 +14,8 @@ export function ProfileSection() {
     { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina', ariaLabel: "Visit my LinkedIn" },
     { name: 'Email', icon: Mail, url: 'mailto:vicentegabrielgomezmedina@gmail.com', ariaLabel: "Send me an email" },
   ];
+
+  const softSkills = ["Trabajo en equipo", "Oratoria", "Comunicación", "Aprendizaje continuo"];
 
   return (
     <section id="profile" aria-labelledby="profile-heading" className="py-16 sm:py-24">
@@ -42,6 +45,13 @@ export function ProfileSection() {
             <p className="mt-6 max-w-2xl text-foreground/80 leading-relaxed">
               Backend developer specialized in .NET, C#, and SQL, focused on building clean, scalable, and maintainable APIs. I’m interested in software architecture, automation, and the best practices that drive robust and efficient projects.
             </p>
+
+            <div className="mt-6 flex flex-wrap gap-2 justify-center sm:justify-start">
+              {softSkills.map((skill) => (
+                <Badge key={skill} variant="secondary" className="text-sm">{skill}</Badge>
+              ))}
+            </div>
+
             <div className="mt-8 flex flex-wrap gap-4 justify-center sm:justify-start">
               <Button size="lg" asChild>
                  <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
