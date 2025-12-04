@@ -12,6 +12,24 @@ import { CertificationsSection } from '@/components/certifications-section';
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
+      {/* JSON-LD Person schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Vicente Gabriel Gómez Medina',
+            jobTitle: '.NET Backend Developer',
+            url: 'https://vicentegm.dev',
+            image: 'https://vicentegm.dev/images/profile.jpg',
+            sameAs: [
+              'https://github.com/vicentegm2',
+              'https://www.linkedin.com/in/vicentegabrielgomezmedina',
+            ],
+          }),
+        }}
+      />
       <Header />
       <main className="flex-grow">
         <ProfileSection />

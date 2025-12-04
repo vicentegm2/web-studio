@@ -8,76 +8,83 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { useState } from 'react';
-import { ThemeSwitcher } from './theme-switcher';
+import { SettingsMenu } from './settings-menu';
+import { useLanguage } from '@/contexts/language-context';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
 
   const navLinks = [
-    { name: 'Technologies', href: '#tech-stack' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Certifications', href: '#certifications' },
-    { name: 'Contact', href: '#contact' },
+    { name: t.technologies, href: '#tech-stack' },
+    { name: t.experience, href: '#experience' },
+    { name: t.projects, href: '#projects' },
+    { name: t.certifications, href: '#certifications' },
+    { name: t.contact, href: '#contact' },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <Code className="h-6 w-6 text-primary" />
-          <span className="sr-only font-bold font-headline">VGGM</span>
-        </Link>
-        
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          {navLinks.map((link) => (
-             <a key={link.name} href={link.href} className="transition-colors hover:text-primary">{link.name}</a>
-          ))}
-        </nav>
+      <div className="container mx-auto px-4">
+        <div className="flex h-16 items-center justify-between gap-4">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <Code className="h-6 w-6 text-primary" />
+            <span className="font-bold font-headline text-lg hidden sm:inline">VGGM</span>
+          </Link>
+          
+          {/* Desktop Navigation - centered */}
+          <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
+            {navLinks.map((link) => (
+               <a key={link.name} href={link.href} className="transition-colors hover:text-primary whitespace-nowrap">{link.name}</a>
+            ))}
+          </nav>
 
-        <div className="flex items-center justify-end gap-2">
-           <div className="hidden md:flex gap-2">
-            <Button asChild>
-              <a href="/VicenteGomez-CV.pdf" download="VicenteGomez-CV.pdf">
+          {/* Desktop Actions */}
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
+            <Button size="sm" asChild>
+              <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
                 <Download className="mr-2 h-4 w-4" />
-                Download CV
+                {t.downloadCV}
               </a>
             </Button>
-            <ThemeSwitcher />
+            <SettingsMenu />
           </div>
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="outline" size="icon">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Open menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <div className='flex justify-end'>
-                <ThemeSwitcher />
-              </div>
-              <nav className="flex flex-col gap-6 text-lg font-medium mt-10">
-                {navLinks.map((link) => (
-                   <a
-                     key={link.name}
-                     href={link.href}
-                     className="transition-colors hover:text-primary"
-                     onClick={() => setIsOpen(false)}
-                   >
-                     {link.name}
-                   </a>
-                ))}
-              </nav>
-              <div className="mt-8 flex flex-col gap-4">
-                 <Button asChild>
-                    <a href="/VicenteGomez-CV.pdf" download="VicenteGomez-CV.pdf">
-                      <Download className="mr-2 h-4 w-4" />
-                      Download CV
-                    </a>
-                  </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
+
+          {/* Mobile Actions */}
+          <div className="flex lg:hidden items-center gap-2">
+            <SettingsMenu />
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">{t.openMenu}</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <nav className="flex flex-col gap-6 text-lg font-medium mt-10">
+                  {navLinks.map((link) => (
+                     <a
+                       key={link.name}
+                       href={link.href}
+                       className="transition-colors hover:text-primary"
+                       onClick={() => setIsOpen(false)}
+                     >
+                       {link.name}
+                     </a>
+                  ))}
+                </nav>
+                <div className="mt-8 flex flex-col gap-4">
+                   <Button asChild>
+                      <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
+                        <Download className="mr-2 h-4 w-4" />
+                        {t.downloadCV}
+                      </a>
+                    </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>

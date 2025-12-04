@@ -18,14 +18,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Send } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { useState } from 'react';
+import { useLanguage } from '@/contexts/language-context';
 
 export function ContactSection() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { t } = useLanguage();
   
   const formSchema = z.object({
-    subject: z.string().min(1, 'Subject is required'),
-    message: z.string().min(1, 'Message is required'),
+    subject: z.string().min(1, t.subjectRequired),
+    message: z.string().min(1, t.messageRequired),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -49,8 +51,8 @@ export function ContactSection() {
 
       if (response.ok) {
         toast({
-          title: "Message Sent!",
-          description: "Thank you for contacting me, I will get back to you as soon as possible.",
+          title: t.messageSent,
+          description: t.messageSuccess,
         });
         form.reset();
       } else {
@@ -59,8 +61,8 @@ export function ContactSection() {
     } catch (error) {
       toast({
         variant: 'destructive',
-        title: 'Error Sending',
-        description: 'There was a problem sending your message. Please try again.',
+        title: t.errorSending,
+        description: t.errorDescription,
       });
     } finally {
       setIsSubmitting(false);
@@ -70,13 +72,13 @@ export function ContactSection() {
   return (
     <section id="contact" aria-labelledby="contact-heading">
       <h2 id="contact-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
-        Contact
+        {t.contactTitle}
       </h2>
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
-          <CardTitle>Send me a message</CardTitle>
+          <CardTitle>{t.contactSubtitle}</CardTitle>
           <CardDescription>
-            Complete the form to send me a message directly from the web.
+            {t.contactDescription}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -87,9 +89,9 @@ export function ContactSection() {
                 name="subject"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Subject</FormLabel>
+                    <FormLabel>{t.subjectLabel}</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., Collaboration Proposal" {...field} />
+                      <Input placeholder={t.subjectPlaceholder} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -100,10 +102,10 @@ export function ContactSection() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Message</FormLabel>
+                    <FormLabel>{t.messageLabel}</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Write your message here..."
+                        placeholder={t.messagePlaceholder}
                         className="resize-none"
                         rows={6}
                         {...field}
@@ -116,7 +118,7 @@ export function ContactSection() {
               <div className="flex justify-end">
                 <Button type="submit" disabled={isSubmitting}>
                   <Send className="mr-2" />
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? t.sendingButton : t.sendButton}
                 </Button>
               </div>
             </form>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vicentegm.dev/sitemap.xml

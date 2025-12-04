@@ -2,45 +2,48 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { IconCSharp, IconDotNet, IconReact, IconGit } from "@/components/icons/tech-icons";
 import { Database, Share2 } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
 
 export function TechStackSection() {
+  const { t } = useLanguage();
+  
   const techStack = [
     {
-      name: "C#",
+      name: t.techStack.csharp.name,
       icon: IconCSharp,
-      description: "Extensive experience in object-oriented programming for building robust applications.",
+      description: t.techStack.csharp.description,
     },
     {
-      name: ".NET",
+      name: t.techStack.dotnet.name,
       icon: IconDotNet,
-      description: "Building robust and scalable backend services and APIs with the .NET ecosystem.",
+      description: t.techStack.dotnet.description,
     },
     {
-      name: "SQL Server",
+      name: t.techStack.sqlserver.name,
       icon: Database,
-      description: "Designing and managing relational databases, primarily with SQL Server.",
+      description: t.techStack.sqlserver.description,
     },
     {
-      name: "Microservices & APIs",
+      name: t.techStack.microservices.name,
       icon: Share2,
-      description: "Experience in microservices architecture and consuming RESTful APIs.",
+      description: t.techStack.microservices.description,
     },
     {
-      name: "Git & GitHub",
+      name: t.techStack.git.name,
       icon: IconGit,
-      description: "Applying version control best practices for collaborative and efficient development.",
+      description: t.techStack.git.description,
     },
     {
-      name: "React",
+      name: t.techStack.react.name,
       icon: IconReact,
-      description: "Building modern user interfaces with this JavaScript library for web applications.",
+      description: t.techStack.react.description,
     },
   ];
 
   return (
     <section id="tech-stack" aria-labelledby="tech-stack-heading">
       <h2 id="tech-stack-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
-        Technologies I work with
+        {t.techStackTitle}
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {techStack.map((tech) => (

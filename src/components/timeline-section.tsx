@@ -5,8 +5,10 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
+import { useLanguage } from "@/contexts/language-context";
 
 export function TimelineSection() {
+  const { t } = useLanguage();
 
   const statusColors: Record<string, string> = {
     "Completed": "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/50 dark:text-green-300 dark:border-green-700",
@@ -16,65 +18,58 @@ export function TimelineSection() {
 
   const experienceData = [
     {
-      role: "Informatic Programmer",
-      company: "Amedida TI",
-      period: "Nov 2023 - Aug 2025",
-      achievements: [
-        "Database design, .NET Framework, and other skills.",
-        "Development of backend solutions using the .NET ecosystem.",
-        "Maintenance and optimization of existing applications to improve performance and scalability."
-      ]
+      role: t.experiences.amedida.role,
+      company: t.experiences.amedida.company,
+      period: t.experiences.amedida.period,
+      achievements: t.experiences.amedida.achievements
     },
     {
-      role: "Intern",
-      company: "NTT DATA",
-      period: "Mar 2022 - Jun 2022",
-      achievements: [
-        "Collaborated on software development projects, gaining practical experience with Microsoft SQL Server and SQL.",
-        "Supported the team in various programming and analysis tasks."
-      ]
+      role: t.experiences.nttdata.role,
+      company: t.experiences.nttdata.company,
+      period: t.experiences.nttdata.period,
+      achievements: t.experiences.nttdata.achievements
     }
   ];
   const educationData = [
       {
-        degree: "Grado en Ingeniería Informática",
-        institution: "Universidad Nacional de Educación a Distancia - U.N.E.D.",
-        period: "Previsto Sep 2025",
-        status: "In progress",
+        degree: t.education.uned.degree,
+        institution: t.education.uned.institution,
+        period: t.education.uned.period,
+        status: t.education.uned.status,
       },
       {
-        degree: "F.P. Desarrollo de Aplicaciones Web",
-        institution: "UCAM Universidad Católica San Antonio de Murcia",
-        period: "2020 - 2022",
-        status: "Completed",
+        degree: t.education.ucam.degree,
+        institution: t.education.ucam.institution,
+        period: t.education.ucam.period,
+        status: t.education.ucam.status,
       },
       {
-        degree: "Grado en Ciencias Políticas y Gobierno",
-        institution: "Universidad Nacional de Educación a Distancia - U.N.E.D.",
-        period: "En pausa",
-        status: "On hold",
+        degree: t.education.politics.degree,
+        institution: t.education.politics.institution,
+        period: t.education.politics.period,
+        status: t.education.politics.status,
       }
     ];
   const languagesData = [
     {
-      language: "Inglés",
-      level: "Actualmente cursando para obtener el B2",
+      language: t.languages.english.language,
+      level: t.languages.english.level,
     }
   ];
   const volunteeringData = [
     {
-      role: "Voluntario",
-      organization: "Protección Civil",
-      period: "Sep 2023 - Present",
-      description: "Voluntario en Protección Civil de Las Torres de Cotillas.",
+      role: t.volunteering.civilProtection.role,
+      organization: t.volunteering.civilProtection.organization,
+      period: t.volunteering.civilProtection.period,
+      description: t.volunteering.civilProtection.description,
       images: [
         {
-          src: "https://picsum.photos/seed/vol1/600/400",
+          src: "/images/voluntariado-1.jpg",
           alt: "Grupo de voluntarios de Protección Civil",
           hint: "civil protection group"
         },
         {
-          src: "https://picsum.photos/seed/vol2/600/400",
+          src: "/images/voluntariado-2.jpg",
           alt: "Voluntario de Protección Civil en un evento",
           hint: "civil protection volunteer"
         }
@@ -83,32 +78,32 @@ export function TimelineSection() {
   ];
     const eventsData = [
        {
-        name: "Nerdearla España",
-        organization: "La Nave, Madrid",
-        date: "Abr 2024",
-        description: "Tuve el gran privilegio de asistir a la edición debut de Nerdearla en España, el encuentro de informática más grande de habla hispana. ¡Simplemente espectacular!",
+        name: t.events.nerdearla.name,
+        organization: t.events.nerdearla.organization,
+        date: t.events.nerdearla.date,
+        description: t.events.nerdearla.description,
         url: null,
         images: [
           {
-            src: "https://picsum.photos/seed/nerd1/600/400",
+            src: "/images/nerdearla.png",
             alt: "Acreditación de Nerdearla en forma de disquete",
             hint: "conference badge"
           }
         ]
       },
       {
-        name: "V Curso de Experto en Seguridad y Defensa",
-        organization: "Universidad Nacional de Educación a Distancia (UNED)",
-        date: "Oct 2024 - Dic 2024",
-        description: "Conocimientos teóricos sobre cultura de defensa, geopolítica y relaciones internacionales, enfocándose en conflictos contemporáneos, amenazas híbridas y ciberamenazas.",
+        name: t.events.securityCourse.name,
+        organization: t.events.securityCourse.organization,
+        date: t.events.securityCourse.date,
+        description: t.events.securityCourse.description,
         url: "https://extension.uned.es/actividad/idactividad/38109",
         images: []
       },
       {
-        name: "Seminario de Relaciones Internacionales y Asuntos Exteriores",
-        organization: "UCAM Universidad Católica San Antonio de Murcia",
-        date: "Oct 2023",
-        description: "Análisis sobre geopolítica, ciberseguridad, y el impacto de la inteligencia artificial en la seguridad nacional.",
+        name: t.events.internationalRelations.name,
+        organization: t.events.internationalRelations.organization,
+        date: t.events.internationalRelations.date,
+        description: t.events.internationalRelations.description,
         url: null,
         images: []
       },
@@ -117,15 +112,15 @@ export function TimelineSection() {
   return (
     <section id="experience" aria-labelledby="experience-heading">
       <h2 id="experience-heading" className="text-3xl font-headline font-bold text-center mb-16 text-primary">
-        My Professional Journey
+        {t.timelineTitle}
       </h2>
       <Tabs defaultValue="experience" className="w-full">
         <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-2 md:grid-cols-5 h-auto">
-          <TabsTrigger value="experience"><Briefcase className="mr-2"/>Experience</TabsTrigger>
-          <TabsTrigger value="education"><GraduationCap className="mr-2"/>Education</TabsTrigger>
-          <TabsTrigger value="languages"><Languages className="mr-2"/>Languages</TabsTrigger>
-          <TabsTrigger value="volunteering"><HeartHandshake className="mr-2"/>Volunteering</TabsTrigger>
-          <TabsTrigger value="events"><CalendarCheck2 className="mr-2"/>Events</TabsTrigger>
+          <TabsTrigger value="experience"><Briefcase className="mr-2"/>{t.experienceTab}</TabsTrigger>
+          <TabsTrigger value="education"><GraduationCap className="mr-2"/>{t.educationTab}</TabsTrigger>
+          <TabsTrigger value="languages"><Languages className="mr-2"/>{t.languagesTab}</TabsTrigger>
+          <TabsTrigger value="volunteering"><HeartHandshake className="mr-2"/>{t.volunteeringTab}</TabsTrigger>
+          <TabsTrigger value="events"><CalendarCheck2 className="mr-2"/>{t.eventsTab}</TabsTrigger>
         </TabsList>
         
         <TabsContent value="experience" className="mt-12">
