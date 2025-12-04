@@ -9,29 +9,45 @@ export const IconCSharp = (props: SVGProps<SVGSVGElement>) => (
     aria-labelledby="csharp-title"
     {...props}
   >
-    <title id="csharp-title">C Sharp Icon</title>
-    <path
-      fill="#390091"
-      d="M87.53 34.133h-47.46L24.5 64l15.57 29.867h47.46L103.5 64l-15.97-29.867z"
-    />
-    <path
-      fill="#fff"
-      d="M74.12 47.107L68.73 57.8l5.4 10.68-10.966-2.5-5.38 10.7-5.4-10.68 10.98-2.52-5.4-10.68 10.966 2.5zm-22.1 0L46.63 57.8l5.4 10.68-10.966-2.5-5.38 10.7-5.4-10.68 10.98-2.52-5.4-10.68 10.966 2.5zm19.33 13.33h13.33v5.34h-13.33zm-22.06 0h13.33v5.34H49.29zM59.99 44.5h5.33v38.94h-5.33zM59.99 61.47h24v5.33h-24z"
-    />
+    <title id="csharp-title">C# Icon</title>
+    <g fill="#68217a">
+      <path d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-62c-.6-1.2-1.5-2.1-2.4-2.7z"/>
+      <path d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4V36.1c0-.9-.1-1.9-.6-2.8z"/>
+    </g>
+    <path d="M85.3 76.1C81.1 83.5 73.1 88.5 64 88.5c-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5c-6.8-11.9-19.6-20-34.3-20-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c14.6 0 27.4-8 34.2-19.8l-12.9-7.6z" fill="#fff"/>
+    <g fill="#fff">
+      <path d="M97.2 66.7h-4.7v-4.7h-3.4v4.7h-4.7v3.4h4.7v4.7h3.4v-4.7h4.7z"/>
+      <path d="M113.5 66.7h-4.7v-4.7h-3.4v4.7h-4.7v3.4h4.7v4.7h3.4v-4.7h4.7z"/>
+    </g>
   </svg>
 );
 
 export const IconDotNet = (props: SVGProps<SVGSVGElement>) => (
-    <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 24 24" 
-        role="img"
-        aria-labelledby="dotnet-title"
-        {...props}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 128 128"
+    role="img"
+    aria-labelledby="dotnet-title"
+    shape-rendering="geometricPrecision"
+    text-rendering="geometricPrecision"
+    {...props}
+  >
+    <title id="dotnet-title">.NET Icon</title>
+    <rect width="128" height="128" rx="8" fill="#512bd4" />
+    {/* Texto .NET centrado dentro del cuadrado */}
+    <text
+      x="64"
+      y="64"
+      fill="#ffffff"
+      fontFamily="Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif"
+      fontSize="44"
+      fontWeight="700"
+      dominantBaseline="middle"
+      textAnchor="middle"
     >
-        <title id="dotnet-title">.NET Icon</title>
-        <path fill="#512BD4" d="M22.31.25H1.69a1.44 1.44 0 0 0-1.44 1.44v20.62a1.44 1.44 0 0 0 1.44 1.44h20.62a1.44 1.44 0 0 0 1.44-1.44V1.69A1.44 1.44 0 0 0 22.31.25zM12 19.38a7.38 7.38 0 1 1 7.38-7.38 7.38 7.38 0 0 1-7.38 7.38zm6.56-7.38a6.56 6.56 0 0 0-6.56-6.56v13.12a6.56 6.56 0 0 0 6.56-6.56zm-9.31 0a2.75 2.75 0 0 1 5.5 0v.1h-5.5z"/>
-    </svg>
+      .NET
+    </text>
+  </svg>
 );
 
 export const IconReact = (props: SVGProps<SVGSVGElement>) => (

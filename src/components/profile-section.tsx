@@ -2,17 +2,24 @@
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Download, Github, Linkedin, Mail } from "lucide-react";
+import { Download, Github, Linkedin } from "lucide-react";
 import { Badge } from "./ui/badge";
+import { useLanguage } from "@/contexts/language-context";
 
 export function ProfileSection() {
+  const { t } = useLanguage();
+  
   const socialLinks = [
     { name: 'GitHub', icon: Github, url: 'https://github.com/vicentegm2', ariaLabel: "Visit my GitHub" },
     { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina', ariaLabel: "Visit my LinkedIn" },
-    { name: 'Email', icon: Mail, url: 'mailto:vicentegabrielgomezmedina@gmail.com', ariaLabel: "Send me an email" },
   ];
 
-  const softSkills = ["Trabajo en equipo", "Oratoria", "Comunicación", "Aprendizaje continuo"];
+  const softSkills = [
+    t.softSkills.teamwork,
+    t.softSkills.publicspeaking,
+    t.softSkills.communication,
+    t.softSkills.continuousLearning
+  ];
 
   return (
     <section id="profile" aria-labelledby="profile-heading" className="py-16 sm:py-24">
@@ -32,15 +39,15 @@ export function ProfileSection() {
             <AvatarFallback className="text-4xl font-headline">VG</AvatarFallback>
           </Avatar>
           <div className="text-center sm:text-left flex-1">
-            <h2 className="text-lg font-medium text-accent font-headline tracking-wider">Hello, I'm Vicente Gabriel Gómez Medina</h2>
+            <h2 className="text-lg font-medium text-accent font-headline tracking-wider">{t.hello}</h2>
             <h1 id="profile-heading" className="text-4xl sm:text-5xl lg:text-6xl font-bold font-headline text-primary leading-tight mt-2">
-              .NET Backend Developer
+              {t.jobTitle}
             </h1>
             <p className="mt-6 max-w-2xl text-foreground/80 leading-relaxed">
-              Backend developer specialized in .NET, C#, and SQL, focused on building clean, scalable, and maintainable APIs. I’m interested in software architecture, automation, and the best practices that drive robust and efficient projects.
+              {t.profileDescription1}
             </p>
             <p className="mt-4 max-w-2xl text-foreground/80 leading-relaxed">
-              Beyond my passion for technology, I am an avid learner, always exploring new technologies with a special focus on the evolution of AI. In my free time, I enjoy reading, traveling, and sports, activities that help me bring a fresh and creative perspective to my work.
+              {t.profileDescription2}
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2 justify-center sm:justify-start">
@@ -53,7 +60,7 @@ export function ProfileSection() {
               <Button size="lg" asChild>
                  <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
                    <Download className="mr-2 h-5 w-5" />
-                   Download CV
+                   {t.downloadCV}
                  </a>
               </Button>
                <div className="flex items-center space-x-2">

@@ -1,8 +1,11 @@
 'use client';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/language-context';
 
 export function Footer() {
+  const { t } = useLanguage();
+  
   const socialLinks = [
     { name: 'GitHub', icon: Github, url: 'https://github.com/vicentegm2', ariaLabel: "Visit my GitHub" },
     { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina', ariaLabel: "Visit my LinkedIn" },
@@ -14,7 +17,7 @@ export function Footer() {
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col items-center justify-between sm:flex-row">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Vicente Gabriel Gómez Medina. All rights reserved.
+            © {new Date().getFullYear()} Vicente Gabriel Gómez Medina. {t.allRightsReserved}
           </p>
           <div className="flex items-center space-x-2 mt-4 sm:mt-0">
             {socialLinks.map((link) => (

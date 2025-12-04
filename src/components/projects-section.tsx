@@ -3,13 +3,16 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/contexts/language-context";
 
 export function ProjectsSection() {
+  const { t } = useLanguage();
+  
   const projectsData = [
     {
-      title: "Angular Micro-Portfolio",
-      description: "Angular Micro-Portfolio is a personal project built with Angular 22 focused on learning and applying best practices. Key Features: Responsive design, Dark Mode, and dynamic content loaded via JSON.",
-      tags: ["Angular", "TypeScript", "MySQL", "JSON", "CI/CD", "GitHub Actions"],
+      title: t.projectsData.angularPortfolio.title,
+      description: t.projectsData.angularPortfolio.description,
+      tags: t.projectsData.angularPortfolio.tags,
       imageUrl: null,
       imageHint: "angular portfolio screenshot",
       liveUrl: "https://vicentegm2.github.io/angular-micro-portfolio/",
@@ -22,7 +25,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" aria-labelledby="projects-heading">
       <h2 id="projects-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
-        Featured Projects
+        {t.projectsTitle}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projectsData.map((project) => (
@@ -51,13 +54,13 @@ export function ProjectsSection() {
                 <Button variant="ghost" size="sm" asChild>
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`View code for ${project.title}`}>
                         <Github className="mr-2" />
-                        Code
+                        {t.projectsData.angularPortfolio.codeButton}
                     </a>
                 </Button>
                 <Button variant="outline" size="sm" asChild>
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`View live demo for ${project.title}`}>
                         <ExternalLink className="mr-2" />
-                        Demo
+                        {t.projectsData.angularPortfolio.demoButton}
                     </a>
                 </Button>
             </CardFooter>
