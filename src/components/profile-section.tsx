@@ -3,12 +3,9 @@ import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Download, Github, Linkedin, Mail } from "lucide-react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Badge } from "./ui/badge";
 
 export function ProfileSection() {
-  const profileImage = PlaceHolderImages.find(p => p.id === 'profile-picture');
-  
   const socialLinks = [
     { name: 'GitHub', icon: Github, url: 'https://github.com/vicentegm2', ariaLabel: "Visit my GitHub" },
     { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina', ariaLabel: "Visit my LinkedIn" },
@@ -22,19 +19,16 @@ export function ProfileSection() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col sm:flex-row items-center gap-10">
           <Avatar className="h-36 w-36 sm:h-48 sm:w-48 border-4 border-primary/20 shadow-lg">
-            {profileImage && (
-              <AvatarImage asChild src={profileImage.imageUrl}>
-                  <Image
-                      src={profileImage.imageUrl}
-                      alt="Vicente Gabriel Gómez Medina"
-                      width={192}
-                      height={192}
-                      data-ai-hint={profileImage.imageHint}
-                      className="object-cover"
-                      priority
-                  />
-              </AvatarImage>
-            )}
+            <AvatarImage asChild src="/images/profile.jpg">
+                <Image
+                    src="/images/profile.jpg"
+                    alt="Vicente Gabriel Gómez Medina"
+                    width={192}
+                    height={192}
+                    className="object-cover"
+                    priority
+                />
+            </AvatarImage>
             <AvatarFallback className="text-4xl font-headline">VG</AvatarFallback>
           </Avatar>
           <div className="text-center sm:text-left flex-1">
@@ -57,7 +51,7 @@ export function ProfileSection() {
 
             <div className="mt-8 flex flex-wrap gap-4 justify-center sm:justify-start">
               <Button size="lg" asChild>
-                 <a href="/VicenteGomez-CV.pdf" download="VicenteGomez-CV.pdf">
+                 <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
                    <Download className="mr-2 h-5 w-5" />
                    Download CV
                  </a>

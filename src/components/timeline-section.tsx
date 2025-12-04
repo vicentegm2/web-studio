@@ -69,12 +69,12 @@ export function TimelineSection() {
       description: "Voluntario en Protección Civil de Las Torres de Cotillas.",
       images: [
         {
-          src: "https://picsum.photos/seed/vol1/600/400",
+          src: "/images/voluntariado-1.jpg",
           alt: "Grupo de voluntarios de Protección Civil",
           hint: "civil protection group"
         },
         {
-          src: "https://picsum.photos/seed/vol2/600/400",
+          src: "/images/voluntariado-2.jpg",
           alt: "Voluntario de Protección Civil en un evento",
           hint: "civil protection volunteer"
         }
@@ -90,7 +90,7 @@ export function TimelineSection() {
         url: null,
         images: [
           {
-            src: "https://picsum.photos/seed/nerd1/600/400",
+            src: "/images/nerdearla.png",
             alt: "Acreditación de Nerdearla en forma de disquete",
             hint: "conference badge"
           }

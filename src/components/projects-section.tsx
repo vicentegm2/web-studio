@@ -10,12 +10,14 @@ export function ProjectsSection() {
       title: "Angular Micro-Portfolio",
       description: "Angular Micro-Portfolio is a personal project built with Angular 22 focused on learning and applying best practices. Key Features: Responsive design, Dark Mode, and dynamic content loaded via JSON.",
       tags: ["Angular", "TypeScript", "MySQL", "JSON", "CI/CD", "GitHub Actions"],
-      imageUrl: "https://storage.googleapis.com/aifirebase/project-1-1718224535319/angular-micro-portfolio.png",
+      imageUrl: null,
       imageHint: "angular portfolio screenshot",
       liveUrl: "https://vicentegm2.github.io/angular-micro-portfolio/",
       githubUrl: "https://github.com/vicentegm2/angular-micro-portfolio",
     },
   ];
+
+  const defaultImage = "/images/icon_default.png";
 
   return (
     <section id="projects" aria-labelledby="projects-heading">
@@ -25,9 +27,9 @@ export function ProjectsSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projectsData.map((project) => (
           <Card key={project.title} className="flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-xl dark:hover:shadow-primary/20">
-            <div className="relative h-48 w-full">
+            <div className="relative h-48 w-full bg-muted">
               <Image
-                src={project.imageUrl}
+                src={project.imageUrl || defaultImage}
                 alt={project.title}
                 fill
                 className="object-cover"
