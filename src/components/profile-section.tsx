@@ -57,7 +57,7 @@ export function ProfileSection() {
 
             <div className="mt-8 flex flex-wrap gap-4 justify-center sm:justify-start">
               <Button size="lg" asChild>
-                 <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
+                 <a href="/VicenteGomez-CV.pdf" download="VicenteGomez-CV.pdf">
                    <Download className="mr-2 h-5 w-5" />
                    Download CV
                  </a>

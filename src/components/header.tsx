@@ -36,7 +36,7 @@ export function Header() {
         <div className="flex flex-1 items-center justify-end gap-2">
            <div className="hidden md:flex gap-2">
             <Button asChild>
-              <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
+              <a href="/VicenteGomez-CV.pdf" download="VicenteGomez-CV.pdf">
                 <Download className="mr-2 h-4 w-4" />
                 Download CV
               </a>
@@ -68,7 +68,7 @@ export function Header() {
               </nav>
               <div className="mt-8 flex flex-col gap-4">
                  <Button asChild>
-                    <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
+                    <a href="/VicenteGomez-CV.pdf" download="VicenteGomez-CV.pdf">
                       <Download className="mr-2 h-4 w-4" />
                       Download CV
                     </a>
