@@ -5,20 +5,30 @@ import { Button } from "@/components/ui/button";
 import { Download, Github, Linkedin } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "@/contexts/language-context";
-
+ 
 export function ProfileSection() {
   const { t } = useLanguage();
-  
+
   const socialLinks = [
-    { name: 'GitHub', icon: Github, url: 'https://github.com/vicentegm2', ariaLabel: "Visit my GitHub" },
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina', ariaLabel: "Visit my LinkedIn" },
+    {
+      name: 'GitHub',
+      url: 'https://github.com/vicentegm2',
+      icon: Github,
+      ariaLabel: 'Open GitHub profile of Vicente Gabriel Gómez Medina'
+    },
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina',
+      icon: Linkedin,
+      ariaLabel: 'Open LinkedIn profile of Vicente Gabriel Gómez Medina'
+    },
   ];
 
   const softSkills = [
     t.softSkills.teamwork,
     t.softSkills.publicspeaking,
     t.softSkills.communication,
-    t.softSkills.continuousLearning
+    t.softSkills.continuousLearning,
   ];
 
   return (
