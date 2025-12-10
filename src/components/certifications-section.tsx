@@ -1,9 +1,10 @@
 'use client';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Award, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { Award, ExternalLink } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "@/contexts/language-context";
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -22,7 +23,8 @@ export function CertificationsSection() {
       date: "Sep 2025",
       credentialId: "T4383QKK7UTL",
       skills: ["Revisión de código", "Control de versiones", "Git", "GitHub"],
-      url: "#"
+      url: "https://www.coursera.org/account/accomplishments/verify/T4383QKK7UTL",
+      imageUrl: null
     },
     {
       title: "Introducción a GitHub Copilot",
@@ -30,15 +32,17 @@ export function CertificationsSection() {
       date: "Sep 2025",
       credentialId: "U4Y0N4C3F9BZ",
       skills: ["GitHub Copilot", "GitHub"],
-      url: "#"
+      url: "https://www.coursera.org/account/accomplishments/verify/U4Y0N4C3F9BZ",
+      imageUrl: null
     },
     {
       title: "SQL para ciencia de los datos",
       issuer: "University of California, Davis",
       date: "Jul 2025",
-      credentialId: "ENLQ6J4KF3DIC",
+      credentialId: "ENLQ6J4KF3DI",
       skills: ["Ciencia de datos", "SQL", "Diseño de bases de datos"],
-      url: "#"
+      url: "https://www.coursera.org/account/accomplishments/verify/ENLQ6J4KF3DI",
+      imageUrl: null
     },
     {
       title: "Fundamentos profesionales en ciberseguridad",
@@ -46,7 +50,8 @@ export function CertificationsSection() {
       date: "Nov 2024",
       credentialId: null,
       skills: ["Gestión de amenazas y vulnerabilidades", "Seguridad de la información"],
-      url: "#"
+      url: "https://www.linkedin.com/learning/certificates/d5a2676d072342cc169dd16f31f43fdaacd7f90a5caa58d33a85a3ec2b5d1c0c",
+      imageUrl: null
     },
     {
       title: "Ve a lo seguro: Gestiona los riesgos de seguridad",
@@ -54,7 +59,8 @@ export function CertificationsSection() {
       date: "Nov 2024",
       credentialId: "QB6BRQKQTIR1",
       skills: ["Gestión de riesgos de TI"],
-      url: "#"
+      url: "https://www.coursera.org/account/accomplishments/verify/QB6BRQKQTIR1",
+      imageUrl: null
     },
     {
       title: "Fundamentos de la ciberseguridad",
@@ -62,7 +68,26 @@ export function CertificationsSection() {
       date: "Oct 2024",
       credentialId: "7IR0C6VBMCLD",
       skills: ["Gestión de riesgos de TI"],
-      url: "#"
+      url: "https://www.coursera.org/account/accomplishments/verify/7IR0C6VBMCLD",
+      imageUrl: null
+    },
+    {
+      title: "VI Curso de Experto en Seguridad y Defensa",
+      issuer: "Universidad Nacional de Educación a Distancia (UNED)",
+      date: "Oct 2024 - Feb 2025",
+      credentialId: null,
+      skills: ["Cultura de defensa", "Geopolítica", "Relaciones internacionales", "Amenazas híbridas"],
+      url: null,
+      imageUrl: null
+    },
+    {
+      title: "Seminario de Relaciones Internacionales y Asuntos Exteriores",
+      issuer: "UCAM Universidad Católica San Antonio de Murcia",
+      date: "Oct 2023",
+      credentialId: null,
+      skills: ["Geopolítica", "Ciberseguridad", "Inteligencia artificial"],
+      url: null,
+      imageUrl: "/images/curso_UCAM.jpeg"
     },
     {
       title: "Desarrollo con IA",
@@ -70,7 +95,8 @@ export function CertificationsSection() {
       date: null,
       credentialId: null,
       skills: ["Inteligencia artificial", "Desarrollo de software", "Prompts de IA"],
-      url: "#"
+      url: "https://drive.google.com/file/d/1kSK1c0PgE6K891fho10SGqCOIWzVO4EA/view",
+      imageUrl: "/images/BigSchool.png"
     },
   ];
 
@@ -96,6 +122,17 @@ export function CertificationsSection() {
           {certifications.map((cert) => (
             <CarouselItem key={cert.title} className="pl-4 md:basis-1/2 lg:basis-1/3">
               <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/20 hover:scale-[1.02]">
+                {cert.imageUrl && (
+                  <div className="relative h-48 w-full overflow-hidden">
+                    <Image
+                      src={cert.imageUrl}
+                      alt={cert.title}
+                      fill
+                      className="object-cover"
+                      draggable="false"
+                    />
+                  </div>
+                )}
                 <CardHeader className="flex flex-row items-start gap-4">
                   <div className="bg-primary/10 p-3 rounded-full mt-1 flex-shrink-0">
                     <Award className="w-6 h-6 text-primary" />
@@ -118,12 +155,14 @@ export function CertificationsSection() {
                   <span className="text-xs text-muted-foreground truncate flex-1 mr-2">
                     {cert.credentialId ? `${t.credentialId}: ${cert.credentialId}` : t.noId}
                   </span>
-                  <Button variant="ghost" size="sm" asChild className="flex-shrink-0">
-                    <a href={cert.url} target="_blank" rel="noopener noreferrer" aria-label={`Show credential for ${cert.title}`}>
-                      {t.showCredential}
-                      <ExternalLink className="ml-2 h-4 w-4" />
-                    </a>
-                  </Button>
+                  {cert.url && (
+                    <Button variant="ghost" size="sm" asChild className="flex-shrink-0">
+                      <a href={cert.url} target="_blank" rel="noopener noreferrer" aria-label={`Show credential for ${cert.title}`}>
+                        {t.showCredential}
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  )}
                 </CardFooter>
               </Card>
             </CarouselItem>

@@ -10,13 +10,26 @@ export function ProjectsSection() {
   
   const projectsData = [
     {
-      title: t.projectsData.angularPortfolio.title,
-      description: t.projectsData.angularPortfolio.description,
-      tags: t.projectsData.angularPortfolio.tags,
+      title: t.projectsData.personalCRM.title,
+      description: t.projectsData.personalCRM.description,
+      tags: t.projectsData.personalCRM.tags,
       imageUrl: null,
-      imageHint: "angular portfolio screenshot",
-      liveUrl: "https://vicentegm2.github.io/angular-micro-portfolio/",
-      githubUrl: "https://github.com/vicentegm2/angular-micro-portfolio",
+      imageHint: "CRM dashboard screenshot",
+      liveUrl: "#",
+      githubUrl: "#",
+      codeButton: t.projectsData.personalCRM.codeButton,
+      demoButton: t.projectsData.personalCRM.demoButton,
+    },
+    {
+      title: t.projectsData.cleanArchitectureAPI.title,
+      description: t.projectsData.cleanArchitectureAPI.description,
+      tags: t.projectsData.cleanArchitectureAPI.tags,
+      imageUrl: null,
+      imageHint: "Clean Architecture API diagram",
+      liveUrl: "#",
+      githubUrl: "#",
+      codeButton: t.projectsData.cleanArchitectureAPI.codeButton,
+      demoButton: t.projectsData.cleanArchitectureAPI.demoButton,
     },
   ];
 
@@ -54,13 +67,13 @@ export function ProjectsSection() {
                 <Button variant="ghost" size="sm" asChild>
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`View code for ${project.title}`}>
                         <Github className="mr-2" />
-                        {t.projectsData.angularPortfolio.codeButton}
+                        {project.codeButton}
                     </a>
                 </Button>
                 <Button variant="outline" size="sm" asChild>
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`View live demo for ${project.title}`}>
                         <ExternalLink className="mr-2" />
-                        {t.projectsData.angularPortfolio.demoButton}
+                        {project.demoButton}
                     </a>
                 </Button>
             </CardFooter>

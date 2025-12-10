@@ -66,3 +66,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Protección de imágenes - Deshabilitar descarga y selección */
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* Permitir interacción en elementos que contienen imágenes */
+a, button, [role="button"] {
+  pointer-events: auto;
+}
+
+img::selection {
+  background: transparent;
+}

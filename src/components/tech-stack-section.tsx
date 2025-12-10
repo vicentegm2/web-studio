@@ -1,6 +1,6 @@
 'use client';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { IconCSharp, IconDotNet, IconReact, IconGit } from "@/components/icons/tech-icons";
+import { IconCSharp, IconDotNet, IconReact, IconGit, IconDocker } from "@/components/icons/tech-icons";
 import { Database, Share2 } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
@@ -19,14 +19,14 @@ export function TechStackSection() {
       description: t.techStack.dotnet.description,
     },
     {
+      name: t.techStack.react.name,
+      icon: IconReact,
+      description: t.techStack.react.description,
+    },
+    {
       name: t.techStack.sqlserver.name,
       icon: Database,
       description: t.techStack.sqlserver.description,
-    },
-    {
-      name: t.techStack.microservices.name,
-      icon: Share2,
-      description: t.techStack.microservices.description,
     },
     {
       name: t.techStack.git.name,
@@ -34,9 +34,14 @@ export function TechStackSection() {
       description: t.techStack.git.description,
     },
     {
-      name: t.techStack.react.name,
-      icon: IconReact,
-      description: t.techStack.react.description,
+      name: t.techStack.docker.name,
+      icon: IconDocker,
+      description: t.techStack.docker.description,
+    },
+    {
+      name: t.techStack.microservices.name,
+      icon: Share2,
+      description: t.techStack.microservices.description,
     },
   ];
 

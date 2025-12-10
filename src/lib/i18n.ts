@@ -9,13 +9,14 @@ export const translations = {
     experience: "Experience",
     projects: "Projects",
     certifications: "Certifications",
+    newsletters: "Newsletters",
     contact: "Contact",
     
     // Profile Section
     hello: "Hello, I'm Vicente Gabriel Gómez Medina",
     jobTitle: ".NET Backend Developer",
-    profileDescription1: "Backend developer specialized in .NET, C#, and SQL, focused on building clean, scalable, and maintainable APIs. I'm interested in software architecture, automation, and the best practices that drive robust and efficient projects.",
-    profileDescription2: "Beyond my passion for technology, I am an avid learner, always exploring new technologies with a special focus on the evolution of AI. In my free time, I enjoy reading, traveling, and sports, activities that help me bring a fresh and creative perspective to my work.",
+    profileDescription1: "Backend developer specialized in .NET, C#, and SQL Server, focused on building clean, scalable, and maintainable APIs. Passionate about software architecture, automation, and applying best practices that drive robust and efficient solutions.",
+    profileDescription2: "Beyond technology, I'm deeply interested in the intersection of AI, politics, and natural sciences. I enjoy analyzing complex systems, whether they're software architectures or geopolitical dynamics. In my free time, I write about these topics in my newsletters, travel to explore new perspectives, and stay active through sports.",
     softSkills: {
       teamwork: "Teamwork",
       publicspeaking: "Public Speaking",
@@ -35,21 +36,25 @@ export const translations = {
         name: ".NET",
         description: "Building robust and scalable backend services and APIs with the .NET ecosystem."
       },
+      react: {
+        name: "React",
+        description: "Building modern user interfaces with this JavaScript library for web applications."
+      },
       sqlserver: {
         name: "SQL Server",
         description: "Designing and managing relational databases, primarily with SQL Server."
-      },
-      microservices: {
-        name: "Microservices & APIs",
-        description: "Experience in microservices architecture and consuming RESTful APIs."
       },
       git: {
         name: "Git & GitHub",
         description: "Applying version control best practices for collaborative and efficient development."
       },
-      react: {
-        name: "React",
-        description: "Building modern user interfaces with this JavaScript library for web applications."
+      docker: {
+        name: "Docker",
+        description: "Containerizing applications for consistent deployment across environments."
+      },
+      microservices: {
+        name: "Microservices & APIs",
+        description: "Experience in microservices architecture and consuming RESTful APIs."
       }
     },
     
@@ -108,9 +113,13 @@ export const translations = {
     
     // Languages
     languages: {
+      spanish: {
+        language: "Spanish",
+        level: "Native"
+      },
       english: {
         language: "English",
-        level: "Currently studying to obtain B2"
+        level: "Professional working proficiency (B2 in progress)"
       }
     },
     
@@ -133,9 +142,9 @@ export const translations = {
         description: "I had the great privilege of attending the debut edition of Nerdearla in Spain, the largest Spanish-speaking IT event. Simply spectacular!"
       },
       securityCourse: {
-        name: "V Expert Course in Security and Defense",
+        name: "VI Expert Course in Security and Defense",
         organization: "Universidad Nacional de Educación a Distancia (UNED)",
-        date: "Oct 2024 - Dec 2024",
+        date: "Oct 2024 - Feb 2025",
         description: "Theoretical knowledge on defense culture, geopolitics and international relations, focusing on contemporary conflicts, hybrid threats and cyber threats."
       },
       internationalRelations: {
@@ -149,10 +158,17 @@ export const translations = {
     // Projects
     projectsTitle: "Featured Projects",
     projectsData: {
-      angularPortfolio: {
-        title: "Angular Micro-Portfolio",
-        description: "Angular Micro-Portfolio is a personal project built with Angular 22 focused on learning and applying best practices. Key Features: Responsive design, Dark Mode, and dynamic content loaded via JSON.",
-        tags: ["Angular", "TypeScript", "MySQL", "JSON", "CI/CD", "GitHub Actions"],
+      personalCRM: {
+        title: "Personal CRM System",
+        description: "A comprehensive Customer Relationship Management system built with Angular, .NET, and SQL Server. Features include contact management, activity tracking, automated workflows, and advanced reporting. Implements clean architecture and CQRS patterns.",
+        tags: ["Angular", ".NET", "SQL Server", "Clean Architecture", "CQRS", "GitHub Actions"],
+        codeButton: "Code",
+        demoButton: "Demo"
+      },
+      cleanArchitectureAPI: {
+        title: "Clean Architecture API",
+        description: "RESTful API built with .NET 8 following clean architecture principles and SOLID design patterns. Includes JWT authentication, comprehensive logging, unit testing, and Docker containerization. Currently in development.",
+        tags: [".NET 8", "Clean Architecture", "SOLID", "JWT", "Docker", "xUnit"],
         codeButton: "Code",
         demoButton: "Demo"
       }
@@ -165,6 +181,20 @@ export const translations = {
     issued: "Issued",
     credentialId: "ID",
     noId: "No ID",
+    
+    // Newsletters
+    newslettersTitle: "Newsletters",
+    newslettersSubtitle: "Thoughts and analysis on politics, technology, and natural sciences",
+    newslettersReadMore: "Read on LinkedIn",
+    newslettersBitacoraPoliticaTitle: "Bitácora Política",
+    newslettersBitacoraPoliticaDescription: "Analysis and reflections on politics, geopolitics, and international relations. Exploring contemporary conflicts, governance, and the future of democracy.",
+    newslettersBitacoraPoliticaTags: ["Politics", "Geopolitics", "International Relations"] as const,
+    newslettersBitacoraDigitalTitle: "Bitácora Digital",
+    newslettersBitacoraDigitalDescription: "Exploring technology, artificial intelligence, software development, and digital transformation. From coding practices to the impact of AI on society.",
+    newslettersBitacoraDigitalTags: ["Technology", "AI", "Software Development"] as const,
+    newslettersBitacoraNaturalTitle: "Bitácora Natural",
+    newslettersBitacoraNaturalDescription: "Thoughts on natural sciences, climate, environment, and the relationship between technology and nature. Understanding our planet through a scientific lens.",
+    newslettersBitacoraNaturalTags: ["Science", "Environment", "Nature"] as const,
     
     // Contact
     contactTitle: "Contact",
@@ -187,6 +217,8 @@ export const translations = {
     madeWith: "Made with",
     by: "by",
     allRightsReserved: "All rights reserved.",
+    lastUpdate: "Last update",
+    currentUpdate: "December 2025",
     
     // Settings
     settings: "Settings",
@@ -206,13 +238,14 @@ export const translations = {
     experience: "Experiencia",
     projects: "Proyectos",
     certifications: "Certificaciones",
+    newsletters: "Newsletters",
     contact: "Contacto",
     
     // Profile Section
     hello: "Hola, soy Vicente Gabriel Gómez Medina",
     jobTitle: "Desarrollador Backend .NET",
-    profileDescription1: "Desarrollador backend especializado en .NET, C# y SQL, enfocado en construir APIs limpias, escalables y mantenibles. Me interesa la arquitectura de software, la automatización y las mejores prácticas que impulsan proyectos robustos y eficientes.",
-    profileDescription2: "Más allá de mi pasión por la tecnología, soy un aprendiz ávido, siempre explorando nuevas tecnologías con un enfoque especial en la evolución de la IA. En mi tiempo libre, disfruto de la lectura, los viajes y el deporte, actividades que me ayudan a aportar una perspectiva fresca y creativa a mi trabajo.",
+    profileDescription1: "Desarrollador backend especializado en .NET, C# y SQL Server, enfocado en construir APIs limpias, escalables y mantenibles. Apasionado por la arquitectura de software, la automatización y la aplicación de mejores prácticas que impulsan soluciones robustas y eficientes.",
+    profileDescription2: "Más allá de la tecnología, me interesa profundamente la intersección entre IA, política y ciencias naturales. Disfruto analizando sistemas complejos, ya sean arquitecturas de software o dinámicas geopolíticas. En mi tiempo libre, escribo sobre estos temas en mis newsletters, viajo para explorar nuevas perspectivas y me mantengo activo mediante el deporte.",
     softSkills: {
       teamwork: "Trabajo en equipo",
       publicspeaking: "Oratoria",
@@ -232,21 +265,25 @@ export const translations = {
         name: ".NET",
         description: "Construcción de servicios backend y APIs robustas y escalables con el ecosistema .NET."
       },
+      react: {
+        name: "React",
+        description: "Construcción de interfaces de usuario modernas con esta biblioteca JavaScript para aplicaciones web."
+      },
       sqlserver: {
         name: "SQL Server",
         description: "Diseño y gestión de bases de datos relacionales, principalmente con SQL Server."
-      },
-      microservices: {
-        name: "Microservicios y APIs",
-        description: "Experiencia en arquitectura de microservicios y consumo de APIs RESTful."
       },
       git: {
         name: "Git & GitHub",
         description: "Aplicación de mejores prácticas de control de versiones para un desarrollo colaborativo y eficiente."
       },
-      react: {
-        name: "React",
-        description: "Construcción de interfaces de usuario modernas con esta biblioteca JavaScript para aplicaciones web."
+      docker: {
+        name: "Docker",
+        description: "Contenerización de aplicaciones para despliegue consistente en diferentes entornos."
+      },
+      microservices: {
+        name: "Microservicios y APIs",
+        description: "Experiencia en arquitectura de microservicios y consumo de APIs RESTful."
       }
     },
     
@@ -305,9 +342,13 @@ export const translations = {
     
     // Languages
     languages: {
+      spanish: {
+        language: "Español",
+        level: "Nativo"
+      },
       english: {
         language: "Inglés",
-        level: "Actualmente cursando para obtener el B2"
+        level: "Competencia profesional (B2 en progreso)"
       }
     },
     
@@ -330,9 +371,9 @@ export const translations = {
         description: "Tuve el gran privilegio de asistir a la edición debut de Nerdearla en España, el encuentro de informática más grande de habla hispana. ¡Simplemente espectacular!"
       },
       securityCourse: {
-        name: "V Curso de Experto en Seguridad y Defensa",
+        name: "VI Curso de Experto en Seguridad y Defensa",
         organization: "Universidad Nacional de Educación a Distancia (UNED)",
-        date: "Oct 2024 - Dic 2024",
+        date: "Oct 2024 - Feb 2025",
         description: "Conocimientos teóricos sobre cultura de defensa, geopolítica y relaciones internacionales, enfocándose en conflictos contemporáneos, amenazas híbridas y ciberamenazas."
       },
       internationalRelations: {
@@ -346,10 +387,17 @@ export const translations = {
     // Projects
     projectsTitle: "Proyectos Destacados",
     projectsData: {
-      angularPortfolio: {
-        title: "Angular Micro-Portfolio",
-        description: "Angular Micro-Portfolio es un proyecto personal construido con Angular 22 enfocado en aprender y aplicar mejores prácticas. Características clave: Diseño responsivo, Modo Oscuro y contenido dinámico cargado vía JSON.",
-        tags: ["Angular", "TypeScript", "MySQL", "JSON", "CI/CD", "GitHub Actions"],
+      personalCRM: {
+        title: "Sistema CRM Personal",
+        description: "Sistema integral de gestión de relaciones con clientes construido con Angular, .NET y SQL Server. Incluye gestión de contactos, seguimiento de actividades, flujos de trabajo automatizados y reportes avanzados. Implementa arquitectura limpia y patrones CQRS.",
+        tags: ["Angular", ".NET", "SQL Server", "Arquitectura Limpia", "CQRS", "GitHub Actions"],
+        codeButton: "Código",
+        demoButton: "Demo"
+      },
+      cleanArchitectureAPI: {
+        title: "API con Arquitectura Limpia",
+        description: "API RESTful construida con .NET 8 siguiendo principios de arquitectura limpia y patrones de diseño SOLID. Incluye autenticación JWT, logging completo, pruebas unitarias y contenerización Docker. Actualmente en desarrollo.",
+        tags: [".NET 8", "Arquitectura Limpia", "SOLID", "JWT", "Docker", "xUnit"],
         codeButton: "Código",
         demoButton: "Demo"
       }
@@ -362,6 +410,20 @@ export const translations = {
     issued: "Emitido",
     credentialId: "ID",
     noId: "Sin ID",
+    
+    // Newsletters
+    newslettersTitle: "Newsletters",
+    newslettersSubtitle: "Reflexiones y análisis sobre política, tecnología y ciencias naturales",
+    newslettersReadMore: "Leer en LinkedIn",
+    newslettersBitacoraPoliticaTitle: "Bitácora Política",
+    newslettersBitacoraPoliticaDescription: "Análisis y reflexiones sobre política, geopolítica y relaciones internacionales. Explorando conflictos contemporáneos, gobernanza y el futuro de la democracia.",
+    newslettersBitacoraPoliticaTags: ["Política", "Geopolítica", "Relaciones Internacionales"] as const,
+    newslettersBitacoraDigitalTitle: "Bitácora Digital",
+    newslettersBitacoraDigitalDescription: "Explorando tecnología, inteligencia artificial, desarrollo de software y transformación digital. Desde prácticas de programación hasta el impacto de la IA en la sociedad.",
+    newslettersBitacoraDigitalTags: ["Tecnología", "IA", "Desarrollo de Software"] as const,
+    newslettersBitacoraNaturalTitle: "Bitácora Natural",
+    newslettersBitacoraNaturalDescription: "Reflexiones sobre ciencias naturales, clima, medio ambiente y la relación entre tecnología y naturaleza. Entendiendo nuestro planeta a través de la ciencia.",
+    newslettersBitacoraNaturalTags: ["Ciencia", "Medio Ambiente", "Naturaleza"] as const,
     
     // Contact
     contactTitle: "Contacto",
@@ -384,6 +446,8 @@ export const translations = {
     madeWith: "Hecho con",
     by: "por",
     allRightsReserved: "Todos los derechos reservados.",
+    lastUpdate: "Última actualización",
+    currentUpdate: "Diciembre 2025",
     
     // Settings
     settings: "Ajustes",

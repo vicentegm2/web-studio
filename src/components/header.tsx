@@ -20,6 +20,7 @@ export function Header() {
     { name: t.experience, href: '#experience' },
     { name: t.projects, href: '#projects' },
     { name: t.certifications, href: '#certifications' },
+    { name: t.newsletters, href: '#newsletters' },
     { name: t.contact, href: '#contact' },
   ];
 
@@ -43,7 +44,10 @@ export function Header() {
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-2 shrink-0">
             <Button size="sm" asChild>
-              <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
+              <a 
+                href={t.language === 'es' ? '/Currículum Vitae CV - Vicente Gabriel Gómez Medina.pdf' : '/Currículum Vitae CV - Vicente Gabriel Gómez Medina_english.pdf'} 
+                download={t.language === 'es' ? 'VicenteGomez-CV-ES.pdf' : 'VicenteGomez-CV-EN.pdf'}
+              >
                 <Download className="mr-2 h-4 w-4" />
                 {t.downloadCV}
               </a>
@@ -76,7 +80,10 @@ export function Header() {
                 </nav>
                 <div className="mt-8 flex flex-col gap-4">
                    <Button asChild>
-                      <a href="/cv.pdf" download="VicenteGomez-CV.pdf">
+                      <a 
+                        href={t.language === 'es' ? '/Currículum Vitae CV - Vicente Gabriel Gómez Medina.pdf' : '/Currículum Vitae CV - Vicente Gabriel Gómez Medina_english.pdf'} 
+                        download={t.language === 'es' ? 'VicenteGomez-CV-ES.pdf' : 'VicenteGomez-CV-EN.pdf'}
+                      >
                         <Download className="mr-2 h-4 w-4" />
                         {t.downloadCV}
                       </a>

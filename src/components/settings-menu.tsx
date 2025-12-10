@@ -63,14 +63,14 @@ export function SettingsMenu() {
             <RadioGroup value={language} onValueChange={(value) => setLanguage(value as 'en' | 'es')}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="en" id="en" />
-                <Label htmlFor="en" className="font-normal cursor-pointer">
-                  English
+                <Label htmlFor="en" className="font-normal cursor-pointer flex items-center gap-2">
+                  <span className="text-lg">🇬🇧</span> English
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="es" id="es" />
-                <Label htmlFor="es" className="font-normal cursor-pointer">
-                  Español
+                <Label htmlFor="es" className="font-normal cursor-pointer flex items-center gap-2">
+                  <span className="text-lg">🇪🇸</span> Español
                 </Label>
               </div>
             </RadioGroup>
