@@ -42,9 +42,9 @@ export function ProfileSection() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col sm:flex-row items-center gap-10">
           <Avatar className="h-36 w-36 sm:h-48 sm:w-48 border-4 border-primary/20 shadow-lg animate-scale-in">
-            <AvatarImage asChild src="/images/profile.jpg">
-                <Image
-                    src="/images/profile.jpg"
+            <AvatarImage asChild src="/images/ed083ba154de.webp">
+              <Image
+                    src="/images/ed083ba154de.webp"
                     alt="Vicente Gabriel Gómez Medina"
                     width={192}
                     height={192}

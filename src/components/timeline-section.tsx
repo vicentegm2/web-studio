@@ -64,12 +64,12 @@ export function TimelineSection() {
       description: t.volunteering.civilProtection.description,
       images: [
         {
-          src: "/images/voluntariado-1.jpg",
+          src: "/images/4fb5fceb2854.webp",
           alt: "Grupo de voluntarios de Protección Civil",
           hint: "civil protection group"
         },
         {
-          src: "/images/voluntariado-2.jpg",
+          src: "/images/4828deb5d4f6.webp",
           alt: "Voluntario de Protección Civil en un evento",
           hint: "civil protection volunteer"
         }
@@ -85,7 +85,7 @@ export function TimelineSection() {
         url: null,
         images: [
           {
-            src: "/images/nerdearla.png",
+            src: "/images/44b4549185a9.webp",
             alt: "Acreditación de Nerdearla en forma de disquete",
             hint: "conference badge"
           }

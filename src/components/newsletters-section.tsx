@@ -16,7 +16,7 @@ export function NewslettersSection() {
       icon: Globe,
       tags: t.newslettersBitacoraPoliticaTags,
       url: "https://www.linkedin.com/newsletters/bit%C3%A1cora-pol%C3%ADtica-7327356071713370112/",
-      imageUrl: "/images/newsletter_politica.png",
+      imageUrl: "/images/eb7ea69ae8c7.webp",
       color: "text-blue-500"
     },
     {
@@ -25,7 +25,7 @@ export function NewslettersSection() {
       icon: Zap,
       tags: t.newslettersBitacoraDigitalTags,
       url: "https://www.linkedin.com/newsletters/bit%C3%A1cora-digital-7386341987249176576/",
-      imageUrl: "/images/newsletter_digital.png",
+      imageUrl: "/images/fe93560fd251.webp",
       color: "text-purple-500"
     },
     {
@@ -34,7 +34,7 @@ export function NewslettersSection() {
       icon: BookOpen,
       tags: t.newslettersBitacoraNaturalTags,
       url: "https://www.linkedin.com/newsletters/bit%C3%A1cora-natural-7387151322833108993/",
-      imageUrl: "/images/newsletter_natural.png",
+      imageUrl: "/images/c8ccee04d910.webp",
       color: "text-green-500"
     }
   ];

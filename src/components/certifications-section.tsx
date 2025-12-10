@@ -87,7 +87,7 @@ export function CertificationsSection() {
       credentialId: null,
       skills: ["Geopolítica", "Ciberseguridad", "Inteligencia artificial"],
       url: null,
-      imageUrl: "/images/curso_UCAM.jpeg"
+      imageUrl: "/images/6f7e8393e5bd.webp"
     },
     {
       title: "Desarrollo con IA",
@@ -96,7 +96,7 @@ export function CertificationsSection() {
       credentialId: null,
       skills: ["Inteligencia artificial", "Desarrollo de software", "Prompts de IA"],
       url: "https://drive.google.com/file/d/1kSK1c0PgE6K891fho10SGqCOIWzVO4EA/view",
-      imageUrl: "/images/BigSchool.png"
+      imageUrl: "/images/bbb522d7992a.webp"
     },
   ];
 

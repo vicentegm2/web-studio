@@ -33,7 +33,7 @@ export function ProjectsSection() {
     },
   ];
 
-  const defaultImage = "/images/icon_default.png";
+  const defaultImage = "/images/7e6fa9b613f3.webp";
 
   return (
     <section id="projects" aria-labelledby="projects-heading">
