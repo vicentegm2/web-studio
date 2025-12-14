@@ -4,19 +4,19 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%; /* Light gray - #F0F4F8 */
+    --background: 210 40% 98%;
     --foreground: 224 33% 15%;
     --card: 210 29% 99%;
     --card-foreground: 224 33% 15%;
     --popover: 210 29% 99%;
     --popover-foreground: 224 33% 15%;
-    --primary: 223 52% 30%; /* Dark navy blue - #243A73 */
+    --primary: 223 52% 30%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 20% 90%;
     --secondary-foreground: 223 52% 30%;
     --muted: 210 20% 90%;
     --muted-foreground: 210 10% 45%;
-    --accent: 258 25% 45%; /* Muted purple - #635985 */
+    --accent: 258 25% 45%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -30,6 +30,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+  
   .dark {
     --background: 224 33% 10%;
     --foreground: 210 29% 97%;
@@ -62,12 +63,44 @@
   * {
     @apply border-border;
   }
+  
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Tipografía fluida y responsiva */
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  
+  h3 {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  
+  p {
+    line-height: 1.7;
+    font-size: clamp(1rem, 2vw, 1.125rem);
   }
 }
 
-/* Protección de imágenes - Deshabilitar descarga y selección */
+/* ===========================
+   PROTECCIÓN DE IMÁGENES
+   =========================== */
 img {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -81,11 +114,497 @@ img {
   user-drag: none;
 }
 
-/* Permitir interacción en elementos que contienen imágenes */
 a, button, [role="button"] {
   pointer-events: auto;
 }
 
 img::selection {
   background: transparent;
+}
+
+/* ===========================
+   ANIMACIONES MEJORADAS
+   =========================== */
+
+/* Animación de entrada suave */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Deslizamiento desde la derecha */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Escalado con rebote */
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Flotación suave */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Rotación suave */
+@keyframes rotate-gentle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Efecto de brillo deslizante */
+@keyframes shine {
+  from {
+    background-position: -200% center;
+  }
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Pulso suave */
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+/* Parpadeo de gradiente */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Ondulación */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Deslizamiento desde arriba */
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Clases de animación */
+.animate-fade-in {
+  animation: fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-slide-down {
+  animation: slide-down 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ===========================
+   EFECTOS GLASSMORPHISM
+   =========================== */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  @apply glass rounded-xl shadow-xl;
+}
+
+/* ===========================
+   GRADIENTES MODERNOS
+   =========================== */
+.gradient-primary {
+  background: linear-gradient(135deg, hsl(223 52% 30%) 0%, hsl(258 25% 45%) 100%);
+}
+
+.gradient-primary-soft {
+  background: linear-gradient(135deg, hsl(223 52% 40%) 0%, hsl(258 25% 55%) 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, hsl(258 25% 45%) 0%, hsl(280 30% 50%) 100%);
+}
+
+.gradient-mesh {
+  background: 
+    radial-gradient(at 0% 0%, hsl(223 52% 30%) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsl(258 25% 45%) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsl(223 52% 30%) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsl(258 25% 45%) 0px, transparent 50%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, hsl(223 52% 30%), hsl(258 25% 45%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===========================
+   UTILIDADES MEJORADAS
+   =========================== */
+@layer utilities {
+  /* Efectos Hover Mejorados */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20;
+  }
+  
+  .hover-lift-subtle {
+    @apply transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-xl hover:shadow-primary/30;
+  }
+  
+  .hover-glow-accent {
+    @apply transition-all duration-300 hover:shadow-xl hover:shadow-accent/30;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-300 ease-out hover:scale-105;
+  }
+  
+  .hover-scale-sm {
+    @apply transition-transform duration-200 ease-out hover:scale-102;
+  }
+  
+  .hover-brightness {
+    @apply transition-all duration-300 hover:brightness-110;
+  }
+  
+  .hover-blur-less {
+    @apply transition-all duration-300 hover:backdrop-blur-sm;
+  }
+  
+  /* Efectos de brillo */
+  .shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shine-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.7s ease;
+  }
+  
+  .shine-effect:hover::before {
+    left: 100%;
+  }
+  
+  /* Anillos de enfoque mejorados */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background;
+  }
+  
+  .focus-ring-accent {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-background;
+  }
+  
+  /* Transiciones suaves */
+  .smooth-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .smooth-transition-slow {
+    @apply transition-all duration-500 ease-in-out;
+  }
+  
+  /* Sombras personalizadas */
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .shadow-glow-lg {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .dark .shadow-glow {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  }
+  
+  .dark .shadow-glow-lg {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Bordes con gradiente */
+  .border-gradient {
+    border: 2px solid transparent;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+  
+  .border-gradient-primary {
+    background-image: 
+      linear-gradient(hsl(var(--background)), hsl(var(--background))),
+      linear-gradient(135deg, hsl(223 52% 30%), hsl(258 25% 45%));
+  }
+  
+  /* Backdrop blur mejorado */
+  .backdrop-blur-heavy {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  
+  /* Efectos de texto */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Scrollbar personalizado */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+}
+
+/* ===========================
+   COMPONENTES DE BOTONES
+   =========================== */
+.btn-primary {
+  @apply relative overflow-hidden bg-gradient-to-r from-primary to-accent text-primary-foreground px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 focus-ring;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.7s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-medium hover:bg-secondary/80 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-ring;
+}
+
+.btn-ghost {
+  @apply text-foreground px-6 py-3 rounded-lg font-medium hover:bg-muted transition-all duration-200 focus-ring;
+}
+
+/* ===========================
+   COMPONENTES DE TARJETAS
+   =========================== */
+.card-modern {
+  @apply bg-card rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-border/50;
+}
+
+.card-glass {
+  @apply glass-card p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1;
+}
+
+.card-gradient {
+  @apply relative overflow-hidden rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1;
+  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%);
+}
+
+/* ===========================
+   EFECTOS DE ENTRADA
+   =========================== */
+.stagger-item {
+  opacity: 0;
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation-delay: 0.5s; }
+.stagger-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* ===========================
+   ACCESIBILIDAD
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-fade-in,
+  .animate-slide-in-right,
+  .animate-scale-in,
+  .animate-float,
+  .animate-pulse-subtle,
+  .animate-gradient,
+  .animate-slide-down,
+  .stagger-item {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  
+  .hover-lift,
+  .hover-lift-subtle,
+  .hover-scale,
+  .hover-scale-sm {
+    transform: none !important;
+  }
+}
+
+/* ===========================
+   MODO OSCURO MEJORADO
+   =========================== */
+.dark {
+  color-scheme: dark;
+}
+
+.dark .gradient-mesh {
+  background: 
+    radial-gradient(at 0% 0%, hsl(223 52% 20%) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsl(258 25% 35%) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsl(223 52% 20%) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsl(258 25% 35%) 0px, transparent 50%);
+}
+
+/* ===========================
+   UTILIDADES DE LAYOUT
+   =========================== */
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section-padding {
+  @apply py-16 sm:py-20 lg:py-24;
+}
+
+/* Grid responsivo mejorado */
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.grid-auto-fill {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
 }

@@ -23,7 +23,7 @@ export default function Home() {
             name: 'Vicente Gabriel Gómez Medina',
             jobTitle: '.NET Backend Developer',
             url: 'https://vicentegm.dev',
-            image: 'https://vicentegm.dev/images/profile.jpg',
+            image: 'https://vicentegm.dev/images/ed083ba154de.webp',
             sameAs: [
               'https://github.com/vicentegm2',
               'https://www.linkedin.com/in/vicentegabrielgomezmedina',

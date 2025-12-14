@@ -52,6 +52,10 @@ export function TimelineSection() {
     ];
   const languagesData = [
     {
+      language: t.languages.spanish.language,
+      level: t.languages.spanish.level,
+    },
+    {
       language: t.languages.english.language,
       level: t.languages.english.level,
     }

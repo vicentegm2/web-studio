@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { LanguageProvider } from '@/contexts/language-context';
+import { ErrorBoundary } from '@/components/error-boundary';
 
 export const metadata: Metadata = {
   title: 'Vicente Gabriel Gómez Medina | .NET Backend Developer',
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     siteName: 'Vicente GM Portfolio',
     images: [
       {
-        url: '/images/profile.jpg',
+        url: '/images/ed083ba154de.webp',
         width: 1200,
         height: 630,
         alt: 'Vicente Gabriel Gómez Medina - .NET Backend Developer',
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Vicente GM | .NET Backend Developer',
     description: 'Backend developer specialized in .NET, C#, SQL Server, Angular. Building scalable software solutions.',
-    images: ['/images/profile.jpg'],
+    images: ['/images/ed083ba154de.webp'],
   },
   verification: {
     google: 'google-site-verification-code',
@@ -82,20 +83,35 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
-        <link rel="preload" href="/images/profile.jpg" as="image" />
+        <link rel="preload" href="/images/ed083ba154de.webp" as="image" />
+        
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1FRNENPSXP"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-1FRNENPSXP');
+            `,
+          }}
+        />
       </head>
       <body className="font-body antialiased bg-background text-foreground">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <LanguageProvider>
-            {children}
-            <Toaster />
-          </LanguageProvider>
-        </ThemeProvider>
+        <ErrorBoundary>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <LanguageProvider>
+              {children}
+              <Toaster />
+            </LanguageProvider>
+          </ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );

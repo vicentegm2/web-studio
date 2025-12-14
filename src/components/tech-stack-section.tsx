@@ -1,6 +1,6 @@
 'use client';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { IconCSharp, IconDotNet, IconReact, IconGit, IconDocker } from "@/components/icons/tech-icons";
+import { IconCSharp, IconDotNet, IconReact, IconGit } from "@/components/icons/tech-icons";
 import { Database, Share2 } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
@@ -34,11 +34,6 @@ export function TechStackSection() {
       description: t.techStack.git.description,
     },
     {
-      name: t.techStack.docker.name,
-      icon: IconDocker,
-      description: t.techStack.docker.description,
-    },
-    {
       name: t.techStack.microservices.name,
       icon: Share2,
       description: t.techStack.microservices.description,
@@ -51,9 +46,13 @@ export function TechStackSection() {
         {t.techStackTitle}
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {techStack.map((tech) => (
-          <Card key={tech.name} className="flex flex-col items-center text-center p-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg dark:hover:shadow-primary/20">
-            <tech.icon className="h-16 w-16 mb-4 text-accent" />
+        {techStack.map((tech, index) => (
+          <Card 
+            key={tech.name} 
+            className="flex flex-col items-center text-center p-6 hover-lift hover-glow smooth-transition animate-fade-in group"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <tech.icon className="h-16 w-16 mb-4 text-accent transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />
             <CardHeader className="p-0">
               <CardTitle className="font-headline text-lg">{tech.name}</CardTitle>
             </CardHeader>

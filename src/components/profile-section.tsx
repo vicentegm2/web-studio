@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Github, Linkedin, TrendingUp } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "@/contexts/language-context";
+import { trackSocialClick } from "@/lib/analytics";
  
 export function ProfileSection() {
   const { t } = useLanguage();
@@ -81,6 +82,7 @@ export function ProfileSection() {
                   size="icon"
                   asChild
                   aria-label={link.ariaLabel}
+                  onClick={() => trackSocialClick(link.name)}
                 >
                   <a href={link.url} target="_blank" rel="noopener noreferrer">
                     <link.icon className="w-5 h-5" />

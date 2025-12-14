@@ -12,6 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { trackCertificate } from "@/lib/analytics";
 
 export function CertificationsSection() {
   const { t } = useLanguage();
@@ -81,15 +82,6 @@ export function CertificationsSection() {
       imageUrl: null
     },
     {
-      title: "Seminario de Relaciones Internacionales y Asuntos Exteriores",
-      issuer: "UCAM Universidad Católica San Antonio de Murcia",
-      date: "Oct 2023",
-      credentialId: null,
-      skills: ["Geopolítica", "Ciberseguridad", "Inteligencia artificial"],
-      url: null,
-      imageUrl: "/images/6f7e8393e5bd.webp"
-    },
-    {
       title: "Desarrollo con IA",
       issuer: "BIG school",
       date: null,
@@ -119,23 +111,23 @@ export function CertificationsSection() {
         className="w-full"
       >
         <CarouselContent className="-ml-4">
-          {certifications.map((cert) => (
+          {certifications.map((cert, index) => (
             <CarouselItem key={cert.title} className="pl-4 md:basis-1/2 lg:basis-1/3">
-              <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/20 hover:scale-[1.02]">
+              <Card className="flex flex-col h-full overflow-hidden hover-lift hover-glow smooth-transition group animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 {cert.imageUrl && (
-                  <div className="relative h-48 w-full overflow-hidden">
+                  <div className="relative h-48 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5">
                     <Image
                       src={cert.imageUrl}
                       alt={cert.title}
                       fill
-                      className="object-cover"
+                      className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
                       draggable="false"
                     />
                   </div>
                 )}
                 <CardHeader className="flex flex-row items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full mt-1 flex-shrink-0">
-                    <Award className="w-6 h-6 text-primary" />
+                  <div className="bg-primary/10 p-3 rounded-full mt-1 flex-shrink-0 transition-colors duration-300 group-hover:bg-primary/20">
+                    <Award className="w-6 h-6 text-primary transition-transform duration-300 group-hover:rotate-12" />
                   </div>
                   <div className="flex-grow min-w-0">
                     <CardTitle className="font-headline text-lg line-clamp-2">{cert.title}</CardTitle>
@@ -147,7 +139,7 @@ export function CertificationsSection() {
                 <CardContent className="flex-grow">
                   <div className="flex flex-wrap gap-2">
                     {cert.skills.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="text-xs">{skill}</Badge>
+                      <Badge key={skill} variant="secondary" className="text-xs hover:scale-105 transition-transform duration-200">{skill}</Badge>
                     ))}
                   </div>
                 </CardContent>
@@ -156,7 +148,13 @@ export function CertificationsSection() {
                     {cert.credentialId ? `${t.credentialId}: ${cert.credentialId}` : t.noId}
                   </span>
                   {cert.url && (
-                    <Button variant="ghost" size="sm" asChild className="flex-shrink-0">
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      asChild 
+                      className="flex-shrink-0 hover-scale"
+                      onClick={() => trackCertificate('click', cert.title)}
+                    >
                       <a href={cert.url} target="_blank" rel="noopener noreferrer" aria-label={`Show credential for ${cert.title}`}>
                         {t.showCredential}
                         <ExternalLink className="ml-2 h-4 w-4" />
