@@ -4,6 +4,7 @@ import { ProfileSection } from '@/components/profile-section';
 import { ProjectsSection } from '@/components/projects-section';
 import { TechStackSection } from '@/components/tech-stack-section';
 import { TimelineSection } from '@/components/timeline-section';
+import { NewslettersSection } from '@/components/newsletters-section';
 import { Footer } from '@/components/footer';
 import { Separator } from '@/components/ui/separator';
 import { ContactSection } from '@/components/contact-section';
@@ -22,7 +23,7 @@ export default function Home() {
             name: 'Vicente Gabriel Gómez Medina',
             jobTitle: '.NET Backend Developer',
             url: 'https://vicentegm.dev',
-            image: 'https://vicentegm.dev/images/profile.jpg',
+            image: 'https://vicentegm.dev/images/ed083ba154de.webp',
             sameAs: [
               'https://github.com/vicentegm2',
               'https://www.linkedin.com/in/vicentegabrielgomezmedina',
@@ -42,6 +43,8 @@ export default function Home() {
             <ProjectsSection />
             <Separator />
             <CertificationsSection />
+            <Separator />
+            <NewslettersSection />
             <Separator />
             <ContactSection />
           </div>
