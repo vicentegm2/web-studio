@@ -135,14 +135,20 @@ export const translations = {
     
     // Events
     events: {
+        securityCourseVI: {
+        name: "VI Expert Course in Security and Defense",
+        organization: "Universidad Nacional de Educación a Distancia (UNED)",
+        date: "Oct 2025 - Feb 2026",
+        description: "Theoretical knowledge on defense culture, geopolitics and international relations, focusing on contemporary conflicts, hybrid threats and cyber threats."
+      },
       nerdearla: {
         name: "Nerdearla Spain",
         organization: "La Nave, Madrid",
-        date: "Apr 2024",
+        date: "13 - 15 Nov 2025",
         description: "I had the great privilege of attending the debut edition of Nerdearla in Spain, the largest Spanish-speaking IT event. Simply spectacular!"
       },
-      securityCourse: {
-        name: "VI Expert Course in Security and Defense",
+      securityCourseV: {
+        name: "V Expert Course in Security and Defense",
         organization: "Universidad Nacional de Educación a Distancia (UNED)",
         date: "Oct 2024 - Feb 2025",
         description: "Theoretical knowledge on defense culture, geopolitics and international relations, focusing on contemporary conflicts, hybrid threats and cyber threats."
@@ -364,14 +370,20 @@ export const translations = {
     
     // Events
     events: {
+      securityCourseVI: {
+        name: "VI Curso de Experto en Seguridad y Defensa",
+        organization: "Universidad Nacional de Educación a Distancia (UNED)",
+        date: "Oct 2025 - Feb 2026",
+        description: "Conocimientos teóricos sobre cultura de defensa, geopolítica y relaciones internacionales, enfocándose en conflictos contemporáneos, amenazas híbridas y ciberamenazas."
+      },
       nerdearla: {
         name: "Nerdearla España",
         organization: "La Nave, Madrid",
-        date: "Abr 2024",
+        date: "13 - 15 Nov 2025",
         description: "Tuve el gran privilegio de asistir a la edición debut de Nerdearla en España, el encuentro de informática más grande de habla hispana. ¡Simplemente espectacular!"
       },
-      securityCourse: {
-        name: "VI Curso de Experto en Seguridad y Defensa",
+      securityCourseV: {
+        name: "V Curso de Experto en Seguridad y Defensa",
         organization: "Universidad Nacional de Educación a Distancia (UNED)",
         date: "Oct 2024 - Feb 2025",
         description: "Conocimientos teóricos sobre cultura de defensa, geopolítica y relaciones internacionales, enfocándose en conflictos contemporáneos, amenazas híbridas y ciberamenazas."
