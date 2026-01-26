@@ -224,7 +224,7 @@ export const translations = {
     by: "by",
     allRightsReserved: "All rights reserved.",
     lastUpdate: "Last update",
-    currentUpdate: "December 2025",
+    currentUpdate: "January 2026",
     
     // Settings
     settings: "Settings",
@@ -459,7 +459,7 @@ export const translations = {
     by: "por",
     allRightsReserved: "Todos los derechos reservados.",
     lastUpdate: "Última actualización",
-    currentUpdate: "Diciembre 2025",
+    currentUpdate: "Enero 2026",
     
     // Settings
     settings: "Ajustes",

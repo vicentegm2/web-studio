@@ -1,4 +1,4 @@
-'use client';
+
 import { Header } from '@/components/header';
 import { ProfileSection } from '@/components/profile-section';
 import { ProjectsSection } from '@/components/projects-section';

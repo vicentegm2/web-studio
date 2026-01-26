@@ -3,10 +3,12 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { IconCSharp, IconDotNet, IconReact, IconGit } from "@/components/icons/tech-icons";
 import { Database, Share2 } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
+import { MotionWrapper } from "./ui/motion-wrapper";
+import { motion } from "framer-motion";
 
 export function TechStackSection() {
   const { t } = useLanguage();
-  
+
   const techStack = [
     {
       name: t.techStack.csharp.name,
@@ -42,24 +44,32 @@ export function TechStackSection() {
 
   return (
     <section id="tech-stack" aria-labelledby="tech-stack-heading">
-      <h2 id="tech-stack-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
-        {t.techStackTitle}
-      </h2>
+      <MotionWrapper animation="fade-up">
+        <h2 id="tech-stack-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
+          {t.techStackTitle}
+        </h2>
+      </MotionWrapper>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {techStack.map((tech, index) => (
-          <Card 
-            key={tech.name} 
-            className="flex flex-col items-center text-center p-6 hover-lift hover-glow smooth-transition animate-fade-in group"
-            style={{ animationDelay: `${index * 0.1}s` }}
-          >
-            <tech.icon className="h-16 w-16 mb-4 text-accent transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />
-            <CardHeader className="p-0">
-              <CardTitle className="font-headline text-lg">{tech.name}</CardTitle>
-            </CardHeader>
-            <CardContent className="p-0 mt-2">
-              <p className="text-sm text-muted-foreground">{tech.description}</p>
-            </CardContent>
-          </Card>
+          <MotionWrapper key={tech.name} animation="zoom-in" delay={index * 0.1}>
+            <motion.div
+              whileHover={{ y: -5, boxShadow: "0 10px 30px -10px rgba(0,0,0,0.1)" }}
+              className="h-full"
+            >
+              <Card
+                className="flex flex-col items-center text-center p-6 h-full hover:border-primary/50 transition-colors"
+              >
+                <tech.icon className="h-16 w-16 mb-4 text-primary" />
+                <CardHeader className="p-0">
+                  <CardTitle className="font-headline text-lg">{tech.name}</CardTitle>
+                </CardHeader>
+                <CardContent className="p-0 mt-2">
+                  <p className="text-sm text-muted-foreground">{tech.description}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </MotionWrapper>
         ))}
       </div>
     </section>

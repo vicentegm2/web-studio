@@ -1,9 +1,22 @@
 import type { Metadata } from 'next';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { LanguageProvider } from '@/contexts/language-context';
 import { ErrorBoundary } from '@/components/error-boundary';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Vicente Gabriel Gómez Medina | .NET Backend Developer',
@@ -80,11 +93,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
-        <link rel="preload" href="/images/ed083ba154de.webp" as="image" />
-        
         {/* Google Analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-1FRNENPSXP"></script>
         <script
@@ -98,7 +106,8 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-body antialiased bg-background text-foreground">
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-body antialiased bg-background text-foreground`}>
+        <div className="bg-noise" />
         <ErrorBoundary>
           <ThemeProvider
             attribute="class"

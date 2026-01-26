@@ -4,272 +4,75 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 224 33% 15%;
-    --card: 210 29% 99%;
-    --card-foreground: 224 33% 15%;
-    --popover: 210 29% 99%;
-    --popover-foreground: 224 33% 15%;
-    --primary: 223 52% 30%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 20% 90%;
-    --secondary-foreground: 223 52% 30%;
-    --muted: 210 20% 90%;
-    --muted-foreground: 210 10% 45%;
-    --accent: 258 25% 45%;
-    --accent-foreground: 210 40% 98%;
+    /* Bright & Clean Light Mode */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 20% 85%;
-    --input: 210 20% 85%;
-    --ring: 223 52% 30%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 1rem;
   }
-  
+
   .dark {
-    --background: 224 33% 10%;
-    --foreground: 210 29% 97%;
-    --card: 224 33% 12%;
-    --card-foreground: 210 29% 97%;
-    --popover: 224 33% 10%;
-    --popover-foreground: 210 29% 97%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 223 52% 30%;
-    --secondary: 224 33% 20%;
+    /* Luxury Charcoal Mode (Soft Black) */
+    --background: 222 14% 10%;    /* #16181D - Deep Charcoal/Slate */
+    --foreground: 210 40% 98%;    /* Near White */
+    
+    --card: 222 14% 13%;          /* Slightly Lighter Charcoal */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 14% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;       /* White Primary */
+    --primary-foreground: 222 47% 11%;
+    
+    --secondary: 217 19% 27%;     /* Muted Slate */
     --secondary-foreground: 210 40% 98%;
-    --muted: 224 33% 20%;
-    --muted-foreground: 210 10% 60%;
-    --accent: 252 25% 60%;
-    --accent-foreground: 224 33% 10%;
+    
+    --muted: 217 19% 27%;
+    --muted-foreground: 215 20% 75%; /* Much brighter for readability */
+    
+    --accent: 217 19% 27%;
+    --accent-foreground: 210 40% 98%;
+    
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 224 33% 20%;
-    --input: 224 33% 20%;
-    --ring: 252 25% 60%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217 19% 27%;
+    --input: 217 19% 27%;
+    --ring: 212 26% 85%;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "kern" 1, "liga" 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  /* Tipografía fluida y responsiva */
-  h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.2;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-  
-  h2 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    line-height: 1.3;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-  
-  h3 {
-    font-size: clamp(1.25rem, 3vw, 2rem);
-    line-height: 1.4;
-    font-weight: 600;
-  }
-  
-  p {
-    line-height: 1.7;
-    font-size: clamp(1rem, 2vw, 1.125rem);
-  }
-}
-
-/* ===========================
-   PROTECCIÓN DE IMÁGENES
-   =========================== */
-img {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+/* Texture Overlay */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.4;
   pointer-events: none;
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  mix-blend-mode: overlay;
 }
 
-a, button, [role="button"] {
-  pointer-events: auto;
-}
-
-img::selection {
-  background: transparent;
-}
-
-/* ===========================
-   ANIMACIONES MEJORADAS
-   =========================== */
-
-/* Animación de entrada suave */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Deslizamiento desde la derecha */
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Escalado con rebote */
-@keyframes scale-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  50% {
-    transform: scale(1.02);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Flotación suave */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-}
-
-/* Rotación suave */
-@keyframes rotate-gentle {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Efecto de brillo deslizante */
-@keyframes shine {
-  from {
-    background-position: -200% center;
-  }
-  to {
-    background-position: 200% center;
-  }
-}
-
-/* Pulso suave */
-@keyframes pulse-subtle {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.85;
-    transform: scale(1.02);
-  }
-}
-
-/* Parpadeo de gradiente */
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-/* Ondulación */
-@keyframes ripple {
-  0% {
-    transform: scale(0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-/* Deslizamiento desde arriba */
-@keyframes slide-down {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Clases de animación */
-.animate-fade-in {
-  animation: fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.animate-slide-in-right {
-  animation: slide-in-right 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.animate-scale-in {
-  animation: scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-pulse-subtle {
-  animation: pulse-subtle 2s ease-in-out infinite;
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
-}
-
-.animate-slide-down {
-  animation: slide-down 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
 
 /* ===========================
    EFECTOS GLASSMORPHISM
