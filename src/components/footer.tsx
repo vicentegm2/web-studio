@@ -1,15 +1,15 @@
 'use client';
-import { Github, Linkedin, Mail, TrendingUp } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/language-context';
 
 export function Footer() {
   const { t } = useLanguage();
-  
+
   const socialLinks = [
     { name: 'GitHub', icon: Github, url: 'https://github.com/vicentegm2', ariaLabel: "Visit my GitHub" },
     { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina', ariaLabel: "Visit my LinkedIn" },
-    { name: 'eToro', icon: TrendingUp, url: 'https://www.etoro.com/people/vicentegm2', ariaLabel: "Visit my eToro profile" },
+
     { name: 'Email', icon: Mail, url: 'mailto:vicentegabrielgomezmedina@gmail.com', ariaLabel: "Send me an email" },
   ];
 

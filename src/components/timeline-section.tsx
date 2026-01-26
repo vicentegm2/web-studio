@@ -76,6 +76,11 @@ export function TimelineSection() {
           src: "/images/4828deb5d4f6.webp",
           alt: "Voluntario de Protección Civil en un evento",
           hint: "civil protection volunteer"
+        },
+        {
+          src: "/images/servicio_reyes-magos.webp",
+          alt: "Servicio especial de Reyes Magos",
+          hint: "three wise men service"
         }
       ]
     }
@@ -151,7 +156,7 @@ export function TimelineSection() {
                   <CardHeader>
                     <CardTitle className="font-headline text-xl text-primary">{item.role}</CardTitle>
                     <div className="text-sm text-muted-foreground">
-                      <p className="font-semibold text-accent">{item.company}</p>
+                      <p className="font-semibold text-primary">{item.company}</p>
                       <p>{item.period}</p>
                     </div>
                   </CardHeader>
@@ -172,8 +177,8 @@ export function TimelineSection() {
           <div className="space-y-8">
             {educationData.map((item, index) => (
               <div key={index} className="flex items-start gap-4 group">
-                <div className="bg-primary/10 p-3 rounded-full mt-1 transition-colors group-hover:bg-primary">
-                  <GraduationCap className="w-6 h-6 text-primary transition-colors group-hover:text-white" />
+                <div className="bg-primary/10 p-3 rounded-full mt-1 transition-colors">
+                  <GraduationCap className="w-6 h-6 text-primary transition-colors" />
                 </div>
                 <div className="flex-grow">
                   <div className="flex justify-between items-center">
@@ -181,7 +186,7 @@ export function TimelineSection() {
                     <Badge className={`${statusColors[item.status]}`}>{item.status}</Badge>
                   </div>
                   <div className="text-sm text-muted-foreground mt-1">
-                    <p className="font-medium text-accent">{item.institution}</p>
+                    <p className="font-medium text-primary">{item.institution}</p>
                     <p>{item.period}</p>
                   </div>
                 </div>
@@ -194,8 +199,8 @@ export function TimelineSection() {
           <div className="space-y-8">
             {languagesData.map((item, index) => (
               <div key={index} className="flex items-start gap-4 group">
-                <div className="bg-primary/10 p-3 rounded-full mt-1 transition-colors group-hover:bg-primary">
-                  <Languages className="w-6 h-6 text-primary transition-colors group-hover:text-white" />
+                <div className="bg-primary/10 p-3 rounded-full mt-1 transition-colors">
+                  <Languages className="w-6 h-6 text-primary transition-colors" />
                 </div>
                 <div className="flex-grow">
                   <h3 className="font-headline text-lg font-semibold">{item.language}</h3>
@@ -217,7 +222,7 @@ export function TimelineSection() {
                   <div className="flex-grow">
                     <CardTitle className="font-headline text-xl">{item.role}</CardTitle>
                     <div className="text-sm text-muted-foreground mt-1">
-                      <p className="font-medium text-accent">{item.organization}</p>
+                      <p className="font-medium text-primary">{item.organization}</p>
                       <p>{item.period}</p>
                     </div>
                   </div>
@@ -268,7 +273,7 @@ export function TimelineSection() {
                     <div className="flex-grow">
                       <CardTitle className="font-headline text-xl">{item.name}</CardTitle>
                       <div className="text-sm text-muted-foreground mt-1">
-                        <p className="font-semibold text-accent">{item.organization}</p>
+                        <p className="font-semibold text-primary">{item.organization}</p>
                         <p>{item.date}</p>
                       </div>
                     </div>

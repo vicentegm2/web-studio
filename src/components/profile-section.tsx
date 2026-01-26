@@ -2,11 +2,46 @@
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, TrendingUp } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { useLanguage } from "@/contexts/language-context";
 import { trackSocialClick } from "@/lib/analytics";
- 
+import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+
+const MagneticButton = ({ children, onClick, ...props }: any) => {
+  const ref = useRef<HTMLButtonElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouse = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    if (!ref.current) return;
+    const { height, width, left, top } = ref.current.getBoundingClientRect();
+    const middleX = clientX - (left + width / 2);
+    const middleY = clientY - (top + height / 2);
+    setPosition({ x: middleX * 0.2, y: middleY * 0.2 });
+  };
+
+  const reset = () => {
+    setPosition({ x: 0, y: 0 });
+  };
+
+  const { x, y } = position;
+  return (
+    <motion.div
+      style={{ position: "relative" }}
+      animate={{ x, y }}
+      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      onMouseMove={handleMouse}
+      onMouseLeave={reset}
+    >
+      <Button ref={ref} onClick={onClick} {...props}>
+        {children}
+      </Button>
+    </motion.div>
+  );
+};
+
 export function ProfileSection() {
   const { t } = useLanguage();
 
@@ -23,12 +58,6 @@ export function ProfileSection() {
       icon: Linkedin,
       ariaLabel: 'Open LinkedIn profile of Vicente Gabriel Gómez Medina'
     },
-    {
-      name: 'eToro',
-      url: 'https://www.etoro.com/people/vicentegm2',
-      icon: TrendingUp,
-      ariaLabel: 'Open eToro profile of Vicente Gabriel Gómez Medina'
-    },
   ];
 
   const softSkills = [
@@ -38,59 +67,105 @@ export function ProfileSection() {
     t.softSkills.continuousLearning,
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } },
+  };
+
   return (
-    <section id="profile" aria-labelledby="profile-heading" className="py-16 sm:py-24 animate-fade-in">
+    <section id="profile" aria-labelledby="profile-heading" className="py-16 sm:py-24 min-h-[80vh] flex items-center">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col sm:flex-row items-center gap-10">
-          <Avatar className="h-36 w-36 sm:h-48 sm:w-48 border-4 border-primary/20 shadow-lg animate-scale-in">
-            <AvatarImage asChild src="/images/ed083ba154de.webp">
-              <Image
+        <div className="flex flex-col sm:flex-row items-center gap-12 sm:gap-20">
+          {/* Floating Avatar */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, type: 'spring' }}
+            className="relative"
+          >
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Avatar className="h-40 w-40 sm:h-56 sm:w-56 border-4 border-primary/20 shadow-2xl">
+                <AvatarImage asChild src="/images/ed083ba154de.webp">
+                  <Image
                     src="/images/ed083ba154de.webp"
                     alt="Vicente Gabriel Gómez Medina"
-                    width={192}
-                    height={192}
+                    width={224}
+                    height={224}
                     className="object-cover"
                     priority
                     draggable="false"
-                />
-            </AvatarImage>
-            <AvatarFallback className="text-4xl font-headline">VG</AvatarFallback>
-          </Avatar>
-          <div className="text-center sm:text-left flex-1 animate-slide-in-right">
-            <h2 className="text-lg font-medium text-accent font-headline tracking-wider">{t.hello}</h2>
-            <h1 id="profile-heading" className="text-4xl sm:text-5xl lg:text-6xl font-bold font-headline text-primary leading-tight mt-2">
+                  />
+                </AvatarImage>
+                <AvatarFallback className="text-4xl font-headline">VG</AvatarFallback>
+              </Avatar>
+            </motion.div>
+            {/* Decorative circle behind */}
+            <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl -z-10 scale-150 animate-pulse" />
+          </motion.div>
+
+          <motion.div
+            className="text-center sm:text-left flex-1"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.h2 variants={itemVariants} className="text-lg font-medium text-muted-foreground font-headline tracking-wider mb-2">
+              {t.hello}
+            </motion.h2>
+
+            <motion.h1
+              variants={itemVariants}
+              id="profile-heading"
+              className="text-4xl sm:text-6xl lg:text-7xl font-bold font-headline text-primary leading-tight"
+            >
               {t.jobTitle}
-            </h1>
-            <p className="mt-6 max-w-2xl text-foreground/80 leading-relaxed">
-              {t.profileDescription1}
-            </p>
-            <p className="mt-4 max-w-2xl text-foreground/80 leading-relaxed">
-              {t.profileDescription2}
-            </p>
+            </motion.h1>
 
-            <div className="mt-6 flex flex-wrap gap-2 justify-center sm:justify-start">
+            <motion.div variants={itemVariants} className="mt-6 space-y-4 max-w-2xl text-foreground/80 leading-relaxed text-lg">
+              <p>{t.profileDescription1}</p>
+              <p>{t.profileDescription2}</p>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="mt-8 flex flex-wrap gap-2 justify-center sm:justify-start">
               {softSkills.map((skill) => (
-                <Badge key={skill} variant="secondary" className="text-sm">{skill}</Badge>
+                <Badge key={skill} variant="secondary" className="px-4 py-1 text-sm hover:scale-105 transition-transform origin-center cursor-default">
+                  {skill}
+                </Badge>
               ))}
-            </div>
+            </motion.div>
 
-            <div className="mt-8 flex flex-wrap gap-4 justify-center sm:justify-start">
+            <motion.div variants={itemVariants} className="mt-10 flex flex-wrap gap-6 justify-center sm:justify-start">
               {socialLinks.map((link) => (
-                <Button
+                <MagneticButton
                   key={link.name}
                   variant="outline"
-                  size="icon"
-                  asChild
+                  size="lg"
+                  className="rounded-full h-12 w-12 p-0 border-2"
                   aria-label={link.ariaLabel}
+                  asChild
                   onClick={() => trackSocialClick(link.name)}
                 >
-                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full h-full">
                     <link.icon className="w-5 h-5" />
                   </a>
-                </Button>
+                </MagneticButton>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

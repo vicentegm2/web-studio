@@ -13,10 +13,11 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { trackCertificate } from "@/lib/analytics";
+import { motion } from "framer-motion";
 
 export function CertificationsSection() {
   const { t } = useLanguage();
-  
+
   const certifications = [
     {
       title: "Introducción a Git y GitHub",
@@ -93,16 +94,16 @@ export function CertificationsSection() {
   ];
 
   return (
-    <section id="certifications" aria-labelledby="certifications-heading" className="max-w-7xl mx-auto">
-      <div className="text-center mb-12">
-        <h2 id="certifications-heading" className="text-3xl font-headline font-bold text-primary">
+    <section id="certifications" aria-labelledby="certifications-heading" className="max-w-7xl mx-auto py-12">
+      <div className="text-center mb-16">
+        <h2 id="certifications-heading" className="text-4xl font-headline font-bold text-foreground mb-4">
           {t.certificationsTitle}
         </h2>
-        <p className="text-muted-foreground mt-2">
+        <p className="text-lg text-muted-foreground">
           {certifications.length} {t.certificationsCount}
         </p>
       </div>
-      
+
       <Carousel
         opts={{
           align: "start",
@@ -110,65 +111,74 @@ export function CertificationsSection() {
         }}
         className="w-full"
       >
-        <CarouselContent className="-ml-4">
+        <CarouselContent className="-ml-6 py-6"> {/* Added vertical padding to prevent clipping on hover */}
           {certifications.map((cert, index) => (
-            <CarouselItem key={cert.title} className="pl-4 md:basis-1/2 lg:basis-1/3">
-              <Card className="flex flex-col h-full overflow-hidden hover-lift hover-glow smooth-transition group animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                {cert.imageUrl && (
-                  <div className="relative h-48 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5">
-                    <Image
-                      src={cert.imageUrl}
-                      alt={cert.title}
-                      fill
-                      className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
-                      draggable="false"
-                    />
-                  </div>
-                )}
-                <CardHeader className="flex flex-row items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full mt-1 flex-shrink-0 transition-colors duration-300 group-hover:bg-primary/20">
-                    <Award className="w-6 h-6 text-primary transition-transform duration-300 group-hover:rotate-12" />
-                  </div>
-                  <div className="flex-grow min-w-0">
-                    <CardTitle className="font-headline text-lg line-clamp-2">{cert.title}</CardTitle>
-                    <CardDescription className="text-sm mt-1">
-                      {cert.issuer} {cert.date && `· ${t.issued} ${cert.date}`}
-                    </CardDescription>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <div className="flex flex-wrap gap-2">
-                    {cert.skills.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="text-xs hover:scale-105 transition-transform duration-200">{skill}</Badge>
-                    ))}
-                  </div>
-                </CardContent>
-                <CardFooter className="flex justify-between items-center bg-muted/50 p-4">
-                  <span className="text-xs text-muted-foreground truncate flex-1 mr-2">
-                    {cert.credentialId ? `${t.credentialId}: ${cert.credentialId}` : t.noId}
-                  </span>
-                  {cert.url && (
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      asChild 
-                      className="flex-shrink-0 hover-scale"
-                      onClick={() => trackCertificate('click', cert.title)}
-                    >
-                      <a href={cert.url} target="_blank" rel="noopener noreferrer" aria-label={`Show credential for ${cert.title}`}>
-                        {t.showCredential}
-                        <ExternalLink className="ml-2 h-4 w-4" />
-                      </a>
-                    </Button>
+            <CarouselItem key={cert.title} className="pl-6 md:basis-1/2 lg:basis-1/3">
+              <div className="h-full transform transition-transform hover:-translate-y-2 duration-300"> {/* Replaced motion.div with CSS transition to avoid potential conflict, kept simple lift */}
+                <Card className="flex flex-col h-full overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-300 shadow-md hover:shadow-xl dark:shadow-none dark:hover:shadow-primary/10">
+                  {cert.imageUrl && (
+                    <div className="relative h-48 w-full overflow-hidden bg-muted/30 p-6 flex items-center justify-center border-b border-border/50">
+                      <Image
+                        src={cert.imageUrl}
+                        alt={cert.title}
+                        fill
+                        className="object-contain drop-shadow-sm transition-transform duration-500 hover:scale-105"
+                        draggable="false"
+                      />
+                    </div>
                   )}
-                </CardFooter>
-              </Card>
+                  <CardHeader className="flex flex-row items-start gap-4 pb-2">
+                    <div className="bg-primary/10 p-2.5 rounded-xl flex-shrink-0">
+                      <Award className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="flex-grow min-w-0">
+                      <CardTitle className="font-headline text-lg font-semibold leading-tight line-clamp-2 mb-1.5 text-card-foreground">{cert.title}</CardTitle>
+                      <CardDescription className="text-sm text-foreground/80 font-medium"> {/* Increased contrast */}
+                        {cert.issuer}
+                      </CardDescription>
+                      <p className="text-xs text-muted-foreground mt-1">{cert.date}</p>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="flex-grow pt-2">
+                    <div className="flex flex-wrap gap-1.5">
+                      {cert.skills.map((skill) => (
+                        <Badge
+                          key={skill}
+                          variant="outline"
+                          className="text-[10px] px-2 py-0.5 border-border bg-secondary/30 text-secondary-foreground hover:bg-secondary/50 font-medium"
+                        >
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                  <CardFooter className="flex justify-between items-center p-5 pt-0 mt-auto border-t border-border/50 bg-muted/10">
+                    <div className="text-[10px] text-muted-foreground truncate flex-1 mr-4 pt-4 font-mono">
+                      {cert.credentialId ? <span className="opacity-90">{t.credentialId}: {cert.credentialId}</span> : <span className="opacity-70">{t.noId}</span>}
+                    </div>
+                    {cert.url && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        asChild
+                        className="mt-4 hover:bg-primary/10 hover:text-primary transition-colors h-8 px-3 text-xs font-medium"
+                        onClick={() => trackCertificate('click', cert.title)}
+                      >
+                        <a href={cert.url} target="_blank" rel="noopener noreferrer" aria-label={`Show credential for ${cert.title}`}>
+                          {t.showCredential}
+                          <ExternalLink className="ml-1.5 h-3 w-3" />
+                        </a>
+                      </Button>
+                    )}
+                  </CardFooter>
+                </Card>
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <div className="flex justify-center gap-2 mt-8">
-          <CarouselPrevious className="static translate-y-0" />
-          <CarouselNext className="static translate-y-0" />
+        <div className="flex justify-center gap-4 mt-8">
+          <CarouselPrevious className="static translate-y-0 h-10 w-10 border-border/50 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all" />
+          <CarouselNext className="static translate-y-0 h-10 w-10 border-border/50 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all" />
         </div>
       </Carousel>
     </section>
