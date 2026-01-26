@@ -1,110 +1,106 @@
-'use client';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Play } from "lucide-react";
 import Image from "next/image";
-import { useLanguage } from "@/contexts/language-context";
-import { MotionWrapper } from "./ui/motion-wrapper";
-import { motion } from "framer-motion";
+import { sanityFetch } from "@/sanity/lib/client";
+import { PROJECTS_QUERY } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
 
-export function ProjectsSection() {
-  const { t } = useLanguage();
+interface Project {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  description: string;
+  mainImage: any;
+  tags: string[];
+  codeUrl?: string;
+  demoUrl?: string;
+  videoUrl?: string;
+}
 
-  const projectsData = [
-    {
-      title: t.projectsData.personalCRM.title,
-      description: t.projectsData.personalCRM.description,
-      tags: t.projectsData.personalCRM.tags,
-      imageUrl: null,
-      imageHint: "CRM dashboard screenshot",
-      videoUrl: null,
-      liveUrl: "#",
-      githubUrl: "#",
-      codeButton: t.projectsData.personalCRM.codeButton,
-      demoButton: t.projectsData.personalCRM.demoButton,
-    },
-    {
-      title: t.projectsData.cleanArchitectureAPI.title,
-      description: t.projectsData.cleanArchitectureAPI.description,
-      tags: t.projectsData.cleanArchitectureAPI.tags,
-      imageUrl: null,
-      imageHint: "Clean Architecture API diagram",
-      videoUrl: null,
-      liveUrl: "#",
-      githubUrl: "#",
-      codeButton: t.projectsData.cleanArchitectureAPI.codeButton,
-      demoButton: t.projectsData.cleanArchitectureAPI.demoButton,
-    },
-  ];
+export async function ProjectsSection({ locale = 'en' }: { locale?: string }) {
+  const projects = await sanityFetch<Project[]>({
+    query: PROJECTS_QUERY,
+    tags: ['project'],
+  });
 
-  const defaultImage = "/images/7e6fa9b613f3.webp";
+  if (!projects || projects.length === 0) {
+    return null;
+  }
 
   return (
-    <section id="projects" aria-labelledby="projects-heading">
-      <MotionWrapper animation="fade-up">
-        <h2 id="projects-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
-          {t.projectsTitle}
-        </h2>
-      </MotionWrapper>
+    <section id="projects" aria-labelledby="projects-heading" className="py-16">
+      <h2 id="projects-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
+        {locale === 'es' ? 'Proyectos Destacados' : 'Featured Projects'}
+      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projectsData.map((project, index) => (
-          <MotionWrapper key={project.title} animation="fade-up" delay={index * 0.1}>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="h-full"
-            >
-              <Card className="flex flex-col overflow-hidden h-full shadow-md hover:shadow-xl dark:hover:shadow-primary/10 transition-shadow duration-300">
-                <div className="relative h-48 w-full bg-muted overflow-hidden">
-                  {project.videoUrl ? (
-                    <video
-                      src={project.videoUrl}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                    />
-                  ) : (
-                    <Image
-                      src={project.imageUrl || defaultImage}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-500 hover:scale-105"
-                      data-ai-hint={project.imageHint}
-                    />
-                  )}
+        {projects.map((project) => {
+          const imageUrl = project.mainImage ? urlFor(project.mainImage).width(600).height(400).url() : '';
+
+          return (
+            <Card key={project._id} className="overflow-hidden flex flex-col hover:shadow-xl transition-shadow">
+              {imageUrl && (
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={imageUrl}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform hover:scale-105"
+                  />
                 </div>
-                <CardHeader>
-                  <CardTitle className="font-headline text-xl">{project.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p className="text-sm text-foreground/80">{project.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
+              )}
+
+              <CardHeader>
+                <CardTitle className="font-headline">{project.title}</CardTitle>
+              </CardHeader>
+
+              <CardContent className="flex-grow">
+                <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+
+                {project.tags && project.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
-                      <span key={tag} className="text-xs font-semibold bg-primary/10 text-primary px-2 py-1 rounded-full">{tag}</span>
+                      <Badge key={tag} variant="secondary" className="text-xs">
+                        {tag}
+                      </Badge>
                     ))}
                   </div>
-                </CardContent>
-                <CardFooter className="flex justify-end gap-2">
-                  <Button variant="ghost" size="sm" asChild>
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`View code for ${project.title}`}>
-                      <Github className="mr-2" />
-                      {project.codeButton}
+                )}
+              </CardContent>
+
+              <CardFooter className="flex gap-2">
+                {project.codeUrl && (
+                  <Button size="sm" variant="outline" asChild>
+                    <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
+                      <Github className="w-4 h-4 mr-2" />
+                      {locale === 'es' ? 'Código' : 'Code'}
                     </a>
                   </Button>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`View live demo for ${project.title}`}>
-                      <ExternalLink className="mr-2" />
-                      {project.demoButton}
+                )}
+
+                {project.demoUrl && (
+                  <Button size="sm" asChild>
+                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      {locale === 'es' ? 'Demo' : 'Demo'}
                     </a>
                   </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          </MotionWrapper>
-        ))}
+                )}
+
+                {project.videoUrl && (
+                  <Button size="sm" variant="outline" asChild>
+                    <a href={project.videoUrl} target="_blank" rel="noopener noreferrer">
+                      <Play className="w-4 h-4 mr-2" />
+                      {locale === 'es' ? 'Video' : 'Video'}
+                    </a>
+                  </Button>
+                )}
+              </CardFooter>
+            </Card>
+          );
+        })}
       </div>
     </section>
   );

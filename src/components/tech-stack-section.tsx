@@ -1,76 +1,65 @@
-'use client';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { IconCSharp, IconDotNet, IconReact, IconGit } from "@/components/icons/tech-icons";
 import { Database, Share2 } from "lucide-react";
-import { useLanguage } from "@/contexts/language-context";
-import { MotionWrapper } from "./ui/motion-wrapper";
-import { motion } from "framer-motion";
+import { sanityFetch } from "@/sanity/lib/client";
+import { TECH_STACK_QUERY } from "@/sanity/lib/queries";
 
-export function TechStackSection() {
-  const { t } = useLanguage();
+// Icon mapping
+const iconMap: Record<string, any> = {
+  IconCSharp,
+  IconDotNet,
+  IconReact,
+  Database,
+  IconGit,
+  Share2,
+};
 
-  const techStack = [
-    {
-      name: t.techStack.csharp.name,
-      icon: IconCSharp,
-      description: t.techStack.csharp.description,
-    },
-    {
-      name: t.techStack.dotnet.name,
-      icon: IconDotNet,
-      description: t.techStack.dotnet.description,
-    },
-    {
-      name: t.techStack.react.name,
-      icon: IconReact,
-      description: t.techStack.react.description,
-    },
-    {
-      name: t.techStack.sqlserver.name,
-      icon: Database,
-      description: t.techStack.sqlserver.description,
-    },
-    {
-      name: t.techStack.git.name,
-      icon: IconGit,
-      description: t.techStack.git.description,
-    },
-    {
-      name: t.techStack.microservices.name,
-      icon: Share2,
-      description: t.techStack.microservices.description,
-    },
-  ];
+interface TechStackItem {
+  _id: string;
+  name: string;
+  icon: string;
+  description_en: string;
+  description_es: string;
+}
+
+export async function TechStackSection({ locale = 'en' }: { locale?: string }) {
+  const techStack = await sanityFetch<TechStackItem[]>({
+    query: TECH_STACK_QUERY,
+    tags: ['techStack'],
+  });
+
+  if (!techStack || techStack.length === 0) {
+    return null;
+  }
 
   return (
     <section id="tech-stack" aria-labelledby="tech-stack-heading">
-      <MotionWrapper animation="fade-up">
-        <h2 id="tech-stack-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
-          {t.techStackTitle}
-        </h2>
-      </MotionWrapper>
+      <h2 id="tech-stack-heading" className="text-3xl font-headline font-bold text-center mb-12 text-primary">
+        {locale === 'es' ? 'Stack Tecnológico' : 'Tech Stack'}
+      </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {techStack.map((tech, index) => (
-          <MotionWrapper key={tech.name} animation="zoom-in" delay={index * 0.1}>
-            <motion.div
-              whileHover={{ y: -5, boxShadow: "0 10px 30px -10px rgba(0,0,0,0.1)" }}
-              className="h-full"
+        {techStack.map((tech) => {
+          const Icon = iconMap[tech.icon] || Database;
+          const description = locale === 'es' ? tech.description_es : tech.description_en;
+
+          return (
+            <div
+              key={tech._id}
+              className="h-full hover-lift"
             >
-              <Card
-                className="flex flex-col items-center text-center p-6 h-full hover:border-primary/50 transition-colors"
-              >
-                <tech.icon className="h-16 w-16 mb-4 text-primary" />
+              <Card className="flex flex-col items-center text-center p-6 h-full hover:border-primary/50 transition-colors">
+                <Icon className="h-16 w-16 mb-4 text-primary" />
                 <CardHeader className="p-0">
                   <CardTitle className="font-headline text-lg">{tech.name}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-0 mt-2">
-                  <p className="text-sm text-muted-foreground">{tech.description}</p>
+                  <p className="text-sm text-muted-foreground">{description}</p>
                 </CardContent>
               </Card>
-            </motion.div>
-          </MotionWrapper>
-        ))}
+            </div>
+          );
+        })}
       </div>
     </section>
   );

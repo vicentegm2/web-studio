@@ -15,75 +15,109 @@ import {
 import { trackCertificate } from "@/lib/analytics";
 import { motion } from "framer-motion";
 
-export function CertificationsSection() {
+interface Certification {
+  _id: string;
+  name: string;
+  issuer: string;
+  date: string;
+  credentialUrl?: string;
+  imageUrl?: string;
+  // Fallback for i18n structure
+  title?: string;
+  credentialId?: string;
+  skills?: string[];
+  url?: string;
+}
+
+interface CertificationsSectionProps {
+  certifications?: Certification[];
+}
+
+export function CertificationsSection({ certifications: propCertifications }: CertificationsSectionProps) {
   const { t } = useLanguage();
 
-  const certifications = [
+  const staticCertifications = [
     {
+      _id: "static-1",
       title: "Introducción a Git y GitHub",
+      name: "Introducción a Git y GitHub",
       issuer: "Google",
       date: "Sep 2025",
       credentialId: "T4383QKK7UTL",
       skills: ["Revisión de código", "Control de versiones", "Git", "GitHub"],
       url: "https://www.coursera.org/account/accomplishments/verify/T4383QKK7UTL",
-      imageUrl: null
+      imageUrl: null as string | null
     },
     {
+      _id: "static-2",
       title: "Introducción a GitHub Copilot",
+      name: "Introducción a GitHub Copilot",
       issuer: "Microsoft",
       date: "Sep 2025",
       credentialId: "U4Y0N4C3F9BZ",
       skills: ["GitHub Copilot", "GitHub"],
       url: "https://www.coursera.org/account/accomplishments/verify/U4Y0N4C3F9BZ",
-      imageUrl: null
+      imageUrl: null as string | null
     },
     {
+      _id: "static-3",
       title: "SQL para ciencia de los datos",
+      name: "SQL para ciencia de los datos",
       issuer: "University of California, Davis",
       date: "Jul 2025",
       credentialId: "ENLQ6J4KF3DI",
       skills: ["Ciencia de datos", "SQL", "Diseño de bases de datos"],
       url: "https://www.coursera.org/account/accomplishments/verify/ENLQ6J4KF3DI",
-      imageUrl: null
+      imageUrl: null as string | null
     },
     {
+      _id: "static-4",
       title: "Fundamentos profesionales en ciberseguridad",
+      name: "Fundamentos profesionales en ciberseguridad",
       issuer: "Microsoft y LinkedIn",
       date: "Nov 2024",
       credentialId: null,
       skills: ["Gestión de amenazas y vulnerabilidades", "Seguridad de la información"],
       url: "https://www.linkedin.com/learning/certificates/d5a2676d072342cc169dd16f31f43fdaacd7f90a5caa58d33a85a3ec2b5d1c0c",
-      imageUrl: null
+      imageUrl: null as string | null
     },
     {
+      _id: "static-5",
       title: "Ve a lo seguro: Gestiona los riesgos de seguridad",
+      name: "Ve a lo seguro: Gestiona los riesgos de seguridad",
       issuer: "Google",
       date: "Nov 2024",
       credentialId: "QB6BRQKQTIR1",
       skills: ["Gestión de riesgos de TI"],
       url: "https://www.coursera.org/account/accomplishments/verify/QB6BRQKQTIR1",
-      imageUrl: null
+      imageUrl: null as string | null
     },
     {
+      _id: "static-6",
       title: "Fundamentos de la ciberseguridad",
+      name: "Fundamentos de la ciberseguridad",
       issuer: "Google",
       date: "Oct 2024",
       credentialId: "7IR0C6VBMCLD",
       skills: ["Gestión de riesgos de TI"],
       url: "https://www.coursera.org/account/accomplishments/verify/7IR0C6VBMCLD",
-      imageUrl: null
+      imageUrl: null as string | null
     },
     {
+      _id: "static-7",
       title: "VI Curso de Experto en Seguridad y Defensa",
+      name: "VI Curso de Experto en Seguridad y Defensa",
       issuer: "Universidad Nacional de Educación a Distancia (UNED)",
       date: "Oct 2024 - Feb 2025",
       credentialId: null,
       skills: ["Cultura de defensa", "Geopolítica", "Relaciones internacionales", "Amenazas híbridas"],
-      url: null,
-      imageUrl: null
+      url: null as string | null,
+      imageUrl: null as string | null
     },
     {
+      _id: "static-8",
       title: "Desarrollo con IA",
+      name: "Desarrollo con IA",
       issuer: "BIG school",
       date: null,
       credentialId: null,
@@ -92,6 +126,8 @@ export function CertificationsSection() {
       imageUrl: "/images/bbb522d7992a.webp"
     },
   ];
+
+  const certifications = propCertifications && propCertifications.length > 0 ? propCertifications : staticCertifications;
 
   return (
     <section id="certifications" aria-labelledby="certifications-heading" className="max-w-7xl mx-auto py-12">
@@ -120,7 +156,7 @@ export function CertificationsSection() {
                     <div className="relative h-48 w-full overflow-hidden bg-muted/30 p-6 flex items-center justify-center border-b border-border/50">
                       <Image
                         src={cert.imageUrl}
-                        alt={cert.title}
+                        alt={cert.title || cert.name || "Certification"}
                         fill
                         className="object-contain drop-shadow-sm transition-transform duration-500 hover:scale-105"
                         draggable="false"
@@ -141,7 +177,7 @@ export function CertificationsSection() {
                   </CardHeader>
                   <CardContent className="flex-grow pt-2">
                     <div className="flex flex-wrap gap-1.5">
-                      {cert.skills.map((skill) => (
+                      {cert.skills?.map((skill) => (
                         <Badge
                           key={skill}
                           variant="outline"
@@ -162,7 +198,7 @@ export function CertificationsSection() {
                         size="sm"
                         asChild
                         className="mt-4 hover:bg-primary/10 hover:text-primary transition-colors h-8 px-3 text-xs font-medium"
-                        onClick={() => trackCertificate('click', cert.title)}
+                        onClick={() => trackCertificate('click', cert.title || cert.name)}
                       >
                         <a href={cert.url} target="_blank" rel="noopener noreferrer" aria-label={`Show credential for ${cert.title}`}>
                           {t.showCredential}

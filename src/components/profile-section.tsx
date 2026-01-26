@@ -1,171 +1,126 @@
-'use client';
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Github, Linkedin } from "lucide-react";
 import { Badge } from "./ui/badge";
-import { useLanguage } from "@/contexts/language-context";
-import { trackSocialClick } from "@/lib/analytics";
-import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { Github, Linkedin, Twitter, Instagram, Mail } from "lucide-react";
+import { sanityFetch } from "@/sanity/lib/client";
+import { PROFILE_QUERY, SETTINGS_QUERY } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
+import { SocialLinks } from "./social-links";
 
-const MagneticButton = ({ children, onClick, ...props }: any) => {
-  const ref = useRef<HTMLButtonElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  const handleMouse = (e: React.MouseEvent) => {
-    const { clientX, clientY } = e;
-    if (!ref.current) return;
-    const { height, width, left, top } = ref.current.getBoundingClientRect();
-    const middleX = clientX - (left + width / 2);
-    const middleY = clientY - (top + height / 2);
-    setPosition({ x: middleX * 0.2, y: middleY * 0.2 });
-  };
-
-  const reset = () => {
-    setPosition({ x: 0, y: 0 });
-  };
-
-  const { x, y } = position;
-  return (
-    <motion.div
-      style={{ position: "relative" }}
-      animate={{ x, y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-      onMouseMove={handleMouse}
-      onMouseLeave={reset}
-    >
-      <Button ref={ref} onClick={onClick} {...props}>
-        {children}
-      </Button>
-    </motion.div>
-  );
+// Icon mapping
+const iconMap: Record<string, any> = {
+  Github,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Mail,
 };
 
-export function ProfileSection() {
-  const { t } = useLanguage();
+interface ProfileData {
+  name: string;
+  headline: string;
+  headline_es?: string;
+  bio_en: string;
+  bio_es: string;
+  avatar: any;
+  softSkills: string[];
+  softSkills_es?: string[];
+}
 
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      url: 'https://github.com/vicentegm2',
-      icon: Github,
-      ariaLabel: 'Open GitHub profile of Vicente Gabriel Gómez Medina'
-    },
-    {
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/vicentegabrielgomezmedina',
-      icon: Linkedin,
-      ariaLabel: 'Open LinkedIn profile of Vicente Gabriel Gómez Medina'
-    },
-  ];
+interface SettingsData {
+  socialLinks: Array<{
+    name: string;
+    url: string;
+    iconName: string;
+  }>;
+}
 
-  const softSkills = [
-    t.softSkills.teamwork,
-    t.softSkills.publicspeaking,
-    t.softSkills.communication,
-    t.softSkills.continuousLearning,
-  ];
+export async function ProfileSection({ locale = 'en' }: { locale?: string }) {
+  const profile = await sanityFetch<ProfileData>({
+    query: PROFILE_QUERY,
+    tags: ['profile'],
+  });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
+  const settings = await sanityFetch<SettingsData>({
+    query: SETTINGS_QUERY,
+    tags: ['settings'],
+  });
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } },
-  };
+  // Debug logging (only in development)
+  if (process.env.NODE_ENV === 'development') {
+    console.log('📊 Profile Data:', profile);
+    console.log('⚙️ Settings Data:', settings);
+  }
+
+  if (!profile) {
+    console.warn('⚠️ No profile data found. Make sure to create a Profile document in Sanity Studio with ID "profile"');
+    return null;
+  }
+
+  const bio = locale === 'es' ? profile.bio_es : profile.bio_en;
+  const headline = locale === 'es' && profile.headline_es ? profile.headline_es : profile.headline;
+  const softSkills = locale === 'es' && profile.softSkills_es ? profile.softSkills_es : profile.softSkills;
+  const avatarUrl = profile.avatar ? urlFor(profile.avatar).width(224).height(224).url() : '';
 
   return (
     <section id="profile" aria-labelledby="profile-heading" className="py-16 sm:py-24 min-h-[80vh] flex items-center">
       <div className="container mx-auto px-6">
         <div className="flex flex-col sm:flex-row items-center gap-12 sm:gap-20">
-          {/* Floating Avatar */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, type: 'spring' }}
-            className="relative"
-          >
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
+          {/* Avatar */}
+          <div className="relative">
+            <div className="animate-float">
               <Avatar className="h-40 w-40 sm:h-56 sm:w-56 border-4 border-primary/20 shadow-2xl">
-                <AvatarImage asChild src="/images/ed083ba154de.webp">
-                  <Image
-                    src="/images/ed083ba154de.webp"
-                    alt="Vicente Gabriel Gómez Medina"
-                    width={224}
-                    height={224}
-                    className="object-cover"
-                    priority
-                    draggable="false"
-                  />
-                </AvatarImage>
-                <AvatarFallback className="text-4xl font-headline">VG</AvatarFallback>
+                {avatarUrl && (
+                  <AvatarImage asChild src={avatarUrl}>
+                    <Image
+                      src={avatarUrl}
+                      alt={profile.name}
+                      width={224}
+                      height={224}
+                      className="object-cover"
+                      priority
+                      draggable="false"
+                    />
+                  </AvatarImage>
+                )}
+                <AvatarFallback className="text-4xl font-headline">
+                  {profile.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                </AvatarFallback>
               </Avatar>
-            </motion.div>
-            {/* Decorative circle behind */}
+            </div>
             <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl -z-10 scale-150 animate-pulse" />
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="text-center sm:text-left flex-1"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.h2 variants={itemVariants} className="text-lg font-medium text-muted-foreground font-headline tracking-wider mb-2">
-              {t.hello}
-            </motion.h2>
+          <div className="text-center sm:text-left flex-1">
+            <h2 className="text-lg font-medium text-muted-foreground font-headline tracking-wider mb-2">
+              {locale === 'es' ? 'Hola, soy' : 'Hello, I\'m'}
+            </h2>
 
-            <motion.h1
-              variants={itemVariants}
+            <h1
               id="profile-heading"
               className="text-4xl sm:text-6xl lg:text-7xl font-bold font-headline text-primary leading-tight"
             >
-              {t.jobTitle}
-            </motion.h1>
+              {headline}
+            </h1>
 
-            <motion.div variants={itemVariants} className="mt-6 space-y-4 max-w-2xl text-foreground/80 leading-relaxed text-lg">
-              <p>{t.profileDescription1}</p>
-              <p>{t.profileDescription2}</p>
-            </motion.div>
+            <div className="mt-6 space-y-4 max-w-2xl text-foreground/80 leading-relaxed text-lg">
+              <p>{bio}</p>
+            </div>
 
-            <motion.div variants={itemVariants} className="mt-8 flex flex-wrap gap-2 justify-center sm:justify-start">
-              {softSkills.map((skill) => (
-                <Badge key={skill} variant="secondary" className="px-4 py-1 text-sm hover:scale-105 transition-transform origin-center cursor-default">
-                  {skill}
-                </Badge>
-              ))}
-            </motion.div>
+            {softSkills && softSkills.length > 0 && (
+              <div className="mt-8 flex flex-wrap gap-2 justify-center sm:justify-start">
+                {softSkills.map((skill) => (
+                  <Badge key={skill} variant="secondary" className="px-4 py-1 text-sm hover:scale-105 transition-transform origin-center cursor-default">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            )}
 
-            <motion.div variants={itemVariants} className="mt-10 flex flex-wrap gap-6 justify-center sm:justify-start">
-              {socialLinks.map((link) => (
-                <MagneticButton
-                  key={link.name}
-                  variant="outline"
-                  size="lg"
-                  className="rounded-full h-12 w-12 p-0 border-2"
-                  aria-label={link.ariaLabel}
-                  asChild
-                  onClick={() => trackSocialClick(link.name)}
-                >
-                  <a href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full h-full">
-                    <link.icon className="w-5 h-5" />
-                  </a>
-                </MagneticButton>
-              ))}
-            </motion.div>
-          </motion.div>
+            {settings?.socialLinks && settings.socialLinks.length > 0 && (
+              <SocialLinks socialLinks={settings.socialLinks} iconMap={iconMap} />
+            )}
+          </div>
         </div>
       </div>
     </section>

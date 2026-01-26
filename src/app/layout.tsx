@@ -5,8 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { LanguageProvider } from '@/contexts/language-context';
 import { ErrorBoundary } from '@/components/error-boundary';
-import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
+import { ConditionalLayout } from '@/components/conditional-layout';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -118,13 +117,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <LanguageProvider>
-              <div className="flex flex-col min-h-screen">
-                <Header />
-                <main className="flex-grow">
-                  {children}
-                </main>
-                <Footer />
-              </div>
+              <ConditionalLayout>
+                {children}
+              </ConditionalLayout>
               <Toaster />
             </LanguageProvider>
           </ThemeProvider>
