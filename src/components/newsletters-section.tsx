@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export function NewslettersSection() {
   const { t } = useLanguage();
-  
+
   const newsletters = [
     {
       title: t.newslettersBitacoraPoliticaTitle,
@@ -49,7 +49,45 @@ export function NewslettersSection() {
           {t.newslettersSubtitle}
         </p>
       </div>
-      
+
+      <div className="max-w-4xl mx-auto mb-16">
+        <Card className="overflow-hidden hover:shadow-2xl transition-shadow duration-300 border-primary/20 bg-muted/30">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="relative h-64 md:h-full w-full overflow-hidden group">
+              <Image
+                src="/images/us_venezuela_article.jpg"
+                alt="Article Cover"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute top-4 left-4">
+                <Badge variant="default" className="bg-primary text-primary-foreground hover:bg-primary shadow-lg">
+                  {t.newslettersFeaturedArticleBadge}
+                </Badge>
+              </div>
+            </div>
+            <div className="p-6 md:py-8 md:pr-8 flex flex-col justify-center">
+              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                <Globe className="h-4 w-4" />
+                <span className="font-medium text-blue-500">Bitácora Política</span>
+              </div>
+              <h3 className="text-2xl font-bold font-headline mb-4 leading-tight">
+                {t.newslettersFeaturedArticleTitle}
+              </h3>
+              <p className="text-foreground/80 mb-6 leading-relaxed">
+                {t.newslettersFeaturedArticleDescription}
+              </p>
+              <Button asChild className="w-fit group">
+                <a href="https://www.linkedin.com/pulse/united-states-solution-venezuela-vicente-gabriel-g%C3%B3mez-medina-qasbe" target="_blank" rel="noopener noreferrer">
+                  {t.newslettersReadArticle}
+                  <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </Button>
+            </div>
+          </div>
+        </Card>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {newsletters.map((newsletter) => (
           <Card key={newsletter.title} className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl dark:hover:shadow-primary/20 hover:scale-[1.02]">

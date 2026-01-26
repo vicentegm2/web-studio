@@ -16,12 +16,11 @@ export function Header() {
   const { t, language } = useLanguage();
 
   const navLinks = [
-    { name: t.technologies, href: '#tech-stack' },
-    { name: t.experience, href: '#experience' },
-    { name: t.projects, href: '#projects' },
-    { name: t.certifications, href: '#certifications' },
-    { name: t.newsletters, href: '#newsletters' },
-    { name: t.contact, href: '#contact' },
+    { name: t.home, href: '/' },
+    { name: t.projects, href: '/projects' },
+    { name: t.experience, href: '/experience' },
+    { name: t.newsletters, href: '/blog' },
+    { name: t.contact, href: '/#contact' },
   ];
 
   return (
@@ -37,7 +36,7 @@ export function Header() {
           {/* Desktop Navigation - centered */}
           <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
             {navLinks.map((link) => (
-              <a key={link.name} href={link.href} className="transition-colors hover:text-primary whitespace-nowrap">{link.name}</a>
+              <Link key={link.name} href={link.href} className="transition-colors hover:text-primary whitespace-nowrap">{link.name}</Link>
             ))}
           </nav>
 
@@ -68,14 +67,14 @@ export function Header() {
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <nav className="flex flex-col gap-6 text-lg font-medium mt-10">
                   {navLinks.map((link) => (
-                    <a
+                    <Link
                       key={link.name}
                       href={link.href}
                       className="transition-colors hover:text-primary"
                       onClick={() => setIsOpen(false)}
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   ))}
                 </nav>
                 <div className="mt-8 flex flex-col gap-4">

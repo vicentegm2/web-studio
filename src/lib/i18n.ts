@@ -5,6 +5,7 @@ export const translations = {
     openMenu: "Open menu",
     
     // Navigation
+    home: "Home",
     technologies: "Technologies",
     experience: "Experience",
     projects: "Projects",
@@ -58,6 +59,10 @@ export const translations = {
       }
     },
     
+    // GitHub Activity
+    githubActivityTitle: "GitHub Activity",
+    githubActivitySubtitle: "My contributions to open source and personal projects",
+    
     // Timeline
     timelineTitle: "My Professional Journey",
     experienceTab: "Experience",
@@ -73,9 +78,9 @@ export const translations = {
         company: "Amedida TI",
         period: "Nov 2023 - Aug 2025",
         achievements: [
-          "Database design, .NET Framework, and other skills.",
-          "Development of backend solutions using the .NET ecosystem.",
-          "Maintenance and optimization of existing applications to improve performance and scalability."
+          "Architected scalable .NET solutions, reducing query times by 30%.",
+          "Migrated legacy systems to .NET, ensuring 99.9% uptime.",
+          "Collaborated to deliver robust APIs, improving data processing by 25%."
         ]
       },
       nttdata: {
@@ -83,8 +88,8 @@ export const translations = {
         company: "NTT DATA",
         period: "Mar 2022 - Jun 2022",
         achievements: [
-          "Collaborated on software development projects, gaining practical experience with Microsoft SQL Server and SQL.",
-          "Supported the team in various programming and analysis tasks."
+          "Optimized SQL Server procedures, handling large datasets effectively.",
+          "Developed internal tools, increasing team productivity by 15%."
         ]
       }
     },
@@ -201,6 +206,14 @@ export const translations = {
     newslettersBitacoraNaturalTitle: "Bitácora Natural",
     newslettersBitacoraNaturalDescription: "Thoughts on natural sciences, climate, environment, and the relationship between technology and nature. Understanding our planet through a scientific lens.",
     newslettersBitacoraNaturalTags: ["Science", "Environment", "Nature"] as const,
+    newslettersFeaturedArticleBadge: "Featured Article",
+    newslettersFeaturedArticleTitle: "United States: The Solution for Venezuela?",
+    newslettersFeaturedArticleDescription: "A deep analysis on the impact and potential consequences of US intervention in the Venezuelan crisis.",
+    newslettersReadArticle: "Read Full Article",
+    
+    // Testimonials
+    testimonialsTitle: "What People Say",
+    testimonialsSubtitle: "Recommendations and feedback from colleagues and mentors",
     
     // Contact
     contactTitle: "Contact",
@@ -240,6 +253,7 @@ export const translations = {
     openMenu: "Abrir menú",
     
     // Navigation
+    home: "Inicio",
     technologies: "Tecnologías",
     experience: "Experiencia",
     projects: "Proyectos",
@@ -293,6 +307,10 @@ export const translations = {
       }
     },
     
+    // GitHub Activity
+    githubActivityTitle: "Actividad en GitHub",
+    githubActivitySubtitle: "Mis contribuciones a código abierto y proyectos personales",
+    
     // Timeline
     timelineTitle: "Mi Trayectoria Profesional",
     experienceTab: "Experiencia",
@@ -308,9 +326,9 @@ export const translations = {
         company: "Amedida TI",
         period: "Nov 2023 - Ago 2025",
         achievements: [
-          "Diseño de bases de datos, .NET Framework y otras habilidades.",
-          "Desarrollo de soluciones backend utilizando el ecosistema .NET.",
-          "Mantenimiento y optimización de aplicaciones existentes para mejorar rendimiento y escalabilidad."
+          "Arquitecturé soluciones .NET escalables, reduciendo tiempos de consulta en un 30%.",
+          "Migré sistemas heredados a .NET, asegurando un 99.9% de uptime.",
+          "Colaboré en APIs robustas, mejorando el procesamiento de datos en un 25%."
         ]
       },
       nttdata: {
@@ -318,8 +336,8 @@ export const translations = {
         company: "NTT DATA",
         period: "Mar 2022 - Jun 2022",
         achievements: [
-          "Colaboré en proyectos de desarrollo de software, obteniendo experiencia práctica con Microsoft SQL Server y SQL.",
-          "Apoyé al equipo en diversas tareas de programación y análisis."
+          "Optimicé procedimientos SQL Server, gestionando grandes volúmenes de datos.",
+          "Desarrollé herramientas internas, aumentando la productividad del equipo en un 15%."
         ]
       }
     },
@@ -436,6 +454,14 @@ export const translations = {
     newslettersBitacoraNaturalTitle: "Bitácora Natural",
     newslettersBitacoraNaturalDescription: "Reflexiones sobre ciencias naturales, clima, medio ambiente y la relación entre tecnología y naturaleza. Entendiendo nuestro planeta a través de la ciencia.",
     newslettersBitacoraNaturalTags: ["Ciencia", "Medio Ambiente", "Naturaleza"] as const,
+    newslettersFeaturedArticleBadge: "Artículo Destacado",
+    newslettersFeaturedArticleTitle: "¿Estados Unidos: La Solución para Venezuela?",
+    newslettersFeaturedArticleDescription: "Un análisis profundo sobre el impacto y las posibles consecuencias de la intervención estadounidense en la crisis venezolana.",
+    newslettersReadArticle: "Leer Artículo Completo",
+    
+    // Testimonials
+    testimonialsTitle: "Lo que dicen de mí",
+    testimonialsSubtitle: "Recomendaciones y feedback de compañeros y mentores",
     
     // Contact
     contactTitle: "Contacto",
