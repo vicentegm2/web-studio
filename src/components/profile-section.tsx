@@ -123,26 +123,38 @@ export function ProfileSection() {
             initial="hidden"
             animate="visible"
           >
-            <motion.h2 variants={itemVariants} className="text-lg font-medium text-muted-foreground font-headline tracking-wider mb-2">
+            <motion.h1 variants={itemVariants} className="text-lg font-medium text-muted-foreground font-headline tracking-wider mb-2">
               {t.hello}
-            </motion.h2>
+            </motion.h1>
 
-            <motion.h1
+            <motion.h2
               variants={itemVariants}
               id="profile-heading"
               className="text-4xl sm:text-6xl lg:text-7xl font-bold font-headline text-primary leading-tight"
             >
               {t.jobTitle}
-            </motion.h1>
+            </motion.h2>
 
             <motion.div variants={itemVariants} className="mt-6 space-y-4 max-w-2xl text-foreground/80 leading-relaxed text-lg">
               <p>{t.profileDescription1}</p>
               <p>{t.profileDescription2}</p>
             </motion.div>
 
+            <motion.div variants={itemVariants} className="mt-8">
+              <Button asChild size="lg" className="btn-primary hover:scale-105 transition-transform">
+                <a href={`/${useLanguage().language}#contact`}>
+                  {t.contact}
+                </a>
+              </Button>
+            </motion.div>
+
             <motion.div variants={itemVariants} className="mt-8 flex flex-wrap gap-2 justify-center sm:justify-start">
               {softSkills.map((skill) => (
-                <Badge key={skill} variant="secondary" className="px-4 py-1 text-sm hover:scale-105 transition-transform origin-center cursor-default">
+                <Badge
+                  key={skill}
+                  variant="outline"
+                  className="px-4 py-1 text-sm bg-primary/5 border-primary/20 text-foreground hover:bg-primary/10 hover:border-primary/40 hover:scale-105 transition-all duration-300 origin-center cursor-default backdrop-blur-sm"
+                >
                   {skill}
                 </Badge>
               ))}
