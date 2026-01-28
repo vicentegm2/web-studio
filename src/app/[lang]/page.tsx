@@ -1,9 +1,11 @@
+'use client';
 
 import { ProfileSection } from '@/components/profile-section';
 import { Separator } from '@/components/ui/separator';
 import { ContactSection } from '@/components/contact-section';
 import { TimelineSection } from '@/components/timeline-section';
 import { TechStackSection } from '@/components/tech-stack-section';
+import { TestimonialsSection } from '@/components/testimonials-section';
 
 export default function Home() {
   return (
@@ -32,6 +34,8 @@ export default function Home() {
         <TechStackSection />
         <Separator />
         <TimelineSection />
+        <Separator />
+        <TestimonialsSection />
         <Separator />
         <ContactSection />
       </div>

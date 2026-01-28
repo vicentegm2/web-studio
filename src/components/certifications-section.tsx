@@ -20,6 +20,15 @@ export function CertificationsSection() {
 
   const certifications = [
     {
+      title: "Introducción a Test-Driven Development",
+      issuer: "Udemy",
+      date: "Jan 2026",
+      credentialId: "UC-413bbcef-b0b4-4c2c-943f-4b51b237462e",
+      skills: ["TDD", "Test-Driven Development", "Unit Testing", "C#"],
+      url: "https://www.udemy.com/certificate/UC-413bbcef-b0b4-4c2c-943f-4b51b237462e/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
+      imageUrl: "/images/cert-tdd.png"
+    },
+    {
       title: "Introducción a Git y GitHub",
       issuer: "Google",
       date: "Sep 2025",

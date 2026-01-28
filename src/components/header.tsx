@@ -10,17 +10,19 @@ import {
 import { useState } from 'react';
 import { SettingsMenu } from './settings-menu';
 import { useLanguage } from '@/contexts/language-context';
+import { usePathname } from 'next/navigation';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { t, language } = useLanguage();
+  const pathname = usePathname();
 
   const navLinks = [
-    { name: t.home, href: '/' },
-    { name: t.projects, href: '/projects' },
-    { name: t.experience, href: '/experience' },
-    { name: t.newsletters, href: '/blog' },
-    { name: t.contact, href: '/#contact' },
+    { name: t.home, href: `/${language}` },
+    { name: t.projects, href: `/${language}/projects` },
+    { name: t.experience, href: `/${language}/experience` },
+    { name: t.newsletters, href: `/${language}/blog` },
+    { name: t.contact, href: `/${language}#contact` },
   ];
 
   return (
@@ -35,9 +37,19 @@ export function Header() {
 
           {/* Desktop Navigation - centered */}
           <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
-            {navLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="transition-colors hover:text-primary whitespace-nowrap">{link.name}</Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`transition-colors hover:text-primary whitespace-nowrap ${isActive ? 'text-primary font-bold' : 'text-muted-foreground'
+                    }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Desktop Actions */}

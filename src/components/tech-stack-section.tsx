@@ -10,11 +10,7 @@ export function TechStackSection() {
   const { t } = useLanguage();
 
   const techStack = [
-    {
-      name: t.techStack.csharp.name,
-      icon: IconCSharp,
-      description: t.techStack.csharp.description,
-    },
+    // C# removed as implied by .NET
     {
       name: t.techStack.dotnet.name,
       icon: IconDotNet,
